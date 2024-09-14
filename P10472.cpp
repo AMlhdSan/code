@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int m, s, t;
-int dp[]
+string str;
 
 int main() {
 
-    cin >> m >> s >> t;
-    
+    cin >> str;
     
     return 0;
 }
