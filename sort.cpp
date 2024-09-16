@@ -1,91 +1,38 @@
-#include<bits/stdc++.h> 
+#include <bits/stdc++.h> 
+#include <cmath>
 
 using namespace std; 
 
 int n; 
+int cnt;
 
-struct node 
+struct node { 
 
-{ 
+  int x,y;	 
 
-  int fz,fm;	 
+}a[100001]; 
 
-}a[160*160+3]; 
-
-int gcd0(int x,int y) 
-
-{ 
-
-    int r=x%y; 
-
-while(r!=0) 
-
-{ 
-
-  x=y; 
-
-  y=r; 
-
-  r=x%y; 
-
-    } 
-
-    return y; 
-
+bool cmp(node x, node y) { 
+    return x.x * y.y < x.y * y.x;	 
 } 
 
-int gcd(int x,int y) 
+int main() { 
 
-{ 
+    cin >> n; 
 
-  if(x%y==0) return y; 
+    for(int i = 2; i <= n; ++i) 
+        for(int j = 1; j < i; ++j) 
+            if(__gcd(i, j) == 1){ 
+                ++cnt; 
+                a[cnt].x=j;
+                a[cnt].y=i;	 
 
-  else return gcd(y,x%y); 
+            }
 
-} 
+    sort(a + 1, a + cnt + 1, cmp); 
 
- 
-
-bool mycmp(node x, node y) 
-
-{ 
-
-    return x.fz*y.fm<x.fm*y.fz;	 
-
-} 
-
-int main() 
-
-{ 
-
-cin>>n; 
-
-int cnt=0; 
-
-for(int i=2;i<=n;i++) 
-
-for(int j=1;j<i;j++) 
-
-{ 
-
-  if(gcd(i,j)==1){ 
-
-  cnt++; 
-
-  a[cnt].fz=j;a[cnt].fm=i;	 
-
-      } 
-
-} 
-
-sort(a+1,a+1+cnt,mycmp); 
-
-cout<<"0/1"<<endl; 
-
-    for(int i=1;i<=cnt;i++) 
-
-        cout<<a[i].fz<<"/"<<a[i].fm<<endl; 
-
-    cout << "1/1"; 
+    for(int i = 1; i <= cnt; ++i) 
+        cout << a[i].x << " " << a[i].y << endl; 
+    
     return 0;
 } 

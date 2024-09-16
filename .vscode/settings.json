@@ -6,7 +6,8 @@
         "unordered_set": "cpp",
         "vector": "cpp",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "t22": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
