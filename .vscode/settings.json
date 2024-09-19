@@ -7,7 +7,8 @@
         "vector": "cpp",
         "ostream": "cpp",
         "iostream": "cpp",
-        "t22": "c"
+        "t22": "c",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
