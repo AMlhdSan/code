@@ -8,7 +8,10 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "t22": "c",
-        "queue": "cpp"
+        "queue": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "list": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
