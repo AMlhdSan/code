@@ -39,7 +39,7 @@ void mdf(int p, int l, int r, int ql, int qr, int k) {
         return;
     }
     pushd(p);
-    int mid = (l + r >> 1);
+    int mid = (l + r) >> 1;
     if(ql <= mid)
         mdf(p * 2, l, mid, ql, qr, k);
     if(qr > mid)
