@@ -16,17 +16,15 @@ int main() {
         dp[i][i] = 1;
     }
 
-    for(int i = 1; i <= l; ++i) {
+    for(int i = l; i >= 0; --i) {
         for(int j = i + 1; j <= l; ++j) {
             if(a[i] == a[j]) {
-                dp[i][j] = min(dp[i + 1][j], min(dp[i][j - 1], dp[i][j]));
+                dp[i][j] = dp[i][j - 1];
             }
             else {
-                if(a[i] == a[j - 1]) {
-                    dp[i][j] = min(dp[i][j], dp[i][j - 1] + 1);
-                }
-                if(a[i - 1] == a[j]) {
-                    dp[i][j] = min(dp[i][j], dp[i - 1][j] + 1);
+                dp[i][j] = 0x3f3f3f3f;
+                for(int k = i; k < j; ++k) {
+                    dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j]);
                 }
             }
         }
