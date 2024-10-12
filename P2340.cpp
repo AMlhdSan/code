@@ -6,6 +6,7 @@ using namespace std;
 
 int n;
 int s[N], f[N];
+int dp[N][N];
 
 int main() {
 
@@ -13,6 +14,7 @@ int main() {
     
     for(int i = 1; i <= n; ++i) 
         cin >> s[i] >> f[i];
-
+    
+    
     return 0;
 }
