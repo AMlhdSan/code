@@ -1,32 +1,29 @@
 #include <bits/stdc++.h>
-
 #define N 100001
-#define ll long long
-
 using namespace std;
 
-char ch[N];
-int v[N];
-ll dp[N]; // 表示从第i位删到第n为的最小代价
-int T;
-int len;
+int v[10];
 
 int main() {
-
-    cin >> T;
-    cin >> T;
-
-    while(T--) {
-        memset(dp, 0x3f, sizeof(dp));
-        cin >> ch + 1;
-        len = strlen(ch + 1);
-        for(int i = 1; i <= len; ++i) {
+    int t;
+    cin >> t;
+    cin >> t;
+    
+    while (t--) {
+        char n[N];
+        long long sum = 0;
+        cin >> n + 1;
+        int len = strlen(n + 1);
+        for(int i = 1; i <= 9; i++) {
             cin >> v[i];
         }
-
+        for(int i = 1; i <= len; i++) {
+            sum += v[n[i] - '0'];
+        }
+        for(int i = 1; i <= len; ++i) {
+            
+        }
     }
-
     
-
     return 0;
 }
