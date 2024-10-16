@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"/Users/amlhdsan/Desktop/code/A. 美丽字符串 (str).cpp","tests":[{"id":1729000481240,"input":"agnnmddxd","output":"3"},{"id":1729000622985,"input":"abc","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/A. 美丽字符串 (str).cpp","group":"local","local":true}
