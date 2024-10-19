@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
-
-#define N 1001
-
 using namespace std;
 
-int n;
-int s;
-int dp[]
+int n, m;
 
 int main() {
+
+    cin >> n >> m;
+
+    
 
     return 0;
 }

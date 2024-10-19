@@ -1,14 +1,12 @@
 #include <bits/stdc++.h>
-
-#define N 1001
-
 using namespace std;
 
-int n;
-int s;
-int dp[]
+int a;
 
 int main() {
+
+    cin >> a;
+    cout << (a + 5) * 3 << ' ' << (a * 3 + 5) << endl;
 
     return 0;
 }
