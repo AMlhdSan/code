@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define N 200001
+#define N 2000050
 #define ls (p << 1)
 #define rs (p << 1 | 1)
 #define mid ((l + r) >> 1)
@@ -8,10 +8,16 @@ using namespace std;
 
 ll n, q, w;
 int a[N];
-int l, r, d;
+int lss, rss, d;
 ll tree[N << 2];
 ll lazy[N << 2];
 int siz[N];
+ll ww;
+ll ans;
+int lun;
+ll summ = 0;
+int ttt;
+int lll, rr, midd;
 
 void upds(int p) {
     siz[p] = siz[ls] + siz[rs];
@@ -32,6 +38,7 @@ void pushd(int p) {
 }
 
 void build(int p, int l, int r) {
+    lazy[p] = 0;
     if(l == r) {
         tree[p] = a[l];
         siz[p] = 1;
@@ -101,16 +108,43 @@ int main() {
 
     for(int i = 1; i <= n; ++i) {
         a[i] = read();
+        summ += a[i];
     }
 
     build(1, 1, n);
 
     while(q--) {
-        l = read();
-        r = read();
+        ans = 0;
+        lun = 0;
+        lss = read();
+        rss = read();
         d = read();
-        mdf(1, 1, n, l, r, d);
-        
+        summ += 1ll * (rss - lss + 1) * d;
+        mdf(1, 1, n, lss, rss, d);
+        ww = w;
+        while(1) {
+            if(ww > summ * (1ll << lun)) {
+                ans += n;
+                ww -= summ * (1ll << lun);
+                ++lun;
+            }
+            else {
+                lll = 1;
+                rr = n;
+                while(lll <= rr) {
+                    midd = (lll + rr) >> 1;
+                    if(1ll * qry(1, 1, n, 1, midd) * (1ll << lun) >= ww) {
+                        rr = midd - 1;
+                    }
+                    else {
+                        lll = midd + 1;
+                    }
+                }
+                ans += lll - 1;
+                printf("%d\n", ans);
+                break;
+            }
+        }
     }
 
     return 0;
