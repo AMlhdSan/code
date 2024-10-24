@@ -8,6 +8,9 @@ int n;
 string str;
 int p[N];
 int maxx = -1;
+int l, r;
+int start = -1;
+int end = -1;
 
 int main() {
 
@@ -29,10 +32,30 @@ int main() {
 
     for(int i = 1; i <= n; ++i) {
         if(p[i] == 0) {
-            for(int i = i; i >= 1; --i) {
+            p[i] = 1;
+            for(int j = i - 1; j >= 1; --j) {
                 if(p[i] == 0) {
-                                        
+                    break; 
+                    l = i + 1;             
                 }
+            }
+            for(int j = i + 1; j <= n; ++j) {
+                if(p[i] == 0) {
+                    break;
+                    r = i - 1;
+                }
+            }
+            for(int j = l; j <= r; ++j) {
+                if(p[j] == 1 && start != -1) {
+                    start = i;
+                }
+                if(p[j] == 1) {
+                    end = i;
+                }
+                
+            }
+            if(start == end) {
+                maxx = max(maxx, 0);
             }
         }
     }
