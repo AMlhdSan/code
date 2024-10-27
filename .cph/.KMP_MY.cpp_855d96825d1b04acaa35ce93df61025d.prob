@@ -1,0 +1,1 @@
+{"name":"Local: KMP_MY","url":"/Users/amlhdsan/Desktop/code/KMP_MY.cpp","tests":[{"id":1729911784022,"input":"ABABABC\nABA","output":"1\n3\n0 0 1 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/KMP_MY.cpp","group":"local","local":true}
