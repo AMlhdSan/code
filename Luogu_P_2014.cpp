@@ -15,7 +15,7 @@ int siz[N];
 void dfs(int p) {
     siz[p] = 1;
     dp[p][1] = s[p];
-    for (int v : edges[p]) {
+    for(int v : edges[p]) {
         dfs(v);
         siz[p] += siz[v];
     }
