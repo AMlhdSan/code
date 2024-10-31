@@ -24,8 +24,6 @@ int main() {
         }
     }
 
-    for(int i = 1; i <= top; ++i) {
-        cout << str[i];
-    }
+    cout << str + 1;
     return 0;
 }
