@@ -8,6 +8,7 @@ int n, m;
 int x[M], y[M];
 
 int sum = 0;
+int p;
 
 int main() {
 
@@ -17,10 +18,10 @@ int main() {
         cin >> x[i] >> y[i];
     }
 
-    for(int i = 0; i <= (1 << n); ++i) {
-        int p = 1;
+    for(int i = 0; i < (1 << n); ++i) {
+        p = 1;
         for(int j = 1; j <= m; ++j) {
-            if((i & (1 << a[j] - 1)) && (i & (1 << b[j] - 1))) {
+            if((i & (1 << (x[j] - 1))) && (i & (1 << (y[j] - 1)))) {
                 p = 0;
                 break;
             }
