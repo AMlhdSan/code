@@ -15,14 +15,6 @@ void add_edges(int u, int v) {
     edges[v].push_back(u);
 }
 
-void dfs(int p, int pre) {
-    for(int v : edges[p]) {
-        if(v != pre) {
-            
-        }
-    }
-}
-
 int main() {
 
     cin >> n;
@@ -36,7 +28,9 @@ int main() {
         cin >> w[i];
     }
 
-    dfs(1, 1);
+    for(int i = 1; i <= n; ++i) {
+        
+    }
 
     return 0;
 }
