@@ -35,24 +35,24 @@ int main() {
     for(int i = 1; i <= n; ++i) {
         tmp1 = 0; tmp2 = 0;
         max1 = -0x7fffffff; max2 = -0x7fffffff;
-        if(edges[i].size() != 1) {
-            for(int v : edges[i]) {
-                tmp1 += w[v] % MOD;
-                tmp2 += (w[v] % MOD * w[v] % MOD) % MOD;
-                if(w[v] >= max1) {
-                    max2 = max1;
-                    max1 = w[v];
-                }
-                else if(w[v] >= max2) {
-                    max2 = w[v];
-                }
+        for(int v : edges[i]) {
+            tmp1 += w[v] % MOD;
+            tmp1 %= MOD;
+            tmp2 += (w[v] % MOD * w[v] % MOD) % MOD;
+            tmp2 %= MOD;
+            if(w[v] >= max1) {
+                max2 = max1;
+                max1 = w[v];
+            }
+            else if(w[v] >= max2) {
+                max2 = w[v];
             }
         }
         maxx = max(maxx, max1 * max2);
-        sum = (sum + tmp1 * tmp1 % MOD - tmp2) % MOD;
+        sum = (sum % MOD + tmp1 % MOD * tmp1 % MOD - tmp2 + MOD) % MOD;
     }
 
-    cout << maxx << ' ' << sum;
+    cout << maxx << ' ' << sum % MOD;
 
     return 0;
 }
