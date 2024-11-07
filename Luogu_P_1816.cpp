@@ -13,7 +13,7 @@ int a[N];
 ll tree[N << 2];
 
 void upd(int p) {
-    tree[p] = max(tree[ls], tree[rs]);
+    tree[p] = min(tree[ls], tree[rs]);
 }
 
 void build(int p, int l, int r) {
@@ -48,16 +48,16 @@ ll qry(int p, int l, int r, int ql, int qr) {
         return tree[p];
     }
 
-    ll maxx = 0;
+    ll minn = 0;
 
     if(ql <= mid) {
-        maxx = max(maxx, qry(ls, l, mid, ql, qr));
+        minn = min(minn, qry(ls, l, mid, ql, qr));
     }
     if(qr > mid) {
-        maxx = max(maxx, qry(rs, mid + 1, r, ql, qr));
+        minn = min(minn, qry(rs, mid + 1, r, ql, qr));
     }
 
-    return maxx;
+    return minn;
 }
 
 int main() {
