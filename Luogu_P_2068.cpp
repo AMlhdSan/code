@@ -10,8 +10,6 @@ using namespace std;
 
 int n, m;
 int a[N];
-int opt;
-int lll, rr, kk, dd, pp;
 ll tree[N << 2];
 int siz[N << 2];
 int lazy[N << 2];
@@ -51,7 +49,6 @@ void build(int p, int l, int r) {
     upds(p);
 }
 
-
 void mdf(int p, int l, int r, int ql, int qr, int k) {
     if(ql <= l && r <= qr) {
         tree[p] += 1ll * siz[p] * k;
@@ -90,29 +87,19 @@ int main() {
 
     cin >> n >> m;
 
-    for(int i = 1; i <= n; ++i) {
-        cin >> a[i];
-    }
-
-    for(int i = n; i >= 2; --i) {
-        a[i] = a[i] - a[i - 1];
-    }
-
     build(1, 1, n);
 
     while(m--) {
-        cin >> opt;
-        if(opt == 1) {
-            cin >> lll >> rr >> kk >> dd;
-            mdf(1, 1, n, lll, lll, kk);
-            if(lll + 1 <= rr)
-                mdf(1, 1, n, lll + 1, rr, dd);
-            if(rr + 1 <= n)
-                mdf(1, 1, n, rr + 1, rr + 1, - (kk + dd * (rr - lll)));
+        char op;
+        int x, y;
+
+        cin >> op >> x >> y;
+
+        if(op == 'x') {
+            mdf(1, 1, n, x, x, y);
         }
         else {
-            cin >> pp;
-            cout << qry(1, 1, n, 1, pp) << endl;
+            cout << qry(1, 1, n, x, y) << endl;
         }
     }
 
