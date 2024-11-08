@@ -17,6 +17,10 @@ void upds(int p) {
     siz[p] = siz[ls] + siz[rs];
 }
 
+void pushd(int p) {
+    
+}
+
 void build(int p, int l, int r) {
     if(l == r) {
         siz[p] = 1;
@@ -29,8 +33,18 @@ void build(int p, int l, int r) {
 
 void mdf(int p, int l, int r, int ql, int qr) {
     if(ql <= l && r <= qr) {
-        
+        tree[p] = siz[p] - tree[p];
+        lazy[p] = (lazy[p] + 1) % 2;
+        return;
     }
+    pushd(p);
+    if(ql <= mid) {
+        mdf(ls, l, mid, ql, qr);
+    }
+    if(qr > mid) {
+        mdf(rs, mid + 1, r, ql, qr);
+    }
+    upd(p);
 }
 
 int main() {
