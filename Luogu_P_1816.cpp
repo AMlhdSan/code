@@ -48,7 +48,7 @@ ll qry(int p, int l, int r, int ql, int qr) {
         return tree[p];
     }
 
-    ll minn = 0;
+    ll minn = 0x7fffffff;
 
     if(ql <= mid) {
         minn = min(minn, qry(ls, l, mid, ql, qr));
