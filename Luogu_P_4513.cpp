@@ -1,18 +1,21 @@
 #include <bits/stdc++.h>
 
-#define N 500005
+#define N 500001
 #define ls (p << 1)
 #define rs (p << 1 | 1)
 #define mid ((l + r) >> 1)
 
 using namespace std;
 
+struct Node {
+    int sum;   
+    int maxl; 
+    int maxr;  
+    int maxx;  
+} tree[N << 2];
+
 int n, m;
 int a[N];
-int tree[N << 2];
-int maxl[N << 2];
-int maxr[N << 2];
-int maxx[N << 2];
 
 inline int read() {
     int f = 1, x = 0;
@@ -31,18 +34,16 @@ inline int read() {
 }
 
 void upd(int p) {
-    tree[p] = tree[ls] + tree[rs];
-    maxx[p] = max(max(maxx[ls], maxx[rs]), maxl[rs] + maxr[ls]);
-    maxl[p] = max(maxl[ls], tree[ls] + maxl[rs]);
-    maxr[p] = max(maxr[rs], tree[rs] + maxr[ls]);
+    tree[p].sum = tree[ls].sum + tree[rs].sum;
+    tree[p].maxx = max(max(tree[ls].maxx, tree[rs].maxx), tree[ls].maxr + tree[rs].maxl);
+    tree[p].maxl = max(tree[ls].maxl, tree[ls].sum + tree[rs].maxl);
+    tree[p].maxr = max(tree[rs].maxr, tree[rs].sum + tree[ls].maxr);
 }
 
+// 建树操作
 void build(int p, int l, int r) {
-    if(l == r) {
-        tree[p] = a[l];
-        maxl[p] = a[l];
-        maxr[p] = a[l];
-        maxx[p] = a[l];
+    if (l == r) {
+        tree[p].sum = tree[p].maxl = tree[p].maxr = tree[p].maxx = a[l];
         return;
     }
     build(ls, l, mid);
@@ -50,52 +51,64 @@ void build(int p, int l, int r) {
     upd(p);
 }
 
+// 单点修改操作
 void mdf(int p, int l, int r, int q, int x) {
-    if(q <= l && q >= r) {
-        tree[p] = x;
-        maxl[p] = x;
-        maxr[p] = x;
-        maxx[p] = x;
+    if (l == r && l == q) {
+        tree[p].sum = tree[p].maxl = tree[p].maxr = tree[p].maxx = x;
         return;
     }
-    if(q <= mid) {
+    if (q <= mid) {
         mdf(ls, l, mid, q, x);
-    }
-    if(q > mid) {
+    } else {
         mdf(rs, mid + 1, r, q, x);
     }
     upd(p);
 }
 
-pair<pair<int, int>, pair<int, int> > qry(int p, int l, int r, int ql, int qr) {
-    if(ql <= l && r <= qr) {
-        return (make_pair(make_pair(tree[p], maxl[p]), make_pair(maxr[p], maxx[p])));
+// 区间查询操作
+Node qry(int p, int l, int r, int ql, int qr) {
+    if (ql <= l && r <= qr) {
+        return tree[p];
     }
-    else if(ql > mid) {
+    if (qr <= mid) {
         return qry(ls, l, mid, ql, qr);
     }
-    else if(qr < mid) {
+    if (ql > mid) {
         return qry(rs, mid + 1, r, ql, qr);
     }
-    else {
-        pair<pair<int, int>, pair<int, int> > ll = qry(ls, l, mid, ql, qr);
-        pair<pair<int, int>, pair<int, int> > rr = qry(rs, mid + 1, r, ql, qr);
-        pair<pair<int, int>, pair<int, int> > ans;
-        ans.first.first = ll.first.first + rr.first.first;
-        ans.first.second = max()
-
-    }
+    Node ll = qry(ls, l, mid, ql, qr);
+    Node rr = qry(rs, mid + 1, r, ql, qr);
+    Node ans;
+    ans.sum = ll.sum + rr.sum;
+    ans.maxl = max(ll.maxl, ll.sum + rr.maxl);
+    ans.maxr = max(rr.maxr, rr.sum + ll.maxr);
+    ans.maxx = max(max(ll.maxx, rr.maxx), ll.maxr + rr.maxl);
+    return ans;
 }
 
 int main() {
 
     cin >> n >> m;
 
-    for(int i = 1; i <= n; ++i) {
+    for (int i = 1; i <= n; ++i) {
         a[i] = read();
     }
 
     build(1, 1, n);
+
+    while(m--) {
+        int k, a, b;
+        cin >> k >> a >> b;
+        if(k == 1) {
+            if(a > b) {
+                swap(a, b);
+            }
+            cout << qry(1, 1, n, a, b).maxx << endl;
+        } 
+        else {
+            mdf(1, 1, n, a, b);
+        }
+    }
 
     return 0;
 }
