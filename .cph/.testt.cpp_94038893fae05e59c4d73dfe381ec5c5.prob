@@ -1,0 +1,1 @@
+{"name":"Local: testt","url":"/Users/amlhdsan/Desktop/code/testt.cpp","tests":[{"id":1731229705618,"input":"3 1\n1 3 4","output":"1 1 0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/testt.cpp","group":"local","local":true}
