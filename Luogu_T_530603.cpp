@@ -31,13 +31,11 @@ int main() {
         if (k > len - 1) {
             cout << -1 << endl;
         } 
+        else if(k == len - 1) {
+            cout << min(abs(len - now), abs(len - 1 - now)) << endl;
+        }
         else {
-            int minn = abs(k - now);
-            
-            if(now == len && k < len) {
-                minn = min(minn, abs(k - now) + 1);
-            }
-            cout << minn << endl;
+            cout << abs(k - now) << endl;
         }
     }
 
