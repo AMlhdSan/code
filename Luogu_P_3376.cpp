@@ -1,22 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n,m,s,t,u,v;
-long long w,ans,dis[520010];
-int tot=1,vis[520010],pre[520010],head[520010],flag[2510][2510];
+
+int n, m, s, t;
+int u, v;
+long long w, ans;
+long long dis[520010];
+int tot=1;
+int vis[520010];
+int pre[520010];
+int head[520010];
+int flag[2510][2510];
 
 struct node {
-	int to,net;
+	int to, nxt;
 	long long val;
 } e[520010];
 
 inline void add(int u,int v,long long w) {
 	e[++tot].to=v;
 	e[tot].val=w;
-	e[tot].net=head[u];
+	e[tot].nxt=head[u];
 	head[u]=tot;
 	e[++tot].to=u;
 	e[tot].val=0;
-	e[tot].net=head[v];
+	e[tot].nxt=head[v];
 	head[v]=tot;
 }
 
@@ -25,11 +32,11 @@ inline int bfs() {
 	queue<int> q;
 	q.push(s);
 	vis[s]=1;
-	dis[s]=2005020600;
+	dis[s]=0x7fffffff;
 	while(!q.empty()) {
 		int x=q.front();
 		q.pop();
-		for(register int i=head[x];i;i=e[i].net) {
+		for(register int i=head[x];i;i=e[i].nxt) {
 			if(e[i].val==0) continue; 
 			int v=e[i].to;
 			if(vis[v]==1) continue; 
