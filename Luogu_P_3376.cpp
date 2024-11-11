@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define MAXX 0x7fffffff
+#define N 10005  // 根据题目需求设定一个足够大的常数
 using namespace std;
 
 struct Edge {
@@ -9,8 +10,9 @@ struct Edge {
 
 int n, m, s, t;
 long long ans;
-vector<vector<Edge> > adj;
-vector<int> dis, now;
+vector<Edge> adj[N];  // 使用数组形式来存储邻接表
+int dis[N];           // 距离数组
+int now[N];           // 当前弧数组
 
 void add(int u, int v, long long w) {
     adj[u].push_back({v, w});
@@ -18,7 +20,7 @@ void add(int u, int v, long long w) {
 }
 
 bool bfs() {
-    fill(dis.begin(), dis.end(), MAXX);
+    fill(dis, dis + n + 1, MAXX);
     queue<int> q;
     q.push(s);
     dis[s] = 0;
@@ -26,9 +28,9 @@ bool bfs() {
     while (!q.empty()) {
         int x = q.front();
         q.pop();
-        for (const auto& edge : adj[x]) {
-            int v = edge.to;
-            if (edge.val > 0 && dis[v] == MAXX) {
+        for (int i = 0; i < adj[x].size(); ++i) {
+            int v = adj[x][i].to;
+            if (adj[x][i].val > 0 && dis[v] == MAXX) {
                 q.push(v);
                 dis[v] = dis[x] + 1;
                 now[v] = 0;
@@ -42,19 +44,21 @@ bool bfs() {
 long long dfs(int x, long long flow) {
     if (x == t) return flow;
     long long res = 0;
-    for (int& i = now[x]; i < adj[x].size() && flow; ++i) {
-        Edge& edge = adj[x][i];
-        int v = edge.to;
-        if (edge.val > 0 && dis[v] == dis[x] + 1) {
-            long long k = dfs(v, min(flow, edge.val));
+    for (int i = now[x]; i < adj[x].size() && flow; ++i, ++now[x]) {
+        int v = adj[x][i].to;
+        if (adj[x][i].val > 0 && dis[v] == dis[x] + 1) {
+            long long k = dfs(v, min(flow, adj[x][i].val));
             if (k == 0) dis[v] = MAXX;
-            edge.val -= k;         
-            for (auto& rev_edge : adj[v]) { 
-                if (rev_edge.to == x) { 
-                    rev_edge.val += k; 
+            adj[x][i].val -= k;
+            
+            // 找到相应的反向边更新其容量
+            for (int j = 0; j < adj[v].size(); ++j) {
+                if (adj[v][j].to == x) {
+                    adj[v][j].val += k;
                     break;
                 }
             }
+            
             res += k;
             flow -= k;
         }
@@ -64,9 +68,6 @@ long long dfs(int x, long long flow) {
 
 int main() {
     cin >> n >> m >> s >> t;
-    adj.resize(n + 1);
-    dis.resize(n + 1);
-    now.resize(n + 1);
     for (int i = 1; i <= m; ++i) {
         int u, v;
         long long w;
