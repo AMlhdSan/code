@@ -47,11 +47,11 @@ long long dfs(int x, long long flow) {
         int v = edge.to;
         if (edge.val > 0 && dis[v] == dis[x] + 1) {
             long long k = dfs(v, min(flow, edge.val));
-            if (k == 0) dis[v] = MAXX; // 剪枝
-            edge.val -= k;             // 更新正向边容量
+            if (k == 0) dis[v] = MAXX;
+            edge.val -= k;         
             for (auto& rev_edge : adj[v]) { 
                 if (rev_edge.to == x) { 
-                    rev_edge.val += k; // 更新反向边容量
+                    rev_edge.val += k; 
                     break;
                 }
             }
