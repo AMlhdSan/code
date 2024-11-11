@@ -11,6 +11,7 @@ int s, t;
 long long ans;
 vector<pair<int, ll> > edges[N];
 int dis[N], now[N];
+int tmpu, tmpv;
 
 void add(int u, int v, ll w) {
     edges[u].push_back(make_pair(v, w));
@@ -18,7 +19,7 @@ void add(int u, int v, ll w) {
 }
 
 bool bfs() {
-    fill(dis, dis + n + 1, INF);
+    fill(dis, dis + t + 1, INF);
     queue<int> q;
     q.push(s);
     dis[s] = 0;
@@ -61,6 +62,7 @@ ll dfs(int x, ll flow) {
             }
             res += k;
             flow -= k;
+            if(flow == 0) break;
         }
     }
     return res;
@@ -68,13 +70,27 @@ ll dfs(int x, ll flow) {
 
 int main() {
 
-    cin >> n >> m >> s >> t;
+    cin >> m >> n;
 
-    while(m--) {
-        int u, v;
-        ll w;
-        cin >> u >> v >> w;
-        add(u, v, w);
+    s = 0;
+    t = n + 1;
+
+    //x-apple-health://HearingAppPlugin.healthplugin/HearingTest
+
+
+    
+    cin >> tmpu >> tmpv;
+    while(tmpu != -1 && tmpv != -1) {
+        add(tmpu, tmpv, 1);
+        cin >> tmpu >> tmpv;
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        add(s, i, 1);
+    }
+
+    for(int i = m + 1; i <= n; ++i) {
+        add(i, t, 1);
     }
 
     while(bfs()) {
