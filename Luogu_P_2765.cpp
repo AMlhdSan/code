@@ -10,7 +10,7 @@ int num = 0;
 int edge = 1;
 int s, t;
 int nxt[N], to[N], head[N], d[N];
-int w[N], match[N], start[N], vis[N];
+int w[N], match[N], start[N], vis[N], now[N];
 
 void add(int u, int v, int c) {
     ++edge;
