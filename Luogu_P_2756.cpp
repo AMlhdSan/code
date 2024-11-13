@@ -12,6 +12,7 @@ long long ans;
 vector<pair<int, ll> > edges[N];
 int dis[N], now[N];
 int tmpu, tmpv;
+int match[N];
 
 void add(int u, int v, ll w) {
     edges[u].push_back(make_pair(v, w));
@@ -62,6 +63,9 @@ ll dfs(int x, ll flow) {
             }
             res += k;
             flow -= k;
+            if (x != s && x <= m && v.first > m && v.first <= n + 1 && k > 0) {
+                match[x] = v.first;
+            }
             if(flow == 0) break;
         }
     }
@@ -74,10 +78,6 @@ int main() {
 
     s = 0;
     t = n + 1;
-
-    //x-apple-health://HearingAppPlugin.healthplugin/HearingTest
-
-
     
     cin >> tmpu >> tmpv;
     while(tmpu != -1 && tmpv != -1) {
@@ -98,6 +98,12 @@ int main() {
     }
 
     cout << ans << endl;
+
+    for(int i = 1; i <= m; ++i) {
+        if(match[i] > 0) {
+            cout << i << " " << match[i] << endl;
+        }
+    }
 
     return 0;
 }
