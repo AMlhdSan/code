@@ -84,7 +84,7 @@ int main() {
 
     while(m--) {
         long long u, v, c;
-        scanf("%lld%lld%lld", &u, &v, &c);
+        cin >> u >> v >> c;
         add(u, v, c);
     }
 
