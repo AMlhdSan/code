@@ -22,7 +22,7 @@ int main() {
     for(int i = 1; i <= n; ++i) {
         for(int j = 1; j <= n; ++j) {
             for(int k = 1; k <= n; ++k) {
-                maxx[i] = abs(x[k] - x[i]) + abs(y[k] - y[j]);
+                maxx[k] = abs(x[k] - x[i]) + abs(y[k] - y[j]);
             }
             sort(maxx + 1, maxx + n + 1);
             for(int k = 1; k <= n; ++k) {

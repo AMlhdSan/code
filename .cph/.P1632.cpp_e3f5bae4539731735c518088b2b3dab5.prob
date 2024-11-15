@@ -1,0 +1,1 @@
+{"name":"Local: P1632","url":"/Users/amlhdsan/Desktop/code/P1632.cpp","tests":[{"id":1731596796250,"input":"4\n15 14\n15 16\n14 15 \n16 15","output":"0\n2\n3\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/P1632.cpp","group":"local","local":true}
