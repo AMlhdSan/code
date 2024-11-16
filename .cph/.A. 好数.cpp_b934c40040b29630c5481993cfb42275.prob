@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"/Users/amlhdsan/Desktop/code/A. 好数.cpp","tests":[{"id":1731721269980,"input":"10","output":"9"},{"id":1731721404766,"input":"999","output":"961"},{"id":1731721412759,"input":"531441","output":"531441"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/A. 好数.cpp","group":"local","local":true}
