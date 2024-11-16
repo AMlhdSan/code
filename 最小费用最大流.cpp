@@ -1,71 +1,118 @@
-#include <algorithm>
-#include <cstdio>
-#include <cstring>
-#include <queue>
+#include "stdafx.h"
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+#include<queue>
+#include<iostream>
 
-constexpr int N = 5e3 + 5, M = 1e5 + 5;
-constexpr int INF = 0x3f3f3f3f;
-int n, m, tot = 1, lnk[N], cur[N], ter[M], nxt[M], cap[M], cost[M], dis[N], ret;
-bool vis[N];
+#define MAXN 5050
 
-void add(int u, int v, int w, int c) {
-  ter[++tot] = v, nxt[tot] = lnk[u], lnk[u] = tot, cap[tot] = w, cost[tot] = c;
+using namespace std;
+
+bool vis[MAXN];
+int n, m, s, t;
+int u, v, c, w;
+int cost[MAXN], pre[MAXN], last[MAXN], flow[MAXN];
+int maxFlow, minCost;
+struct Edge
+{
+	int from, to, flow, cost;
+}edge[MAXN];
+
+int head[MAXN], num_edge;
+
+queue <int> q;
+
+void addedge(int from, int to, int flow, int cost)
+{
+	edge[++num_edge].from = head[from];
+	edge[num_edge].to = to;
+	edge[num_edge].flow = flow;
+	edge[num_edge].cost = cost;
+	head[from] = num_edge;
+
+	edge[++num_edge].from = head[to];
+	edge[num_edge].to = from;
+	edge[num_edge].flow = 0;
+	edge[num_edge].cost = -cost;
+	head[to] = num_edge;
+
 }
 
-void addedge(int u, int v, int w, int c) { add(u, v, w, c), add(v, u, 0, -c); }
+bool SPFA(int s, int t)
+{
+	memset(cost, 0x7f, sizeof(cost));
+	memset(flow, 0x7f, sizeof(flow));
+	memset(vis, 0, sizeof(vis));
+	q.push(s); vis[s] = 1; cost[s] = 0; pre[t] = -1;
 
-bool spfa(int s, int t) {
-  memset(dis, 0x3f, sizeof(dis));
-  memcpy(cur, lnk, sizeof(lnk));
-  std::queue<int> q;
-  q.push(s), dis[s] = 0, vis[s] = true;
-  while (!q.empty()) {
-    int u = q.front();
-    q.pop(), vis[u] = false;
-    for (int i = lnk[u]; i; i = nxt[i]) {
-      int v = ter[i];
-      if (cap[i] && dis[v] > dis[u] + cost[i]) {
-        dis[v] = dis[u] + cost[i];
-        if (!vis[v]) q.push(v), vis[v] = true;
-      }
-    }
-  }
-  return dis[t] != INF;
+	while (!q.empty())
+	{
+		int now = q.front();
+		q.pop();
+		vis[now] = 0;
+		for (int i = head[now]; i != -1; i = edge[i].from)
+		{
+			if (edge[i].flow>0 && cost[edge[i].to]>cost[now] + edge[i].cost)
+			{
+				cost[edge[i].to] = cost[now] + edge[i].cost;
+				pre[edge[i].to] = now;
+				last[edge[i].to] = i;
+				flow[edge[i].to] = min(flow[now], edge[i].flow);
+				if (!vis[edge[i].to])
+				{
+					vis[edge[i].to] = 1;
+					q.push(edge[i].to);
+				}
+			}
+		}
+	}
+	return pre[t] != -1;
 }
 
-int dfs(int u, int t, int flow) {
-  if (u == t) return flow;
-  vis[u] = true;
-  int ans = 0;
-  for (int &i = cur[u]; i && ans < flow; i = nxt[i]) {
-    int v = ter[i];
-    if (!vis[v] && cap[i] && dis[v] == dis[u] + cost[i]) {
-      int x = dfs(v, t, std::min(cap[i], flow - ans));
-      if (x) ret += x * cost[i], cap[i] -= x, cap[i ^ 1] += x, ans += x;
-    }
-  }
-  vis[u] = false;
-  return ans;
+void MCMF()
+{
+	while (SPFA(s, t))
+	{
+		int now = t;
+		maxFlow += flow[t];
+		minCost += flow[t] * cost[t];
+		while (now != s)
+		{
+			edge[last[now]].flow -= flow[t];
+			edge[last[now] ^ 1].flow += flow[t];
+			now = pre[now];
+		}
+	}
 }
 
-int mcmf(int s, int t) {
-  int ans = 0;
-  while (spfa(s, t)) {
-    int x;
-    while ((x = dfs(s, t, INF))) ans += x;
-  }
-  return ans;
-}
 
-int main() {
-  int s, t;
-  scanf("%d%d%d%d", &n, &m, &s, &t);
-  while (m--) {
-    int u, v, w, c;
-    scanf("%d%d%d%d", &u, &v, &w, &c);
-    addedge(u, v, w, c);
-  }
-  int ans = mcmf(s, t);
-  printf("%d %d\n", ans, ret);
-  return 0;
+int _tmain(int argc, _TCHAR* argv[])
+{	
+	memset(head, -1, sizeof(head)); num_edge = -1;//初始化 
+
+	
+	cout << "节点数为："; cin >> n;
+	cout << "边数为："; cin >> m;
+	cout << "源点编号为："; cin >> s; 
+	cout << "汇点编号为："; cin >> t; 
+
+	cout << "输入 " << m << " 条边的信息：" << endl;
+	while (m--)
+	{
+		cout << "起点："; cin >> u; 
+		cout << "终点："; cin >> v; 
+		cout << "容量："; cin >> c; 
+		cout << "费用："; cin >> w; 
+		cout << "-----------------" << endl;
+		addedge(u, v, c, w);
+	}
+
+	MCMF();
+	cout << "最大流为：" << maxFlow << endl;
+	cout << "最小费用为：" << minCost << endl;
+	cout << endl;
+	
+	system("pause");
+	return 0;
 }

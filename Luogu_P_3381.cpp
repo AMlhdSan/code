@@ -1,17 +1,18 @@
 #include <bits/stdc++.h>
+
 #define N 500010
 
 using namespace std;
 
-long long nxt[N], to[N], head[N], w[N], fee[N];
-long long now[N];
-long long dis[N], vis[N];
+int nxt[N], to[N], head[N], w[N], fee[N];
+int now[N];
+int dis[N], vis[N];
 int d[N];
-long long n, m, s, t;
-long long cnt = 1;
-long long sum = 0;
+int n, m, s, t;
+int cnt = 1;
+int sum = 0;
 
-inline void add(int u, int v, long long c, long long ww) {
+inline void add(int u, int v, int c, int ww) {
     nxt[++cnt] = head[u];
     head[u] = cnt;
     to[cnt] = v;
@@ -50,28 +51,30 @@ inline bool spfa() {
     return (dis[t] != 0x7fffffff);
 }
 
-inline long long dfs(int x, long long flow) {
+inline int dfs(int x, int flow) {
     if(x == t) 
         return flow;
-    long long k, ans = 0;
-    for(int &i = now[x]; i && ans < flow; i = nxt[i]) {
+    int k, ans = 0;
+    vis[x] = 1;
+    for(int i = head[x]; i && ans < flow; i = nxt[i]) {
         now[x] = i;
         int v = to[i];
-        if(dis[v] != dis[x] + fee[i] || w[i] <= 0) 
-            continue;
-        k = dfs(v, min(flow - ans, w[i]));
-        if(k) {
-            w[i] -= k;
-            w[i ^ 1] += k;
-            sum += fee[i] * k;
-            ans += k;
+        if(!vis[v] && w[i] > 0 && dis[v] == dis[x] + fee[i]) {
+            k = dfs(v, min(flow - ans, w[i]));
+            if(k) {
+                w[i] -= k;
+                w[i ^ 1] += k;
+                sum += fee[i] * k;
+                ans += k;
+            }
         }
     }
+    vis[x] = 0;
     return ans;
 }
 
-inline long long dinic() {
-    long long maxx = 0;
+inline int dinic() {
+    int maxx = 0;
     while(spfa()) {
         maxx += dfs(s, 0x7fffffff);
     }
@@ -79,9 +82,11 @@ inline long long dinic() {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
     cin >> n >> m >> s >> t;
+    int u, v, c, ww;
     for(int i = 1; i <= m; ++i) {
-        long long u, v, c, ww;
+        
         cin >> u >> v >> c >> ww;
         add(u, v, c, ww);
     }
