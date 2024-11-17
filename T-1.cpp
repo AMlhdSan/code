@@ -9,6 +9,7 @@ int n, m;
 int s[N], t[N];
 int tmp[N * 2];
 vector<int> out[M];
+int timme[N];
 
 struct node {
     int st, ed;
@@ -25,6 +26,7 @@ int main() {
 
     for(int i = 1; i <= n; ++i) {
         cin >> s[i] >> t[i];
+        timme[i] = s[i];
         s[i] += t[i];
         tmp[(i << 1) - 1] = s[i];
         tmp[i << 1] = t[i];
@@ -44,16 +46,39 @@ int main() {
     }
 
     sort(a + 1, a + n + 1, cmp);
-    priority_queue<pair<int, int> > q;
-
+    priority_queue<pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > q;
+    priority_queue<int, vector<int>, greater<int> > small;
     for(int i = 1; i <= m; ++i) {
         q.push(make_pair(0, i));
     }
 
     for(int i = 1; i <= n; ++i) {
         pair<int, int> x = q.top();
-        q.pop();
-        
+        while(!q.empty() && x.first <= a[i].st) {
+            small.push(x.second);
+            q.pop();
+            x = q.top();       
+        }
+        if(!small.empty()) {
+            int tp = small.top();
+            out[tp].push_back(a[i].index);
+            small.pop();
+            q.push(make_pair(a[i].ed, tp));
+        }
+        else {
+            out[x.second].push_back(a[i].index);
+            x.first += timme[a[i].index];
+            q.push(x);
+        }
+    }
+
+    for(int i = 1; i <= m; ++i) {
+        cout << out[i].size() << ' ';
+        sort(out[i].begin(), out[i].end());
+        for(int j : out[i]) {
+            cout << j << ' ';
+        }
+        cout << endl;
     }
 
     return 0;
