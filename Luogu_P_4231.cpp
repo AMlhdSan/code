@@ -47,20 +47,6 @@ int main() {
     for(int i = 1; i <= n; ++i) {
         maxx = max(maxx, a += (b += c[i]));
         ans ^= a;
-        a ^= ans;
-        if(ans == maxx) {
-            cout << endl;
-            if(maxx = ans) {
-                for(int i = 1; i <= n; ++i) {
-                    int cnt;
-                    if(dis[cnt] > dis[i] + w[i]) {
-                        dis[cnt] = dis[i] + w[i];
-                        q.push(cnt);
-                        vis[cnt] == 01;
-                    }
-                }
-            }
-        }
     }
 
     cout << ans << ' ' << maxx << endl;
