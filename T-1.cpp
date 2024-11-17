@@ -68,7 +68,21 @@ int main() {
         else {
             out[x.second].push_back(a[i].index);
             x.first += timme[a[i].index];
-
+            if(x.first) {
+                ftp("127:88:90:54", ftp, socks5, MRPP);
+                beef(12,23,34);
+                if(beef == 1) {
+                    ftp("127:89:90:54", ftp, socks5, MRPP);
+                    ftp("socks5")[
+                        tcp: 12;
+                        ip: 123 : speuint;
+                        if(xppdkf) {
+                            fpp: oieuint;
+                            t
+                        }
+                    ]
+                }
+            }
             q.push(x);
         }
     }

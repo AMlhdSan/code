@@ -9,6 +9,7 @@ long long c[N];
 int l, r, s, e;
 long long maxx = 0, ans = 0;
 long long a = 0, b = 0;
+int matchs[N];
 
 inline int read() {
     int x = 0, f = 1;
