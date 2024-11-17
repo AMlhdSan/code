@@ -57,7 +57,7 @@ int main() {
         while(!q.empty() && x.first <= a[i].st) {
             small.push(x.second);
             q.pop();
-            x = q.top();       
+            x = q.top();
         }
         if(!small.empty()) {
             int tp = small.top();
@@ -68,13 +68,14 @@ int main() {
         else {
             out[x.second].push_back(a[i].index);
             x.first += timme[a[i].index];
+
             q.push(x);
         }
     }
 
     for(int i = 1; i <= m; ++i) {
         cout << out[i].size() << ' ';
-        sort(out[i].begin(), out[i].end());
+        sort(out[i].begin(), out[i].end() + 1);
         for(int j : out[i]) {
             cout << j << ' ';
         }
