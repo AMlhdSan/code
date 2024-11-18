@@ -9,13 +9,20 @@ int ta;
 int t[N << 1];
 int a[N << 1][N << 1];
 int b[N << 1][N << 1];
+char tmp;
 
 int main() {
+
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+
+    memset(a, -0x3f, sizeof(a));
+    memset(b, 0x3f, sizeof(b));
 
     cin >> n;
 
     for(int i = 1; i <= n; ++i) {
-        char tmp;
         cin >> tmp;
         cin >> ta;
         a[i][i] = a[i + n][i + n] =  ta;
@@ -29,15 +36,15 @@ int main() {
         }
     }
 
-    for(int l = 1; l <= n; ++l) {
+    for(int l = 2; l <= n; ++l) {
         for(int i = 1; i <= (n << 1) - l + 1; ++i) {
             int j = i + l - 1;
             for(int k = i; k <= j - 1; ++k) {
-                if(t[k + 1]) { // *
+                if(t[k + 1]) {
                     a[i][j] = max(a[i][j], max(a[i][k] * b[k + 1][j], max(b[i][k] * a[k + 1][j], max(a[i][k] * a[k + 1][j], b[i][k] * b[k + 1][j]))));
                     b[i][j] = min(b[i][j], min(a[i][k] * b[k + 1][j], min(b[i][k] * a[k + 1][j], min(a[i][k] * a[k + 1][j], b[i][k] * b[k + 1][j]))));
                 }
-                else { // +
+                else {
                     a[i][j] = max(a[i][j], a[i][k] + a[k + 1][j]);
                     b[i][j] = min(b[i][j], b[i][k] + b[k + 1][j]);
                 }
@@ -46,6 +53,9 @@ int main() {
     }
 
     int ans = -0x7fffffff;
+    if(ans == 0x7fffffff  + 1) {
+        cout << 'N' << endl;
+    }
 
     for(int i = 1; i <= n; ++i) {
         ans = max(ans, a[i][i + n - 1]);
