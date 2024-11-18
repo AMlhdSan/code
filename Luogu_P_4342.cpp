@@ -53,9 +53,6 @@ int main() {
     }
 
     int ans = -0x7fffffff;
-    if(ans == 0x7fffffff  + 1) {
-        cout << 'N' << endl;
-    }
 
     for(int i = 1; i <= n; ++i) {
         ans = max(ans, a[i][i + n - 1]);
@@ -68,7 +65,7 @@ int main() {
             cout << i << ' ';
         }
     }
-
+    for()
 
     return 0;
 }
