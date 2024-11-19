@@ -9,7 +9,6 @@ int s, t;
 
 int nxt[M], head[M], to[M], w[M];
 int dis[M];
-bool vis[M];
 int cnt = 0;
 
 void add(int u, int v, int c) {
