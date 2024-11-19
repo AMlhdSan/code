@@ -49,7 +49,10 @@ int main() {
 
     for(int i = 1; i <= top; ++i) {
         cout << s[stackk[i]];
+        cout << ' ';
     }
+
+    cout << endl;
 
     return 0;
 }
