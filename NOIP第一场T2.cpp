@@ -10,10 +10,27 @@
 using namespace std;
 
 int n, m, q;
-int a[N], b[N];
+ll a[N], b[N];
+int opt, opl, opr, opx;
 ll tree[N << 2];
 int siz[N << 2];
 ll lazy[N << 2];
+
+inline int read() {
+    int w = 0, f = 1;
+    char ch = getchar();
+    while(ch < '0' || ch > '9') {
+        if(ch == '-') {
+            f = -1;
+        }
+        ch = getchar();
+    }
+    while(ch >= '0' && ch <= '9') {
+        w = (w << 3) + (w << 1) + (ch - '0');
+        ch = getchar();
+    }
+    return w * f;
+}
 
 void upd(int p) {
     tree[p] = tree[ls] + tree[rs];
@@ -34,7 +51,7 @@ void pushd(int p) {
 }
 
 void rebuild(int p, int l, int r, int ql, int qr, int x) {
-    
+
 }
 
 void build(int p, int l, int r) {
@@ -43,7 +60,7 @@ void build(int p, int l, int r) {
 
     if(l == r)  {
         siz[p] = 1;
-        tree[p] = a[l];
+        tree[p] = 0;
         return ;
     }
 
@@ -90,16 +107,38 @@ ll qry(int p, int l, int r, int ql, int qr) {
 
 int main() {
 
-    cin >> n >> m >> q;
-    for(int i = 1; i <= n; ++i) {
-        cin >> a[i];
-    }
-    for(int i = 1; i <= m; ++i) {
-        cin >> b[i];
-    }
-    while(q--) {
+    n = read();
+    m = read();
+    q = read();
 
+    for(int i = 1; i <= n; ++i) {
+        a[i] = read();
     }
+
+    build(1, 1, m);
+
+    while(q--) {
+        opt = read();
+        opl = read();
+        opr = read();
+        opx = read();
+        if(opt == 1) {
+            rebuild(1, 1, m, opl, opr, opx);
+        }
+        else {
+            mdf(1, 1, m, opl, opr, opx);
+        }
+    }
+
+    for(int i = 1; i <= n; ++i) {
+        if(a[i] != 0) {
+            b[a[i]] += qry(1, 1, m, i, i);
+        }
+    }   
+    for(int i = 1; i <= m; ++i) {
+        printf("%lld ", b[i]);
+    }
+    cout << endl;
 
     return 0;
 }

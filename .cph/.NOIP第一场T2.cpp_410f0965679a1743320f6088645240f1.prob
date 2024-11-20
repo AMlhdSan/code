@@ -1,0 +1,1 @@
+{"name":"Local: NOIP第一场T2","url":"/Users/amlhdsan/Desktop/code/NOIP第一场T2.cpp","tests":[{"id":1732064800853,"input":"3 3 3\n1 2 3\n2 2 3 1\n1 3 3 2\n2 1 3 2","output":"2 5 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/NOIP第一场T2.cpp","group":"local","local":true}
