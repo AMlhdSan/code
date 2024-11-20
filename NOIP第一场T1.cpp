@@ -11,8 +11,8 @@ ll lsum[N], hsum[N];
 
 int main() {
 
-    // freopen("a.in", "r", stdin);
-    // freopen("a.out", "w", stdout);
+    freopen("a.in", "r", stdin);
+    freopen("a.out", "w", stdout);
 
     cin >> n >> m >> k >> p;
 
@@ -36,9 +36,6 @@ int main() {
     }
     else if(n == 1 && m == 1) {
         cout << (a[1][1] + a[1][1] - (k - 1) * p) * k / 2 << endl;
-    }
-    else if(n == 1) {
-        
     }
 
     return 0;
