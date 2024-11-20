@@ -43,6 +43,9 @@ int main() {
         stackk[++top] = i;
         if(j == lt) {
             top -= lt;
+            if(!lt) {
+                cout << "Error" << endl;
+            }
             j = me[stackk[top]];
         }
     }
