@@ -71,7 +71,8 @@
         "unordered_map": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "testt": "cpp"
+        "testt": "cpp",
+        "climits": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
