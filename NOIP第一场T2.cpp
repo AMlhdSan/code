@@ -50,10 +50,6 @@ void pushd(int p) {
     lazy[p] = 0;
 }
 
-void rebuild(int p, int l, int r, int ql, int qr, int x) {
-
-}
-
 void build(int p, int l, int r) {
 
     lazy[p] = 0;
@@ -107,9 +103,38 @@ ll qry(int p, int l, int r, int ql, int qr) {
 
 int main() {
 
+    // freopen("b.in", "r", stdin);
+    // freopen("b.out", "w", stdout);
+
     n = read();
     m = read();
     q = read();
+
+    if(n <= 5000 && m <= 5000) {
+        for(int i = 1; i <= n; ++i) {
+            a[i] = read();
+        }
+        while(q--) {
+            opt = read();
+            opl = read();
+            opr = read();
+            opx = read();
+            if(opt == 1) {
+                for(int i = opl; i <= opr; ++i) {
+                    a[i] = opx;
+                }
+            }
+            else {
+                for(int i = opl; i <= opr; ++i) {
+                    b[a[i]] += opx;
+                }
+            }
+        }
+        for(int i = 1; i <= m; ++i) {
+            printf("%lld ", b[i]);
+        }
+        return 0;
+    }
 
     for(int i = 1; i <= n; ++i) {
         a[i] = read();
@@ -122,12 +147,7 @@ int main() {
         opl = read();
         opr = read();
         opx = read();
-        if(opt == 1) {
-            rebuild(1, 1, m, opl, opr, opx);
-        }
-        else {
-            mdf(1, 1, m, opl, opr, opx);
-        }
+        mdf(1, 1, m, opl, opr, opx);
     }
 
     for(int i = 1; i <= n; ++i) {
