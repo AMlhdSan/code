@@ -3,22 +3,6 @@ using namespace std;
 
 int n, m;
 
-void work() {
-    c.assign(n, 0);
-    for (int x = 0; x < n; ++x) {
-        int d = edges[x].size();
-        int base = b[x] / d;
-        int tmp = b[x] - base * (d - 1);
-        c[x] += tmp;
-
-        for(int v : edges[x]) {
-            if(v != x) {
-                c[v] += base;
-            }
-        }
-    }
-}
-
 int main() {
     
     // freopen("d.in", "r", stdin);
@@ -42,6 +26,23 @@ int main() {
         cin >> b[i];
     }
 
+    auto work = [&]() {
+        c.assign(n, 0);
+        for (int x = 0; x < n; ++x) {
+            int d = edges[x].size();
+            int base = b[x] / d;
+            int tmp = b[x] - base * (d - 1);
+
+            for (int y : edges[x]) {
+                if (y == x) {
+                    c[x] += tmp;
+                } else {
+                    c[y] += base;
+                }
+            }
+        }
+    };
+
     work();
 
     for (int i = 0; i < m; ++i) {
@@ -51,8 +52,7 @@ int main() {
         if (op == 1) {
             int x, y;
             cin >> x >> y;
-            --x; 
-            --y;
+            x--; y--;
 
             for(auto it = edges[x].begin(); it != edges[x].end(); ++it) {
                 if (*it == a[x]) {
@@ -73,8 +73,7 @@ int main() {
 
             work();
 
-        } 
-        else if (op == 2) {
+        } else if (op == 2) {
             int x;
             cin >> x;
             x--;

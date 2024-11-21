@@ -1,0 +1,1 @@
+{"name":"Local: T1","url":"/Users/amlhdsan/Desktop/code/T1.cpp","tests":[{"id":1732200117508,"input":"6\n1 0 5 10\n1 1 100 23\n1 1 1 45\n1 1 22 33\n1 0 2 3\n0 1 22 33","output":"-1\n105\n55\n43\n36\n48"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/T1.cpp","group":"local","local":true}
