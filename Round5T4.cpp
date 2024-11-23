@@ -1,22 +1,23 @@
 #include <bits/stdc++.h>
 
-#define MAXN 100005
+#define N 100100
 
 using namespace std;
 
-int n, m, s;
+int n, k, s;
+int c[N], l[N];
+int a[N], b[N];
 
 struct Edge {
     int v;
     int c;
 };
-
 vector<Edge> edges[MAXN];
 int dis[MAXN];
 
 inline int read() {
-    int x = 0, f = 1;
-    char ch = 0;
+    int w = 0, f = 1;
+    char ch = getchar();
     while(ch < '0' || ch > '9') {
         if(ch == '-') {
             f = -1;
@@ -24,26 +25,14 @@ inline int read() {
         ch = getchar();
     }
     while(ch >= '0' && ch <= '9') {
-        x = (x << 3) + (x << 1) + (ch ^ 48);
+        w = (w << 3) + (w << 1) + (ch - '0');
         ch = getchar();
     }
-    return x * f;
-}
-
-inline void write(int x) {
-    if(x < 0) {
-        putchar('-');
-        x = -x;
-    }
-    if(x > 9)
-        write(x / 10);
-    putchar(x % 10 + '0');
+    return w * f;
 }
 
 void bellman_ford() {
-
     memset(dis, 0x3f, sizeof(dis));
-
     dis[s] = 0;
 
     bool flag;
@@ -65,27 +54,28 @@ void bellman_ford() {
 
 int main() {
 
-    n = read();
-    m = read();
-    s = read();
-    
-    for(int i = 1; i <= m; ++i) {
-        int u, v, c;
-        u = read();
-        v = read();
-        c = read();
+    cin >> n >> k;
+
+    for(int i = 1; i <= n; ++i) {
+        c[i] = read();
+        l[i] = read();
+        
+        a[i] = c[i] % k;
+        b[i] = ((c[i] + l[i] - 1) % k + 1) % k;
+        edges[a[i]].push_back(b[i]);
+        edges[b[i]].push_back(a[i]);
+
         Edge tmp;
-        tmp.c = c;
-        tmp.v = v;
-        edges[u].push_back(tmp);
+        tmp.c = -1;
+        tmp.v = b[i];
+        edges[a[i]].push_back(tmp);
+
+        tmp.c = -1;
+        tmp.v = a[i];
+        edges[c[i]].push_back(tmp);
     }
 
     bellman_ford();
 
-    for(int i = 1; i <= n; ++i) {
-        write((dis[i] == 0x3f3f3f3f ? 2147483647 : dis[i]));
-        putchar(' ');
-    }
-    putchar('\n');
     return 0;
 }

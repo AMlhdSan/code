@@ -17,15 +17,15 @@ long long tree[N << 2];
 
 inline int read() {
     int x = 0, f = 1;
-    char ch = getchar();
+    char ch = getchar_unlocked();
     while(ch < '0' || ch > '9') {
         if(ch == '-')
             f = -1;
-        ch = getchar();
+        ch = getchar_unlocked();
     }
     while(ch >= '0' && ch <= '9') {
         x = (x << 3) + (x << 1) + ch - '0';
-        ch = getchar();
+        ch = getchar_unlocked();
     }
     return x * f;
 }
@@ -33,10 +33,10 @@ inline int read() {
 inline void write(int x)
 {
     if(x < 0)
-        putchar('-'), x = -x;
+        putchar_unlocked('-'), x = -x;
     if(x > 9)
         write(x / 10);
-    putchar(x % 10 + '0');
+    putchar_unlocked(x % 10 + '0');
     return;
 }
 
@@ -98,8 +98,8 @@ void upd(int p, int l, int r, int pos, int x){
 
 int main() {
 
-	freopen("a.in", "r", stdin);
-	freopen("a.out", "w", stdout);
+	// freopen("a.in", "r", stdin);
+	// freopen("a.out", "w", stdout);
     
 	T = read();
 
@@ -114,6 +114,7 @@ int main() {
             c[i] = a[i] - b[i];
 		else 
             c[i] = b[i] - a[i];
+        
 		tmp[i] = c[i];
 	}
 
