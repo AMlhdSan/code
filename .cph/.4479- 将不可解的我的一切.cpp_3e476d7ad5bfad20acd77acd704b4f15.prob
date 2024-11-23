@@ -1,0 +1,1 @@
+{"name":"Local: 4479- 将不可解的我的一切","url":"/Users/amlhdsan/Desktop/code/4479- 将不可解的我的一切.cpp","tests":[{"id":1732331950964,"input":"3\n1 2\n2 3\n3 4","output":"2\n3\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/4479- 将不可解的我的一切.cpp","group":"local","local":true}
