@@ -18,8 +18,7 @@ ll c(ll n, ll m) {
     return a / (b * c);
 }
 
-int main()
-{
+int main() {
     cin >> n >> y >> p;
 
     for(int x = 0; x <= n && x + y <= n && x + y >= 0; ++x) {
