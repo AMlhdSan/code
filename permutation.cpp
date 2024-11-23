@@ -29,17 +29,48 @@ inline ll read() {
     return x * f;
 }
 
+bool cmp(int x, int y) {
+    return x > y;
+}
+
 int main() {
+    
+    // freopen("permutation.in", "r", stdin);
+    // freopen("permutation.out", "w", stdout);
 
     n = read();
     for(ll i = 1; i <= n; ++i) {
         a[i] = read();
     }
 
-    sort(a + 1, a + 1 + n);
+    sort(a + 1, a + n + 1, cmp);
 
-    for(ll i = 1; i <= n; ++i) {
-        
+    fill(num + 1, num + 1 + n, 1);
+
+    for(ll i = 2; i <= n; ++i) {
+        if(a[i] == a[i - 1]) {
+            ++num[cnt];
+        }
+        else
+            ++cnt;
     }
+
+    unique(a + 1, a + n + 1);
+
+    for(ll i = 1; i <= cnt; ++i) {
+        sum[i] = sum[i - 1] + a[i] * num[i];
+    }
+    for(ll i = 2; i <= cnt; ++i) {
+        s += num[i] * sum[i - 1] * a[i];
+        s %= MOD;
+    }
+
+    for(ll i = 3; i <= n; ++i) {
+        s *= i;
+        s %= MOD;
+    }
+
+    cout << s << endl;
+
     return 0;
 }
