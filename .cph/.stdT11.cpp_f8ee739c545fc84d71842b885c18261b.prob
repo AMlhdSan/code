@@ -1,0 +1,1 @@
+{"name":"Local: stdT11","url":"/Users/amlhdsan/Desktop/code/stdT11.cpp","tests":[{"id":1732429303584,"input":"3 1\n4 2 R\n7 1 L\n0 4 R","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/stdT11.cpp","group":"local","local":true}
