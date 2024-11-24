@@ -60,8 +60,24 @@ int main() {
         a[i] = read();
         b[i] = read();
         t[i] = read();
-        add_edge(a[i], b[i], t[i]);
-        add_edge(b[i], b[i], t[i]);
+        add_edge(a[i] + n * 2, b[i] + n * 2, t[i]);
+        add_edge(b[i] + n * 2, b[i] + n * 2, t[i]);
+    }
+
+    for(int i = 1; i <= n; ++i) {
+        add_edge(i, i + n * 2, x);
+        add_edge(i + n * 2, i, 0);
+    }
+
+    for(int i = 1; i <= s; ++i) {
+        int k, v, c;
+        k = read();
+        u = read();
+        for(int i = 2; i <= k + 1; ++i) {
+            c = read();
+            v = read();
+            
+        }
     }
 
     return 0;
