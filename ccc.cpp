@@ -7,7 +7,9 @@ using namespace std;
 
 int n;
 ll k[N];
-ll dp[N];
+ll a = 0, b = 0;
+ll sum = 0;
+ll dp[N][N];
 
 inline ll read() {
     ll x = 0, f = 1;
@@ -26,34 +28,34 @@ inline ll read() {
 }
 
 int main() {
+
     // freopen("express.in", "r", stdin);
     // freopen("express.out", "w", stdout);
 
+    memset(dp, 0x3f, sizeof(dp));
+
     n = read();
 
-    for (int i = 1; i <= n; ++i) {
+    for(int i = 1; i <= n; ++i) {
         k[i] = read();
     }
+    dp[1][0] = k[1];
 
-    memset(dp, 0x3f, sizeof(dp));
-    dp[0] = k[1];
-
-    ll current_min_abs = LLONG_MAX;
-
-    for (int i = 2; i <= n; ++i) {
-        // 更新 current_min_abs
-        current_min_abs = min(current_min_abs, abs(k[i] - k[i - 1]));
-
-        // 更新 dp[i]，从 i-1 到 i 的连续移动
-        dp[i] = dp[i - 1] + abs(k[i] - k[i - 1]);
-
-        // 更新 dp[i]，从任意 j 跳跃到 i 的最小代价
-        dp[i] = min(dp[i], dp[i - 1] + current_min_abs);
+    for(int i = 1; i <= n; ++i) {
+        for(int j = 0; j < i; ++j) {
+            dp[i][j] = min(dp[i][j], dp[i - 1][j] + abs(k[i] - k[i - 1]));
+            dp[i][i - 1] = min(dp[i][i - 1], dp[i - 1][j] + abs(k[i] - k[j]));
+        }
     }
 
-    // 输出结果
-    ll result = dp[n];
-    cout << result << endl;
+    ll minn = 1e18;
+
+    for (int i = 0; i < n; ++i) {
+        minn = min(minn, dp[n][i]);
+        cout << dp[n][i] << ' ';
+    }
+
+    // cout << minn << endl;
 
     return 0;
 }

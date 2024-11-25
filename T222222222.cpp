@@ -76,7 +76,8 @@ int main() {
         for(int i = 2; i <= k + 1; ++i) {
             c = read();
             v = read();
-            
+            add_edge(u, v, c);
+            u = v;
         }
     }
 
