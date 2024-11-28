@@ -11,7 +11,7 @@ int main() {
 
     for(int i = 1; i <= n; ++i) {
         for(int j = 1; j <= n; ++j) {
-            f[i][j] = 2147483647 / 2;
+            f[i][j] = 0x3f3f3f3f;
             if(i == j) {
                 f[i][j] = 0;
             }
