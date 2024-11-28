@@ -1,10 +1,13 @@
 // 策略：一条边的权值赋给儿子节点。
 #include <bits/stdc++.h>
 
-#define N 100010
+#define N    100010
 #define ENDL putchar('\n')
-#define pc putchar
-#define il inline
+#define pc   putchar
+#define il   inline
+#define ls   (p << 1)
+#define rs   (p << 1 | 1)
+#define mid  ((l + r) >> 1)
 
 using namespace std;
 
@@ -13,6 +16,7 @@ int nxt[N], head[N], ww[N], to[N], w[N];
 int top[N], son[N], id[N], wt[N];
 int e = 0, cnt = 0;
 int dep[N], fa[N], si[N];
+int tree[N], lazy1[N], lazy2[N];
 
 il int read() {
     int x = 0, f = 1;
@@ -80,8 +84,40 @@ il void dfs2(int p, int topp) {
 
     for(int i = head[p]; i; i = nxt[i]) {
         int v = to[i];
+        if(v != fa[p] && v != son[p]) {
+            dfs2(v, v);
+        }
     }
 }
+
+il void upd(int p) {
+    tree[p] = max(tree[ls], tree[rs]);
+}
+
+il void pushd(int p) {
+    if(lazy2[p] != -1) {
+        
+    }
+}
+
+il void build(int p, int l, int r) {
+    if(l == r) {
+        tree[p] = wt[l];
+        lazy1[p] = 0;
+        lazy2[p] = -1;
+        return;
+    }
+    build(ls, l, mid);
+    build(rs, mid + 1, r);
+    upd(p);
+}
+
+il int qry(int p, int l, int r, int ql, int qr) {
+    if(ql <= l && r <= qr) {
+        return tree[p];
+    }
+}
+
 
 int main() {
 
@@ -95,6 +131,9 @@ int main() {
         add_edge(v, u, c);
     }
 
+    dfs1(1, 0, 1);
+    dfs2(1, 1);
+    build(1, 1, n);
 
 
     return 0;
