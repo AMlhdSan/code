@@ -138,7 +138,7 @@ inline void dfs1(int p, int pre, int depth) {
         int v = to[i];
         if(v != pre) {
             dfs1(v, p, depth + 1);
-            si[p] +=  si[v];
+            si[p] += si[v];
             if(si[v] > maxx) {
                 maxx = si[v];
                 son[p] = v;
