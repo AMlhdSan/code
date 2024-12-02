@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#define N     200010
+#define N     201000
 #define il    inline 
 #define ls    (p << 1)
 #define rs    (p << 1 | 1)
@@ -14,9 +14,9 @@ using namespace std;
 int n, m;
 string opt;
 int trmax[N << 2], trmin[N << 2], trsum[N << 2];
-int top[N << 2], id[N << 2], son[N << 2], fa[N << 2], si[N << 2], dep[N << 2];
-int w[N << 2], wt[N << 2], ww[N << 2];
-int nxt[N << 2], head[N << 2], to[N << 2];
+int top[N], id[N], son[N], fa[N], si[N], dep[N];
+int w[N << 1], wt[N << 1], ww[N << 1];
+int nxt[N << 1], head[N << 1], to[N << 1];
 int tag[N << 2];
 int e = 0, cnt = 0;
 
@@ -66,17 +66,17 @@ il void upd(int p) {
 
 il void pushd(int p) {
     if(tag[p]) {
-        swap(trmin[ls], trmax[ls]);
-        swap(trmin[rs], trmax[rs]);
         op(trmin[ls]);
         op(trmax[ls]);
         op(trmin[rs]);
         op(trmax[rs]);
+        swap(trmin[ls], trmax[ls]);
+        swap(trmin[rs], trmax[rs]);
         op(trsum[ls]);
         op(trsum[rs]);
         tag[ls] ^= 1;
         tag[rs] ^= 1;
-        tag[p] ^= 1;
+        tag[p] = 0;
     }
 }
 
@@ -111,16 +111,16 @@ il void oppo(int p, int l, int r, int ql, int qr) {
 }
 
 il void chg(int p, int l, int r, int ql, int qr, int x) {
-    if(ql <= l && r <= qr) {
+    if(l == r) {
         trmax[p] = trmin[p] = trsum[p] = x;
-        tag[p] = 0;
+        //tag[p] = 0;
         return;
     }
     pushd(p);
     if(ql <= mid) {
         chg(ls, l, mid, ql, qr, x);
     }
-    if(qr < mid) {
+    if(qr > mid) {
         chg(rs, mid + 1, r, ql, qr, x);
     }
     upd(p);
@@ -212,7 +212,7 @@ il void dfs2(int p, int topp) {
 }
 
 il void change(int p, int x) {
-    chg(1, 1, n, to[p * 2 - 1], to[p * 2], x);
+    chg(1, 1, n, max(id[to[p * 2 - 1]], id[to[p * 2]]), max(id[to[p * 2 - 1]], id[to[p * 2]]), x);
 }
 
 il void opp(int l, int r) {
@@ -226,7 +226,8 @@ il void opp(int l, int r) {
     if(dep[l] > dep[r]) {
         swap(l, r);
     }
-    oppo(1, 1, n, id[l] + 1, id[r]);
+    if(id[l] != id[r])
+        oppo(1, 1, n, id[l] + 1, id[r]);
 }
 
 il int querysum(int l, int r) {
@@ -241,7 +242,8 @@ il int querysum(int l, int r) {
     if(dep[l] > dep[r]) {
         swap(l, r);
     }
-    sum += qrysum(1, 1, n, id[l] + 1, id[r]);
+    if(id[l] != id[r])
+        sum += qrysum(1, 1, n, id[l] + 1, id[r]);
     return sum;
 }
 
@@ -257,7 +259,8 @@ il int querymax(int l, int r) {
     if(dep[l] > dep[r]) {
         swap(l, r);
     }
-    maxx = max(maxx, qrymax(1, 1, n, id[l] + 1, id[r]));
+    if(id[l] != id[r]) 
+        maxx = max(maxx, qrymax(1, 1, n, id[l] + 1, id[r]));
     return maxx;
 }
 
@@ -273,7 +276,8 @@ il int querymin(int l, int r) {
     if(dep[l] > dep[r]) {
         swap(l, r);
     }
-    minn = min(minn, qrymin(1, 1, n, id[l] + 1, id[r]));
+    if(id[l] != id[r])
+        minn = min(minn, qrymin(1, 1, n, id[l] + 1, id[r]));
     return minn;
 }
 
@@ -286,6 +290,8 @@ int main() {
         u = read();
         v = read();
         c = read();
+        ++u;
+        ++v;
         add_edge(u, v, c);
         add_edge(v, u, c);
     }
@@ -302,18 +308,23 @@ int main() {
             int p, x;
             p = read();
             x = read();
+            // ++p;
             change(p, x);
         }
         else if(opt == "N") {
             int l, r;
             l = read();
             r = read();
+            ++l;
+            ++r;
             opp(l, r);
         }
         else if(opt == "SUM") {
             int l, r;
             l = read();
             r = read();
+            ++l;
+            ++r;
             write(querysum(l, r));
             ENDL;
         }
@@ -321,6 +332,8 @@ int main() {
             int l, r;
             l = read();
             r = read();
+            ++l;
+            ++r;
             write(querymax(l, r));
             ENDL;
         }
@@ -328,6 +341,8 @@ int main() {
             int l, r;
             l = read();
             r = read();
+            ++l;
+            ++r;
             write(querymin(l, r));
             ENDL;
         }

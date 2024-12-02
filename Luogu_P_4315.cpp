@@ -73,7 +73,6 @@ il void dfs1(int p, int pre, int depth) {
 }
 
 il void dfs2(int p, int topp) {
-    //id[++cnt] = p;
     id[p] = ++cnt;
     wt[cnt] = w[p];
     top[p] = topp;
