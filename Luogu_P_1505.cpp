@@ -262,6 +262,12 @@ il int querymax(int l, int r) {
     if(id[l] != id[r]) 
         maxx = max(maxx, qrymax(1, 1, n, id[l] + 1, id[r]));
     return maxx;
+    if(maxx == -1) {
+        cout << "Error!" << endl;
+        if(id[l] == id[r]) {
+            swap(id[l], id[r]);
+        }
+    }
 }
 
 il int querymin(int l, int r) {
