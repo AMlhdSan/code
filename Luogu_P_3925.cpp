@@ -1,20 +1,13 @@
-// 代码参考第一篇题解
-
 #include <bits/stdc++.h>
 
-#define N 200010
+#define N 1000010
 #define ENDL putchar('\n')
 
 #define mid ((l + r) >> 1)
 #define ls (p << 1)
 #define rs (p << 1 | 1)
 
-char buf[1 << 20], *p1, *p2;
-#define gc()                                                               \
-  (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 20, stdin), p1 == p2) \
-       ? EOF                                                               \
-       : *p1++)
-
+#define gc() getchar()
 using namespace std;
 
 int n, r, MOD;
@@ -23,6 +16,10 @@ int top[N];
 int si[N], fa[N], id[N], son[N], wt[N], dep[N];
 int cnt = 0, e = 0;
 int tree[N << 2], siz[N << 2], lazy[N << 2];
+
+struct node {
+    int val, id;
+}a[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -106,7 +103,7 @@ inline void mdf(int p, int l, int r, int ql, int qr, int x) {
     upd(p);
 }
 
-inline int qry(int p, int l, int r, int ql, int qr) {
+inline long long qry(int p, int l, int r, int ql, int qr) {
     if(ql <= l && r <= qr) {
         return tree[p];
     }
@@ -120,7 +117,6 @@ inline int qry(int p, int l, int r, int ql, int qr) {
     }
     return sum;
 }
-
 
 inline void add_edge(int u, int v) {
     nxt[++e] = head[u];
@@ -149,7 +145,7 @@ inline void dfs1(int p, int pre, int depth) {
 
 inline void dfs2(int p, int topp) {
     id[p] = ++cnt;
-    wt[cnt] = w[p];
+    wt[id[p]] = si[p];
     top[p] = topp;
     if(!son[p])
         return;
@@ -192,36 +188,46 @@ inline int query1(int l, int r) {
     return sum;
 }
 
-inline void modify2(int p, int x) {
-    mdf(1, 1, n, id[p], id[p] + si[p] - 1, x);
+inline bool cmp(node x, node y) {
+    return x.val > y.val;
 }
 
-inline int query2(int p) {
-    return qry(1, 1, n, id[p], id[p] + si[p] - 1) % MOD;
-}
-
-int main() {
+signed main() {
 
     n = read();
     r = 1;
-    MOD = 1000000007;
-
-    for(int i = 1; i <= n; ++i) {
-        w[i] = read();
-    }
-
+    MOD = 1e9 + 7;
+    int u, v;
+    
     for(int i = 1; i <= n - 1; ++i) {
-        int u, v;
         u = read();
         v = read();
         add_edge(u, v);
         add_edge(v, u);
     }
 
+    for(int i = 1; i <= n; ++i) {
+        a[i].val = read();
+        a[i].id = i;
+    }
+
+    sort(a + 1, a + n + 1, cmp);
+
     dfs1(r, 0, 1);
     dfs2(r, r);
 
     build(1, 1, n);
+
+    long long ans = 0;
+
+    for(int i = 1; i <= n; ++i) {
+        ans += 1ll * a[i].val * query1(1, a[i].id) % MOD;
+        ans %= MOD;
+        modify1(1, a[i].id, -1);
+    }
+
+    write(ans);
+    ENDL;
 
     return 0;
 }
