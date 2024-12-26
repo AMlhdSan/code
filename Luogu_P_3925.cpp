@@ -209,6 +209,7 @@ signed main() {
     for(int i = 1; i <= n; ++i) {
         a[i].val = read();
         a[i].id = i;
+        id[i] = i;
     }
 
     sort(a + 1, a + n + 1, cmp);
@@ -221,9 +222,9 @@ signed main() {
     long long ans = 0;
 
     for(int i = 1; i <= n; ++i) {
-        ans += 1ll * a[i].val * query1(1, a[i].id) % MOD;
+        ans += 1ll * a[i].val * query1(a[i].id, 1) % MOD;
         ans %= MOD;
-        modify1(1, a[i].id, -1);
+        modify1(a[i].id, 1, -1);
     }
 
     write(ans);
