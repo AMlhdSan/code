@@ -38,13 +38,13 @@ int main() {
         }
         if(u && tag[u] == 1) {
             tag[u] = 2;
-            cout << "OK" << endl;
+            puts("OK");
         }
         else if(u && tag[u] == 2) {
-            cout << "REPEAT" << endl;
+            puts("REPEAT");
         }
         else {
-            cout << "WRONG" << endl;
+            puts("WRONG");
         }
     }
     return 0;
