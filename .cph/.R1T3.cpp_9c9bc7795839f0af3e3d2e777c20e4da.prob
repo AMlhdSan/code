@@ -1,0 +1,1 @@
+{"name":"Local: R1T3","url":"/Users/amlhdsan/Desktop/code/R1T3.cpp","tests":[{"id":1735394634619,"input":"5\n3 -3 -2 5 -4","output":"4"},{"id":1735394649419,"input":"10\n5 -2 -4 -6 2 3 -6 5 3 -2","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/R1T3.cpp","group":"local","local":true}
