@@ -4,11 +4,13 @@ using namespace std;
 #define pb push_back
 #define fi first
 #define se second
-#define lson p << 1
-#define rson p << 1 | 1
+#define lson (p << 1)
+#define rson (p << 1 | 1)
 const int maxn = 1e6 + 5, inf = 1e18, maxm = 4e4 + 5, base = 37;
 const int N = 1e6;
-  const int mod = 1e9 + 7;
+const int mod = 1e9 + 7;
+const double eps = 1e-9;
+
 int n, m;
 int a[maxn];
  
@@ -32,7 +34,7 @@ struct DSU{
 			fa[find(x)] = find(y);
 		}
 	}
-}; 
+};
 
 void solve(){
     int res = 0;

@@ -57,8 +57,8 @@ void solve() {
 
 int main() {
 
-    freopen("digit.in", "r", stdin);
-    freopen("digit.out", "w", stdout);
+    // freopen("digit.in", "r", stdin);
+    // freopen("digit.out", "w", stdout);
 
     T = read();
 
