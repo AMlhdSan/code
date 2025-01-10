@@ -7,8 +7,8 @@
 
 using namespace std;
 
-struct Node {
-    int sum;   
+struct node {
+    int sum;
     int maxl; 
     int maxr;  
     int maxx;  
@@ -66,7 +66,7 @@ void mdf(int p, int l, int r, int q, int x) {
 }
 
 // 区间查询操作
-Node qry(int p, int l, int r, int ql, int qr) {
+node qry(int p, int l, int r, int ql, int qr) {
     if (ql <= l && r <= qr) {
         return tree[p];
     }
@@ -76,9 +76,9 @@ Node qry(int p, int l, int r, int ql, int qr) {
     if (ql > mid) {
         return qry(rs, mid + 1, r, ql, qr);
     }
-    Node ll = qry(ls, l, mid, ql, qr);
-    Node rr = qry(rs, mid + 1, r, ql, qr);
-    Node ans;
+    node ll = qry(ls, l, mid, ql, qr);
+    node rr = qry(rs, mid + 1, r, ql, qr);
+    node ans;
     ans.sum = ll.sum + rr.sum;
     ans.maxl = max(ll.maxl, ll.sum + rr.maxl);
     ans.maxr = max(rr.maxr, rr.sum + ll.maxr);
