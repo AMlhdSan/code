@@ -49,12 +49,20 @@ signed main() {
 	n = read();
 	m = read();
 
+    if(m * 2 > n) {
+        puts("Error!");
+        return 0;
+    }
+
 	for(int i = 1; i <= n; ++i) {
 		a[i] = read();
 		pq.push(make_pair(a[i], i));
 		pre[i] = i - 1;
 		nxt[i] = i + 1;
 	}
+
+    pre[1] = n;
+    nxt[n] = 1;
 
 	while(m--) {
 		pair<int, int> now = pq.top();
@@ -67,12 +75,12 @@ signed main() {
 		int x = now.se;
 		ans += a[x];
 
-		if(maxx >= ans) {
-			write(maxx);
-			putchar('\n');
-			return 0;
-		}
-		else 
+		// if(maxx >= ans) {
+		// 	write(maxx);
+		// 	putchar('\n');
+		// 	return 0;
+		// }
+		// else 
 			maxx = ans;
 		
 		a[x] = a[pre[x]] + a[nxt[x]] - a[x];
