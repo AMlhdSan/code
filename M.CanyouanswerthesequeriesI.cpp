@@ -33,6 +33,18 @@ inline int read() {
     return x * f;
 }
 
+inline int write(int x) {
+    if(x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    if(x > 9) {
+        write(x / 10);
+    }
+    write(x % 10 + '0')
+
+}
+
 void upd(int p) {
     tree[p].sum = tree[ls].sum + tree[rs].sum;
     tree[p].maxx = max(max(tree[ls].maxx, tree[rs].maxx), tree[ls].maxr + tree[rs].maxl);
