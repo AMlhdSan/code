@@ -1,4 +1,9 @@
 #include <bits/stdc++.h>
+
+#define gc getchar
+#define ls (p << 1)
+#define rs (p << 1 | 1)
+
 #define ll long long
 #define mod 998244353
 #define maxn 200010
