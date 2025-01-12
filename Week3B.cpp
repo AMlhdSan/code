@@ -9,7 +9,7 @@
 #define maxn 200010
 
 inline ll read() {
-    ll x = 0; 
+    ll x = 0;
     char c = getchar(), f = 1;
     for (; c < '0' || '9' < c; c = getchar()) 
         if (c == '-') f = -1;
