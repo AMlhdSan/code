@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#define N 100010
+#define N 1000100
 
 using namespace std;
 
@@ -25,12 +25,24 @@ inline int read() {
 
 int main() {
 
+    freopen("quiz.in", "r", stdin);
+    freopen("quiz.out", "w", stdout);
+    
     n = read();
     for(int i = 1; i <= n; ++i) {
         l[i] = read();
-        r[i] = read();
-        
+        r[i] = read();  
     }
+    sort(l + 1, l + n + 1);
+
+    int mid = l[n / 2 + 1];
+
+    long long sum = 0;
+    for(int i = 1; i <= n; ++i) {
+        sum += abs(l[i] - mid);
+    }
+
+    cout << sum << endl;
 
     return 0;
 }
