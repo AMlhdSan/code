@@ -1,12 +1,7 @@
 #include <bits/stdc++.h>
-
-#define N 100010
-
 using namespace std;
 
 int n, m, k;
-int nxt[N], head[N], to[N];
-int e = 0;
 
 inline int read() {
     int x = 0, f = 1;
@@ -33,34 +28,18 @@ inline void write(int x) {
     putchar(x % 10 + '0');
 }
 
-inline void add_edge(int u, int v) {
-    nxt[++e] = head[u];
-    head[u] = e;
-    to[e] = v;
-}
-
 int main() {
+
+    freopen("puzzle.in", "r", stdin);
+    freopen("puzzle.out", "w", stdout);
 
     n = read();
     m = read();
     k = read();
 
-    if(m == 0) {
-        for(int i = 1; i <= n; ++i) {
-            write(i);
-            putchar(' ');
-        }
-    }
-
-    else if(k == 0) {
-        write(1);
+    for(int i = 1; i <= n; ++i) {
+        write(i);
         putchar(' ');
-        for(int i = 1; i <= m; ++i) {
-            int u, v;
-            u = read();
-            v = read();
-
-        }
     }
 
     return 0;
