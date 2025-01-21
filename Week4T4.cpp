@@ -37,10 +37,7 @@ int main() {
     m = read();
     k = read();
 
-    for(int i = 1; i <= n; ++i) {
-        write(i);
-        putchar(' ');
-    }
+    
 
     return 0;
 }
