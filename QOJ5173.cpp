@@ -1,7 +1,15 @@
 #include <bits/stdc++.h>
+
+#define N 1000010
+
 using namespace std;
 
-int n, m;
+int n, q;
+int a[N];
+
+struct node {
+    int l, r;
+}qry[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -17,6 +25,7 @@ inline int read() {
     }
     return x * f;
 }
+
 inline void write(int x) {
     if(x < 0) {
         putchar('-');
@@ -27,12 +36,25 @@ inline void write(int x) {
     putchar(x % 10 + '0');
 }
 
+bool cmp(node a, node b) {
+    return a.r < b.r;
+}
+
 int main() {
 
     n = read();
-    m = read();
+    q = read();
 
-    
+    for(int i = 1; i <= n; ++i) {
+        a[i] = read();
+    }
+
+    for(int i = 1; i <= q; ++i) {
+        qry[i].l = read();
+        qry[i].r = read();
+    }
+
+    sort(qry + 1, qry + q + 1, cmp);
 
     return 0;
 }
