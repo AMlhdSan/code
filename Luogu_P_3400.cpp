@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
 #define N 3010
+#define int long long
 
 using namespace std;
 
@@ -51,7 +52,7 @@ signed main() {
 		    ans += (sum[top] = sum[top - 1] + (i - f[s[top]]) * (s[top] - s[top - 1]));
 	    } 
     }
-    
+
     cout << ans << endl;
 
     return 0;	
