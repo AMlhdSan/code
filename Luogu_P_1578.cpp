@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int L,W;
+int L, W;
 int n;
 int ans;
 
@@ -57,7 +57,7 @@ int main() {
 	
     for(int i = 1; i <= n + 4; ++i) {
         int l = 0, r = W, cnt = i + 1;
-        
+
         while(a[cnt].x == a[i].x)
             ++cnt;
 
