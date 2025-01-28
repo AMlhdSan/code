@@ -12,13 +12,18 @@ int sum[N];
 int a[N][N];
 int ans;
 
+struct node {
+    int p, q;
+    int t, p1, q1;
+};
+
 inline int read() {
-    int x = 0, f = 1; 
+    int x = 0, f = 1;
     char ch = getchar();
     while(ch < '0' || ch > '9') { 
         if(ch == '-')
             f = -1;
-        ch = getchar(); 
+        ch = getchar();
     }
     while(ch >= '0' && ch <= '9') { 
         x = (x << 3) + (x << 1) + (ch ^ 48); 
