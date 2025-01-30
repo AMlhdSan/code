@@ -1,0 +1,1 @@
+{"name":"Local: mex","url":"/Users/amlhdsan/Desktop/code/mex.cpp","tests":[{"id":1738209700998,"input":"3 2\n0 0 1","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/mex.cpp","group":"local","local":true}
