@@ -1,0 +1,1 @@
+{"name":"Local: opeartion","url":"/Users/amlhdsan/Desktop/code/opeartion.cpp","tests":[{"id":1738231856792,"input":"4\n6\n9\n504\n99999990000000","output":"1 3\n9 9\n6 9\n9999999 10000000"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/opeartion.cpp","group":"local","local":true}
