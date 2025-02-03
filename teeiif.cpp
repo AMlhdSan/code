@@ -6,7 +6,6 @@ using namespace std;
 
 int n;
 int a[N];
-int sum[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -38,18 +37,10 @@ inline void writeln(int x) {
 
 int main() {
 
-    n = read();
+    int n = read();
 
     for(int i = 1; i <= n; ++i) {
         a[i] = read();
-        sum[i] = sum[i - 1];
-        if(a[i] == 2) {
-            ++sum[i];
-        }
-    }
-    
-    for(int i = 1; i <= n; ++i) {
-        cout << sum[i] << endl;
     }
 
     return 0;
