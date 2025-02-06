@@ -9,6 +9,8 @@ int len;
 int f[N];
 int sum, id;
 
+inline void 
+
 int main() {
 
 	cin >> s + 1;

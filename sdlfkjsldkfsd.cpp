@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
