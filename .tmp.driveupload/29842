@@ -1,5 +1,11 @@
 #include <bits/stdc++.h>
+
+#define N 18
+
 using namespace std;
+
+int n;
+int x[N], y[N], z[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -30,6 +36,16 @@ inline void writeln(int x) {
 }
 
 int main() {
+
+    n = read();
+
+    for(int i = 1; i <= n; ++i) {
+        x[i] = read();
+        y[i] = read();
+        z[i] = read();
+    }
+
+    
 
     return 0;
 }
