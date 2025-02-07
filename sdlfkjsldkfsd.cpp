@@ -45,7 +45,7 @@ int main() {
         z[i] = read();
     }
 
-    
+
 
     return 0;
 }
