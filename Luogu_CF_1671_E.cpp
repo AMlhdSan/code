@@ -4,6 +4,7 @@
 #define N 1000010
 #define ls (p << 1)
 #define rs (p << 1 | 1)
+#define fa (p >> 1)
 
 using namespace std;
 
@@ -41,10 +42,6 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-inline void dfs0(int p, int pre) {
-    
-}
-
 inline void dfs(int p, int pre) {
     
 }
@@ -66,7 +63,13 @@ int main() {
         }
     }
 
-    dfs0(1);
+    dp[1] = a[1];
+
+    for(int i = 2; i <= n; ++i) {
+        for(int j = (1 << (i - 1)); j <= ((1 << i) - 1); ++j) {
+            
+        }
+    }
 
     dfs(1);
 
