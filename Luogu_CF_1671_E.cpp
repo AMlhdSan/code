@@ -9,7 +9,9 @@ using namespace std;
 
 int n, m;
 string str;
+int a[N];
 int dp[N];
+int l[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -39,10 +41,12 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-inline void dfs(int p) {
-    if(s[i] >= n) {
+inline void dfs0(int p, int pre) {
 
-    }
+}
+
+inline void dfs(int p, int pre) {
+    
 }
 
 int main() {
@@ -53,7 +57,20 @@ int main() {
 
     str = " " + str;
 
+    for(int i = 1; i <= m; ++i) {
+        if(str[i] == 'A') {
+            a[i] = 0;
+        }   
+        else {
+            a[i] = 1;
+        }
+    }
+
+    dfs0(1);
+
     dfs(1);
+
+    writeln(dp[1]);
 
     return 0;
 }
