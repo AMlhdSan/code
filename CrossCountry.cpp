@@ -5,7 +5,10 @@ int T, n, a[maxn], b[maxn];
 int id1[maxn], id2[maxn];
 inline int read() {
     int x = 0, f = 1;
+    // int y = 0;
     char ch = getchar();
+    // ch = getchar();
+    
     while(ch < '0' || ch > '9') {
         if(ch == '-') {
             f = -1;
