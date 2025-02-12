@@ -1,103 +1,75 @@
 #include <iostream>
 #include <vector>
-#include <queue>
-#include <set>
-#include <algorithm>
-
 using namespace std;
+ 
+const long long MOD = 1000000007;
 
-const int MAXN = 1e5 + 5;
-
-vector<int> graph[MAXN]; // 邻接表
-int in_degree[MAXN];     // 入度数组
-bool added[MAXN][MAXN];  // 检查是否已添加边
-
-vector<int> topological_sort(int n) {
-    priority_queue<int, vector<int>, greater<int>> pq; // 小根堆
-    vector<int> result;
-
-    for (int i = 1; i <= n; i++) {
-        if (in_degree[i] == 0) {
-            pq.push(i);
-        }
+inline int read() {
+    int x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+        if (ch == '-') f = -1;
+        ch = getchar();
     }
-
-    while (!pq.empty()) {
-        int node = pq.top();
-        pq.pop();
-        result.push_back(node);
-
-        for (int neighbor : graph[node]) {
-            in_degree[neighbor]--;
-            if (in_degree[neighbor] == 0) {
-                pq.push(neighbor);
-            }
-        }
+    while (ch >= '0' && ch <= '9') {
+        x = (x << 3) + (x << 1) + (ch ^ 48);
+        ch = getchar();
     }
-    return result;
+    return x * f;
 }
 
-bool can_add_edge(int u, int v, int n) {
-    // 检查是否可以添加边u -> v
-    vector<int> temp_in_degree = in_degree;
-    temp_in_degree[v]++;
+inline void write(int x) {
+    if (x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    if (x > 9) write(x / 10);
+    putchar(x % 10 + '0');
+}
+
+inline void writeln(int x) {
+    write(x);
+    putchar('\n');
+}
+
+long long modexp(long long a, long long b) {
+    long long res = 1;
+    while(b){
+        if(b & 1) res = res * a % MOD;
+        a = a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
+ 
+int main(){
+
+    freopen("chess.in", "r", stdin);
+    freopen("chess.out", "w", stdout);
     
-    queue<int> q;
-    for (int i = 1; i <= n; i++) {
-        if (temp_in_degree[i] == 0) {
-            q.push(i);
+    int n;
+    n = read();
+    // 因为树有 n 个顶点和 n-1 条边
+    // 输入第二行有 n-1 个数，第 i 个数为 f_i 表示有边 (f_i, i+1)
+    vector<int> deg(n+1, 0);
+    for (int i = 1; i <= n - 1; i++){
+        int f;
+        f = read();
+        // f 与 i+1 之间有边
+        deg[f]++;
+        deg[i+1]++;
+    }
+    
+    // 统计满足 N(S)=单元素 的方案数
+    long long ans = 0;
+    for (int y = 1; y <= n; y++){
+        if(deg[y] >= 1){
+            long long ways = (modexp(2, deg[y]) - 2) % MOD;
+            if(ways < 0) ways += MOD;
+            ans = (ans + ways) % MOD;
         }
     }
-
-    int count = 0;
-    while (!q.empty()) {
-        int node = q.front();
-        q.pop();
-        count++;
-        for (int neighbor : graph[node]) {
-            temp_in_degree[neighbor]--;
-            if (temp_in_degree[neighbor] == 0) {
-                q.push(neighbor);
-            }
-        }
-    }
-    return count == n; // 如果可以完成拓扑排序，说明没有形成环
-}
-
-int main() {
-    int n, m, k;
-    cin >> n >> m >> k;
-
-    // 读取边
-    for (int i = 0; i < m; i++) {
-        int u, v;
-        cin >> u >> v;
-        graph[u].push_back(v);
-        in_degree[v]++;
-    }
-
-    // 贪心添加边
-    for (int u = 1; u <= n; u++) {
-        for (int v = 1; v <= n; v++) {
-            if (u != v && !added[u][v] && can_add_edge(u, v, n)) {
-                graph[u].push_back(v);
-                in_degree[v]++;
-                added[u][v] = true;
-                k--;
-                if (k == 0) break;
-            }
-        }
-        if (k == 0) break;
-    }
-
-    // 计算最终拓扑序
-    vector<int> result = topological_sort(n);
-
-    // 输出结果
-    for (int i = 0; i < result.size(); i++) {
-        cout << result[i] << " ";
-    }
-    cout << endl;
-
+    
+    writeln(ans % MOD);
     return 0;
 }
