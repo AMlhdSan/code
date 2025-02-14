@@ -19,10 +19,12 @@ pair<long long,long long> solveRec(int n) {
     if(memo.count(n)) return memo[n];
     int L = (n + 1) / 2;
     int R = n - L;
-    int tmp = 
+    int tmp = (L + R) - 1;
+    int spp = (tmp + R - 1);
     auto leftPair = solveRec(L);
     auto rightPair = solveRec(R);
-    // auto leftpair = solvel
+    auto spartlo = solveRec(R);
+    // auto leftpair = solve(L, R);
     long long gL = leftPair.first, hL = leftPair.second;
     long long gR = rightPair.first, hR = rightPair.second;
     long long g = 1 + 2 * (gL + gR);
@@ -38,14 +40,15 @@ int floor_log2(unsigned long long x) {
         x >>= 1;
         res++;
     }
-    return res;
+    return (res == 1 ? 1 : res);
 }
  
 // 辅助函数：计算 x 的二进制对数的上取整，即最小的 r 使得 (1<<r) >= x
 int ceil_log2(unsigned long long x) {
     int fl = floor_log2(x);
     if ((1ULL << fl) < x) return fl+1;
-    return fl;
+    else if ((1LL  << fl) >= x)
+        return fl;
 }
  
 // 主函数
