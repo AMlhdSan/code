@@ -8,6 +8,7 @@ int T;
 int n;
 int a[N];
 int sta[N];
+bool flag;
 
 inline int read() {
     int x = 0, f = 1;
@@ -37,24 +38,39 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-inline void dfs(int now, int x) {
-    if(now == n + 1) {
+inline void dfs(int now, int x, int p) {
+    if(now >= n + 1) {
         int sum = 0;
         for(int i = 1; i <= n; ++i) {
-            sum += a[i] * i;
+            // if(i != p)
+            sum += a[i] * sta[i];
         }
         if(sum == x) {
-            
+            flag = 1;
         }
+        return;
     }
-    for(int i = -1; i <= 1; ++i) {
-        a[now] = i;
-        dfs(now + 1);
+
+    if(now == p) {
+        sta[now] = 0;
+        dfs(now + 1, x, p);
+    }
+
+    else {
+        for(int i = -1; i <= 1; ++i) {
+            sta[now] = i;
+            dfs(now + 1, x, p);
+            if(flag) {
+                return;
+            }
+        }
     }
 }
 
-inline bool find(int x) {
-    dfs(1, x);
+inline bool find(int x, int p) {
+    flag = 0;
+    dfs(1, x, p);
+    return flag;
 }
 
 inline void solve() {
@@ -63,7 +79,7 @@ inline void solve() {
         a[i] = read();
     }
     for(int i = 1; i <= n; ++i) {
-        if(find(i)) {
+        if(find(a[i], i)) {
             puts("YES");
             return;
         }

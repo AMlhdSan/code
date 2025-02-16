@@ -1,0 +1,1 @@
+{"name":"Local: Number","url":"/Users/amlhdsan/Desktop/code/Number.cpp","tests":[{"id":1739711072207,"input":"2\n10 3 2\n114 51 4","output":"996\n902195061"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/Number.cpp","group":"local","local":true}
