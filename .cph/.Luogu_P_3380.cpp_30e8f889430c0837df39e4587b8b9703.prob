@@ -1,0 +1,1 @@
+{"name":"Luogu - P3380","url":"https://www.luogu.com.cn/problem/P3380","memoryLimit":524288,"timeLimit":2000,"tests":[{"id":1739714741441,"input":"9 6\n4 2 2 1 9 4 0 1 1\n2 1 4 3\n3 4 10\n2 1 4 3\n1 2 5 9\n4 3 9 5\n5 2 8 5","output":"2\n4\n3\n4\n9"}],"group":"luogu","srcPath":"/Users/amlhdsan/Desktop/code/Luogu_P_3380.cpp"}
