@@ -1,22 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
-#define MOD 1000000007
-#define N 1000000
-
 inline int read() {
-    int x = 0, dp = 1;
+    int x = 0, f = 1;
     char ch = getchar();
     while (ch < '0' || ch > '9') {
-        if (ch == '-') dp = -1;
+        if (ch == '-') f = -1;
         ch = getchar();
     }
     while (ch >= '0' && ch <= '9') {
         x = (x << 3) + (x << 1) + (ch ^ 48);
         ch = getchar();
     }
-    return x * dp;
+    return x * f;
 }
 
 inline void write(int x) {
@@ -33,44 +29,27 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-int poww(int x, int y) {
-    int res = 1;
-    while (y) {
-        if (y & 1) res = 1ll * res * x % MOD;
-        x = 1ll * x * x % MOD;
-        y >>= 1;
-    }
-    return res;
-}
+int n, x, V, a[105];
 
-int T, n, a[2], dp[N + 5][2];
+bitset<10005> f, g;
 
-inline void solve() {
-    memset(dp, 0, sizeof(dp));
-    n = read();
-    a[0] = read();
-    a[1] = read();
-    dp[0][0] = dp[0][1] = 1;
-    for (int i = 1; i <= n; ++i) {
-        for (int k = 0; k < 2; ++k) {
-            dp[i][k] = (1ll * dp[i - 1][!k] - (i - a[k] < 0 ? 0 : dp[i - a[k]][!k]) + MOD) % MOD;
-            dp[i][k] = (1ll * dp[i][k] + dp[i - 1][k]) % MOD;
+int main() {
+    freopen("number.in", "r", stdin);
+    freopen("number.out", "w", stdout);
+    n = read(), x = read(), V = read();
+    for (int i = 0; i < n; i++) a[i] = read();
+    if (x > V) return puts("-1"), 0;
+    f[x] = 1;
+    for (int i = 0; i < n; i++) {
+        g.reset();
+        for (int j = 0; j <= V; j++) if (f[j]) {
+            if (j + a[i] <= V) g[j + a[i]] = 1;
+            if (j - a[i] >= 0) g[j - a[i]] = 1;
         }
+        f = g;
     }
-    int res = 0;
-    for (int k = 0; k < 2; ++k) 
-        res = (1ll * res + dp[n][k] - dp[n - 1][k] + MOD) % MOD;
-    writeln((1ll * poww(2, n) - res + MOD) % MOD);
-}
-
-signed main() {
-
-    // freopen("Number.in", "r", stdin);
-    // freopen("Number.out", "w", stdout);
-
-    T = read();
-    while (T--) {
-        solve();
-    }
-    return 0;
+    for (int i = V; i >= 0; i--) 
+        if (f[i]) 
+            return writeln(i), 0;
+    puts("-1");
 }

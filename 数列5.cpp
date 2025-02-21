@@ -98,13 +98,12 @@ signed main() {
 
     build(1, 1, n);
 
-    m = read();
-
-    while(m--) {
-        int op, x, y;
+    for(int i = 1; i <= n; ++i) {
+        int op, x, y, c;
         op = read();
         x = read();
         y = read();
+        c = read();
         if(x > y) {
             swap(x, y);
         }

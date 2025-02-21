@@ -1,13 +1,16 @@
 #include <bits/stdc++.h>
 
-#define N 500010
+#define N 200010
 #define lowbit(x) ((x) & (-(x)))
+#define int long long
 
 using namespace std;
 
-int n, m;
+int n;
 int a[N];
 int tree[N];
+int lm[N], rm[N], li[N], ri[N];
+int sum1, sum2;
 
 inline int read() {
     int x = 0, f = 1;
@@ -53,28 +56,33 @@ inline int qry(int p) {
     return qrys;
 }
 
-int main() {
+signed main() {
 
     n = read();
-    m = read();
 
     for(int i = 1; i <= n; ++i) {
         a[i] = read();
-        add(i, a[i]);
+        li[i] = qry(a[i] - 1);
+        lm[i] = i - 1 - li[i];
+        add(a[i], 1);
     }
 
-    while(m--) {
-        int op, x, k;
-        op = read();
-        x = read();
-        k = read();
-        if(op == 1) {
-            add(x, k);
-        }
-        else {
-            writeln(qry(k) - qry(x - 1));
-        }
+    memset(tree, 0, sizeof(tree));
+
+    for(int i = n; i >= 1; --i) {
+        ri[i] = qry(a[i] - 1);
+        rm[i] = n - i - ri[i];
+        add(a[i], 1);
     }
+
+    for(int i = 1; i <= n; ++i) {
+        sum1 += lm[i] * rm[i];
+        sum2 += li[i] * ri[i];
+    }
+
+    write(sum1);
+    putchar(' ');
+    writeln(sum2);
 
     return 0;
 }

@@ -36,6 +36,35 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
+inline void op1() {
+    int l, r, k;
+    l = read();
+    r = read();
+    k = read();
+
+}
+
+inline void op2() {
+    int l, r, k;
+    l = read();
+    r = read();
+    k = read();
+
+}
+
+inline void op3() {
+    int pos, k;
+    pos
+}
+
+inline void op4() {
+
+}
+
+inline void op5() {
+
+}
+
 signed main() {
 
     n = read();
@@ -43,6 +72,26 @@ signed main() {
 
     for(int i = 1; i <= n; ++i) {
         a[i] = read();
+    }
+
+    while(m--) {
+        int op;
+        op = read();
+        if(op == 1) {
+
+        }
+        else if(op == 2) {
+
+        }
+        else if(op == 3) {
+
+        }
+        else if(op == 4) {
+            
+        }
+        else if(op == 5) {
+
+        }
     }
 
     return 0;
