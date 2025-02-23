@@ -25,6 +25,7 @@ inline void write(int x){
 inline void writeln(int x){
     write(x);
     putchar('\n');
+    return;
 }
 void dfs(int x,int c,unordered_map<int,int>& mp){
     if(!mp.count(x)||mp[x]>c) mp[x]=c;
