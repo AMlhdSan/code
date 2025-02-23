@@ -24,8 +24,8 @@ inline void writeln(int x){
     putchar('\n');
 }
 int main(){
-    // freopen(".in", "r", stdin);
-    // freopen(".out", "w", stdout);
+    // freopen("transmit.in", "r", stdin);
+    // freopen("transmit.out", "w", stdout);
     int n = read(), m = read();
     vector<vector<pair<int,int>>> g(n+1);
     for(int i=0;i<m;i++){
