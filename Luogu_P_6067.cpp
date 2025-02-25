@@ -1,8 +1,13 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+
+#define int long long
+#define N 1000010
+
 using namespace std;
 
-bitset<1001> dp, lst;
-int n, x, V;
+int n;
+int a[N], sum[N];
+int tot;
 
 inline int read() {
     int x = 0, f = 1;
@@ -19,6 +24,7 @@ inline int read() {
     }
     return x * f;
 }
+
 inline void write(int x) {
     if(x < 0) {
         putchar('-');
@@ -34,21 +40,24 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-int main() {
-    freopen("number.in", "r", stdin);
-    freopen("number.out", "w", stdout);
-    n = read(), x = read(), V = read();
-    dp[x] = 1;
-    while (n--) {
-        lst = dp;
-        dp.reset();
-        int x = read();
-        for (int i = 0; i <= V; i++) if (lst[i]) {
-            if (i >= x) dp[i - x] = lst[i];
-            if (i + x <= V) dp[i + x] = lst[i];
-        }
+signed main() {
+	n = read();
+	
+	for(int i = 1; i <= n; ++i) {
+        a[i] = read();
     }
-    for (int i = V; ~i; i--) if (dp[i]) return writeln(i), 0;
-    writeln(-1);
-    return 0;
+	
+	sort(a + 1, a + 1 + n);
+	
+	for(int i = 1; i <= n; ++i) {
+		sum[i] = sum[i - 1] + a[i];
+    }
+	
+	for(int i = 1; i <= n; ++i) {
+		tot += a[i] * (i - 1) - sum[i - 1];
+    }
+	
+	writeln(tot * 2);
+    
+	return 0;
 }

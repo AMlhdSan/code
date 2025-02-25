@@ -75,6 +75,7 @@
         "algorithm": "cpp",
         "codecvt": "cpp",
         "strstream": "cpp",
-        "d-种树": "cpp"
+        "d-种树": "cpp",
+        "numeric": "cpp"
     }
 }
