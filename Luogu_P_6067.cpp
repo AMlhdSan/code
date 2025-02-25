@@ -58,6 +58,6 @@ signed main() {
     }
 	
 	writeln(tot * 2);
-    
+
 	return 0;
 }

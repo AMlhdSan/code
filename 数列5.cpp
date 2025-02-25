@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int n, m;
+int n;
 int a[N];
 int tree[N << 2];
 int tag[N << 2];
@@ -104,9 +104,9 @@ signed main() {
         x = read();
         y = read();
         c = read();
-        if(x > y) {
-            swap(x, y);
-        }
+        // if(x > y) {
+        //     swap(x, y);
+        // }
         if(op == 0) {
             mdf(1, 1, n, x, y);
         }
