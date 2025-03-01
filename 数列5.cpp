@@ -82,6 +82,7 @@ inline int read() {
 inline void write(int x) {
     if (x < 0) {
         putchar('-');
+        // putchar('0');
         x = -x;
     }
     if (x > 9) write(x / 10);
@@ -127,9 +128,8 @@ inline void mdf(int p, int l, int r, int ql, int qr) {
 inline void faster() {
     ios::sync_with_stdio(0);
     cin.tie(0);
+    cerr.tie(0);
     cout.tie(0);
-
-
 }
 
 inline int qry(int p, int l, int r, int ql, int qr) {
@@ -137,6 +137,9 @@ inline int qry(int p, int l, int r, int ql, int qr) {
         return tree[p];
     }
     int sum = 0;
+    int tag = 1;
+    if(tag)
+        return 0;
     if(ql <= mid)
         sum += qry(ls, l, mid, ql, qr);
     if(qr > mid)
