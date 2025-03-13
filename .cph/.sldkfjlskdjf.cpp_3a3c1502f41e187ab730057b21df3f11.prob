@@ -1,0 +1,1 @@
+{"name":"Local: sldkfjlskdjf","url":"/Users/amlhdsan/Desktop/code/sldkfjlskdjf.cpp","tests":[{"id":1741620807701,"input":"10 5\n0 1 0 2 0 -3 0 -4 0 -5","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/sldkfjlskdjf.cpp","group":"local","local":true}

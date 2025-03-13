@@ -1,0 +1,1 @@
+{"name":"Luogu - CF1660F1","url":"https://www.luogu.com.cn/problem/CF1660F1","memoryLimit":256000,"timeLimit":3000,"tests":[{"id":1741269642125,"input":"5\n3\n+-+\n5\n-+---\n4\n----\n7\n--+---+\n6\n+++---","output":"2\n4\n2\n7\n4"}],"group":"luogu","srcPath":"/Users/amlhdsan/Desktop/code/Luogu_CF_1660_F_1.cpp"}
