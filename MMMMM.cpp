@@ -1,128 +1,159 @@
 #include <bits/stdc++.h>
-using namespace std;
 
 #define N 1000010
-#define int long long
+#define ll long long
 #define ls (p << 1)
 #define rs (p << 1 | 1)
 #define mid ((l + r) >> 1)
 
-// Fast I/O buffer
-char buf[1 << 20], *p1, *p2;
-#define gc() (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1<<20, stdin), p1 == p2) ? EOF : *p1++)
+using namespace std;
 
-int n, m, r;
-int w[N];                   // Node weights
-int tin[N], tout[N], sz[N]; // DFS order and subtree size
-int euler[N];               // Euler tour array
-int timer;                  // DFS timer
+int n, q, root;
+int h[N], e[N << 1], ne[N << 1], idx;
+ll fw[2][N], a[N];
+int fa[N], dep[N], sz[N], son[N];
+int timestamp, dfn[N], top[N];
 
-// Graph storage using static arrays
-int head[N], nxt[N<<1], to[N<<1], e;
-inline void addEdge(int u, int v) {
-    nxt[++e] = head[u]; head[u] = e; to[e] = v;
-}
-
-// Segment tree arrays
-int seg[N<<2], lazy[N<<2];
-
-// Fast I/O functions
 inline int read() {
-    int x = 0, f = 1; char ch = gc();
-    while (ch < '0' || ch > '9') {if (ch == '-') f = -1; ch = gc();}
-    while (ch >= '0' && ch <= '9') {x = (x<<3)+(x<<1)+(ch^48); ch = gc();}
+    int x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+        if (ch == '-') f = -1;
+        ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9') {
+        x = (x << 3) + (x << 1) + (ch ^ 48);
+        ch = getchar();
+    }
     return x * f;
 }
 
 inline void write(int x) {
-    if(x < 0) {putchar('-'); x = -x;}
-    if(x > 9) write(x/10);
-    putchar(x%10+'0');
+    if (x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    if (x > 9) write(x / 10);
+    putchar(x % 10 + '0');
 }
 
-// DFS to calculate Euler tour and subtree sizes
-void dfs(int u, int p) {
-    tin[u] = ++timer;
-    euler[timer] = w[u];
+inline void writeln(int x) {
+    write(x);
+    putchar('\n');
+}
+
+void add(int a, int b) {
+    e[idx] = b, ne[idx] = h[a], h[a] = idx++;
+}
+
+int lowbit(int x) {
+    return x & -x;
+}
+
+void add_bit(int t, int k, ll x) {
+    if (!k) return;
+    for (; k <= n; k += lowbit(k))
+        fw[t][k] += x;
+}
+
+ll sum(int t, int k) {
+    ll res = 0;
+    for (; k; k -= lowbit(k))
+        res += fw[t][k];
+    return res;
+}
+
+void dfs1(int u, int p) {
     sz[u] = 1;
-    for(int i = head[u]; i; i = nxt[i]) {
-        int v = to[i];
-        if(v != p) {
-            dfs(v, u);
-            sz[u] += sz[v];
-        }
-    }
-    tout[u] = timer;
-}
-
-// Segment tree operations
-inline void pushDown(int p, int l, int r) {
-    if(!lazy[p]) return;
-    seg[ls] += lazy[p] * (mid - l + 1);
-    seg[rs] += lazy[p] * (r - mid);
-    lazy[ls] += lazy[p];
-    lazy[rs] += lazy[p];
-    lazy[p] = 0;
-}
-
-void build(int p, int l, int r) {
-    if(l == r) {
-        seg[p] = euler[l];
-        return;
-    }
-    build(ls, l, mid);
-    build(rs, mid+1, r);
-    seg[p] = seg[ls] + seg[rs];
-}
-
-void update(int p, int l, int r, int ql, int qr, int val) {
-    if(ql <= l && r <= qr) {
-        seg[p] += val * (r - l + 1);
-        lazy[p] += val;
-        return;
-    }
-    pushDown(p, l, r);
-    if(ql <= mid) update(ls, l, mid, ql, qr, val);
-    if(qr > mid) update(rs, mid+1, r, ql, qr, val);
-    seg[p] = seg[ls] + seg[rs];
-}
-
-int query(int p, int l, int r, int ql, int qr) {
-    if(ql <= l && r <= qr) return seg[p];
-    pushDown(p, l, r);
-    int sum = 0;
-    if(ql <= mid) sum += query(ls, l, mid, ql, qr);
-    if(qr > mid) sum += query(rs, mid+1, r, ql, qr);
-    return sum;
-}
-
-signed main() {
-    n = read(); m = read(); r = read();
-    for(int i = 1; i <= n; i++) w[i] = read();
+    fa[u] = p, dep[u] = dep[p] + 1;
     
-    for(int i = 1; i < n; i++) {
+    for (int i = h[u]; i != -1; i = ne[i]) {
+        int j = e[i];
+        
+        if (j == p) continue;
+        
+        dfs1(j, u);
+        sz[u] += sz[j];
+        
+        if (sz[son[u]] < sz[j])
+            son[u] = j;
+    }
+}
+
+void dfs2(int u, int t) {
+    dfn[u] = ++timestamp;
+    top[u] = t;
+    
+    if (!son[u]) return;
+    
+    dfs2(son[u], t);
+    
+    for (int i = h[u]; i != -1; i = ne[i]) {
+        int j = e[i];
+        
+        if (j == son[u] || j == fa[u]) continue;
+        
+        dfs2(j, j);
+    }
+}
+
+int Lca(int u, int v) {
+    while (top[u] != top[v]) {
+        if (dep[top[u]] < dep[top[v]])
+            swap(u, v);
+        
+        u = fa[top[u]];
+    }
+    
+    return dep[u] < dep[v] ? u : v;
+}
+
+void update(int u, int v, ll x) {
+    int lca = Lca(u, v);
+    add_bit(0, dfn[u], x), add_bit(0, dfn[v], x);
+    add_bit(0, dfn[lca], -x), add_bit(0, dfn[fa[lca]], -x);
+    add_bit(1, dfn[u], x * dep[u]), add_bit(1, dfn[v], x * dep[v]);
+    add_bit(1, dfn[lca], -x * dep[lca]), add_bit(1, dfn[fa[lca]], -x * dep[fa[lca]]);
+}
+
+ll querynode(int u) {
+    return sum(0, dfn[u] + sz[u] - 1) - sum(0, dfn[u] - 1);
+}
+
+ll querytree(int u) {
+    return sum(1, dfn[u] + sz[u] - 1) - sum(1, dfn[u] - 1) - querynode(u) * (dep[u] - 1);
+}
+
+int main() {
+    memset(h, -1, sizeof h);
+    n = read(), q = read(), root = read();
+    
+    for (int i = 1; i <= n; i++)
+        a[i] = read();
+    
+    for (int i = 1; i < n; i++) {
         int u = read(), v = read();
-        addEdge(u, v); addEdge(v, u);
+        add(u, v), add(v, u);
     }
     
-    dfs(r, 0);
-    build(1, 1, n);
+    dfs1(root, 0);
+    dfs2(root, root);
     
-    while(m--) {
-        int op = read();
-        if(op == 1) {
-            int a = read(), b = read(), x = read();
-            update(1, 1, n, tin[a], tin[a], x);
-            if(b != a) update(1, 1, n, tin[b], tin[b], x);
-        } else if(op == 2) {
-            int a = read();
-            write(query(1, 1, n, tin[a], tin[a]));
-            putchar('\n');
+    for (int i = 1; i <= n; i++)
+        update(i, i, a[i]);
+    
+    while (q--) {
+        int op = read(), u = read();
+        
+        if (op == 1) {
+            int v = read(), x = read();
+            update(u, v, x);
+        } else if (op == 2) {
+            printf("%lld\n", querynode(u));
         } else {
-            int a = read();
-            write(query(1, 1, n, tin[a], tin[a] + sz[a] - 1));
-            putchar('\n');
+            printf("%lld\n", querytree(u));
         }
     }
+    
     return 0;
 }
