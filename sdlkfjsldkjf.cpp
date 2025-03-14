@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 
-#define N 1000005  
+#define N 1000010 
 #define ll long long
-#define pii pair<ll, ll>
+#define int long long
+#define pll pair<ll, ll>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ namespace LCA {
     ll dep[N];
     ll vis[N];
     vector<ll> G[N];
-    vector<pii> mt[N];
+    vector<pll> mt[N];
 
     namespace DSU {
         ll rt[N];
@@ -133,7 +134,7 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-int main() {
+signed main() {
     n = read();
     m = read();
     r = read();
