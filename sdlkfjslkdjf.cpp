@@ -2,6 +2,7 @@
 using namespace std;
 typedef long long ll;
 const ll MOD = 1000000007;
+
 inline int read(){
     int x=0,f=1; char ch=getchar();
     while(ch<'0' || ch>'9'){

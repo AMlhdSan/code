@@ -1,110 +1,13 @@
 #include <bits/stdc++.h>
 
-#define N 1000010 
-#define ll long long
+#define N 5000010 
 #define int long long
-#define pll pair<ll, ll>
+#define ll long long
 
 using namespace std;
 
-ll n, m, r;
-ll v[N];
-
-struct qry { 
-    ll op, a, b; 
-} q[N];
-
-ll lca[N];
-
-namespace LCA {
-    ll cnt;
-    ll rt[N];
-    ll lv[N];
-    ll dfn[N];
-    ll dep[N];
-    ll vis[N];
-    vector<ll> G[N];
-    vector<pll> mt[N];
-
-    namespace DSU {
-        ll rt[N];
-        
-        void init(ll n) { 
-            for (ll i = 1; i <= n; i++) { 
-                rt[i] = i; 
-            } 
-        }
-        
-        ll find(ll x) { 
-            if (rt[x] == x) return x; 
-            return rt[x] = find(rt[x]); 
-        }
-        
-        void mount(ll u, ll v) { 
-            rt[u] = v; 
-        } 
-    }
-    
-    using namespace DSU;
-    
-    void dfs(ll u) { 
-        dfn[u] = ++cnt; 
-        vis[u] = 1; 
-        
-        for (auto i : mt[u]) 
-            if (vis[i.first]) 
-                lca[i.second] = find(i.first); 
-                
-        for (auto v : G[u]) 
-            if (v != LCA::rt[u]) { 
-                LCA::rt[v] = u; 
-                dep[v] = dep[u] + 1; 
-                dfs(v); 
-                mount(v, u); 
-            } 
-            
-        lv[u] = cnt; 
-    }
-    
-    void build(ll s = 1) { 
-        DSU::init(n); 
-        dfs(s); 
-    } 
-}
-
-using namespace LCA;
-
-class TreeArr {
-private:
-    ll C[N];
-    
-    inline ll lowbit(ll k) { 
-        return k & -k; 
-    }
-    
-    void add(ll idx, ll c) { 
-        for (ll i = idx; i <= n; i += lowbit(i)) 
-            C[i] += c; 
-    }
-    
-public:
-    void add(ll l, ll r, ll c) { 
-        add(l, c); 
-        add(r + 1, -c); 
-    }
-    
-    ll sum(ll idx) { 
-        ll ans = 0; 
-        for (ll i = idx; i; i -= lowbit(i)) 
-            ans += C[i]; 
-        return ans; 
-    } 
-} v1, v2;
-
-inline ll dist(ll u) { 
-    if (!u) return 0; 
-    return v1.sum(dfn[u]) + v2.sum(dfn[u]) * dep[u]; 
-}
+int n, m, q;
+int l[N], r[N], bit[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -134,13 +37,34 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
+inline int lowbit(int x) {
+    return x & -x;
+}
+
+inline void add(int x, int y) {
+    while(x <= n) {
+        bit[x] += y;
+        x += lowbit(x);
+    }
+}
+
+inline int query(int x) {
+    int res = 0;
+    while(x) {
+        res += bit[x];
+        x -= lowbit(x);
+    }
+    return res;
+}
+
 signed main() {
     n = read();
     m = read();
-    r = read();
+    q = read();
     
-    for (ll i = 1; i <= n; i++) 
-        v[i] = read();
+    for(int i = 1; i <= m; ++i) {
+
+    }
     
     for (ll u, v, i = 1; i < n; i++) {
         u = read();
