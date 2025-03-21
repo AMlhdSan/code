@@ -76,8 +76,8 @@ NodeRes dfs(int u){
     return {tot, Fval, Fmod};
 }
 int main(){
-    freopen("catch.in", "r", stdin);
-    freopen("catch.out", "w", stdout);
+    // freopen("catch.in", "r", stdin);
+    // freopen("catch.out", "w", stdout);
     n = read();
     child.resize(n+1);
     cam.resize(n+1, 'N');

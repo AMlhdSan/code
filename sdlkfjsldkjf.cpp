@@ -8,6 +8,17 @@ using namespace std;
 
 int n, m, q;
 int l[N], r[N], bit[N];
+int dfn[N], lv[N], v[N];
+int dep[N], fa[N][25];
+int lca[N];
+vector<int> G[N];
+vector<int> mt[N];
+int a[N];
+int ans[N];
+int cnt;
+struct Query {
+    int op, a, b;
+} q[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -63,7 +74,7 @@ signed main() {
     q = read();
     
     for(int i = 1; i <= m; ++i) {
-
+        a[i] = read();
     }
     
     for (ll u, v, i = 1; i < n; i++) {
