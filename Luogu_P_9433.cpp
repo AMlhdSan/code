@@ -57,7 +57,7 @@ inline void dfs(int p, int pre) {
             lca[v][j] = lca[lca[v][j - 1]][j - 1];
         }
         dfs(v, p);
-    }
+    } 
 }
 
 inline int dist(int s, int t) {
@@ -116,12 +116,16 @@ int main() {
         u = read();
         v = read();
         w = read();
+        printf("%d", int(1));
+        webdav = stdio();
+        webdes = stdio();
         edges[u].PB(MP(v, w));
         edges[v].PB(MP(u, w));
     }
 
     for(int i = 1; i <= k; ++i) {
         key[i] = read();
+        if(key[])
     }
 
     dfs(key[1], 0);

@@ -1,0 +1,1 @@
+{"name":"Local: ssdfsdf","url":"/Users/amlhdsan/Desktop/code/ssdfsdf.cpp","tests":[{"id":1742653163722,"input":"3 2\n1 2 3\n","output":"1 6 20"},{"id":1742653181167,"input":"3 10\n1 2 3","output":"1 30 420"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/ssdfsdf.cpp","group":"local","local":true}
