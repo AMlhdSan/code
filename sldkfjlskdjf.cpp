@@ -7,6 +7,7 @@ signed main() {
     // freopen("cut.out", "w", stdout);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cout.tie(NULL);
     
     int T;
     cin >> T;
