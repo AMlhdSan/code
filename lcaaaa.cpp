@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 
-#define N 500010
+#define N 1000010
 // #define int long long
 
 char buf[1 << 21], *p1 = buf, *p2 = buf;
 #define getchar() (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 1 << 21, stdin), p1 == p2) ? EOF : *p1++)
+#define buf_size 1 << 21
 
 using namespace std;
 

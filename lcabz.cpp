@@ -14,6 +14,7 @@ int xx, yy;
 vector<int> edge[N];
 int dep[N];
 int fa[N][31];
+bool vis[21][21][21];
 
 inline int read() {
     int x = 0, f = 1;
