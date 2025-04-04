@@ -1,0 +1,1 @@
+{"name":"Luogu - P3066","url":"https://www.luogu.com.cn/problem/P3066","memoryLimit":128000,"timeLimit":1000,"tests":[{"id":1743690561394,"input":"4 5 \n1 4 \n2 3 \n1 5 \n","output":"3 \n2 \n1 \n1 \n"}],"group":"luogu","srcPath":"/Users/amlhdsan/Desktop/code/Luogu_P_3066.cpp"}
