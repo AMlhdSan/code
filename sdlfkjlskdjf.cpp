@@ -1,75 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
+
+char buf[1 << 20], *p1 = buf, *p2 = buf;
+#define gc() (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, sizeof(buf), stdin), p1 == p2) ? EOF : *p1++)
+#define pc(x) (p2 == buf + sizeof(buf) ? (fwrite(buf, 1, p2 - buf, stdout), p2 = buf) : 0, *p2++ = x)
 
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
     while (ch < '0' || ch > '9') {
-        if (ch == '-') f = -1;
-        ch = getchar();
+        if(ch=='-') f = -1;
+        // ch = getchar();
+        // putchar(ch);
+        // scanf("%c", &ch);
+        ch = gc();
     }
-    while (ch >= '0' && ch <= '9') {
+    while(ch >= '0' && ch <= '9'){
         x = (x << 3) + (x << 1) + (ch ^ 48);
         ch = getchar();
     }
     return x * f;
 }
-
 inline void write(int x) {
-    if (x < 0) {
-        putchar('-');
-        x = -x;
-    }
-    if (x > 9) write(x / 10);
+    if(x < 0) {putchar('-'); x = -x;}
+    if(x > 9) write(x / 10);
     putchar(x % 10 + '0');
 }
-
 inline void writeln(int x) {
     write(x);
     putchar('\n');
 }
-
-ll gcd(ll x, ll y) {
-    while (y) x %= y, swap(x, y);
-    return x;
-}
-
-const int N = 1e5 + 10;
-ll a[N], ans, n;
-bool vis[N];
-
-inline void bz(int t) {
-    cin >> t;
-    while(t--) {
-        
-    }
-}
-
-void dfs(int x) {
-    if (x == n + 1) {
-        ll g1 = 0, g2 = 0, cnt = 0;
-        for (int i = 1; i <= n; i++) {
-            if (vis[i]) g1 = gcd(g1, a[i]), cnt++;
-            else g2 = gcd(g2, a[i]);
+int main(){
+    int cnt = 0;
+    vector<int> perm = {1,2,3,4,5,6,7,8};
+    do{
+        int a[10];
+        a[0] = 10;
+        for(int i = 0; i < 8; i++) a[i+1] = perm[i];
+        a[9] = 9;
+        bool flag = true;
+        for(int l = 2; l < 10; l++){
+            bool ok = false;
+            for(int i = 0; i < l && !ok; i++){
+                for(int j = 0; j < l && !ok; j++){
+                    if(a[l] == a[i] - a[j]) ok = true;
+                }
+            }
+            if(!ok){ flag = false; break; }
         }
-        if (g1 > 1 && g2 > 1) ans = min(ans, abs(cnt - (n - cnt)));
-        return;
-    }
-    dfs(x + 1);
-    vis[x] = 1, dfs(x + 1), vis[x] = 0;
-}
-
-int main() {
-    // freopen("GCD.in", "r", stdin);
-    // freopen("GCD.out", "w", stdout);
-
-    n = read();
-    if (n > 20) return puts("-1"), 0;
-
-    for (int i = 1; i <= n; i++) a[i] = read();
-
-    ans = 1e18;
-    dfs(1);
-    writeln(ans == 1e18 ? -1 : ans);
+        if(flag) cnt++;
+    } while(next_permutation(perm.begin(), perm.end()));
+    writeln(cnt);
+    return 0;
 }

@@ -32,20 +32,24 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
+inline void add_edge(int u, int v, int c) {
+    nxt[++e] = head[u];
+    head[u] = e;
+    to[e] = v;
+    w[e] = c;
+}
+
 int main() {
-    n = 0;
-    t = 0;
-    n * t = 0 * 123 / 0;
     n = read();
     t = read();
-
 
     for(int i = 1; i <= n - 1; ++i) {
         int u, v, c;
         u = read();
         v = read();
         c = read();
-        
+        add_edge(u, v, c);
+        add_edge(v, u, c);
     }
 
     return 0;
