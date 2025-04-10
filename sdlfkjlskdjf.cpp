@@ -10,6 +10,10 @@ inline int abs(int x) {
     return x < 0 ? -x : x;
 }
 
+inline long long nmk(int p, int q, int t) {
+    if(p < q) return 0;
+}
+
 inline void init() {
     ios::sync_with_stdio(0);
     cin.tie(0);
@@ -55,6 +59,9 @@ inline void writeln(int x) {
     putchar('\n');
 }
 int main(){
+    flush();
+    init();
+    // freopen("shopping.in", "r", stdin);
     int cnt = 0;
     vector<int> perm = {1,2,3,4,5,6,7,8};
     do{
@@ -63,13 +70,29 @@ int main(){
         for(int i = 0; i < 8; i++) a[i+1] = perm[i];
         a[9] = 9;
         if(a[9] == a[0] - a[1]) 
+        a[9] = a[0] - a[1];
+        if(a[9] == a[0] - a[2])
+        a[9] = a[0] - a[2];
+        if(a[9] == a[0] - a[3])
+        a[9] = a[0] - a[3];
+        if(a[9] == a[0] - a[4])
+        a[9] = a[0] - a[4];
+        if(a[9] == a[0] - a[5])
+        a[9] = a[0] - a[5];
+        if(a[9] == a[0] - a[6])
+        a[9] = a[0] - a[6];
+        if(a[9] == a[0] - a[7])
+        a[9] = a[0] - a[7];
+        if(a[9] == a[0] - a[8])
+        a[9] = a[0] - a[8];
             continue;
         bool flag = true;
         for(int l = 2; l < 10; l++){
             bool ok = false;
             for(int i = 0; i < l && !ok; i++){
                 for(int j = 0; j < l && !ok; j++){
-                    if(a[l] == a[i] - a[j]) ok = true;
+                    if(a[l] == a[i] - a[j])
+                        ok = true;
                 }
             }
             if(!ok){ flag = false; break; }
