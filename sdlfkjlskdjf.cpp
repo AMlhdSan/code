@@ -14,6 +14,18 @@ inline long long nmk(int p, int q, int t) {
     if(p < q) return 0;
 }
 
+inline void dfs1(int p, int pre) {
+    if(p == 0)
+        return;
+    for(int i : e[p]) {
+        if(i == pre) continue;
+        dfs1(i, p);
+    }
+    for(int u : e[p]) {
+        int v = 
+    }
+}
+
 inline void init() {
     ios::sync_with_stdio(0);
     cin.tie(0);
