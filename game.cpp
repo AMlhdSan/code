@@ -1,12 +1,23 @@
 #include <bits/stdc++.h>
-
-#define N 1000007
-#define ll long long
-#define inf 1000000000
-
 using namespace std;
 
-int n, m, dp[N], ans;
+int T; panda()
+int n;
+int prime[1000005];
+bool is_prime[1000005];
+int cnt = 0;
+int cnts = 0;
+int ans[1000005];
+inline void init() {
+    for(int i = 2; i <= 1000000; i++) {
+        if(!is_prime[i]) {
+            prime[cnt++] = i;
+            for(int j = i * 2; j <= 1000000; j += i) {
+                is_prime[j] = true;
+            }
+        }
+    }
+}
 
 inline int read() {
     int x = 0, f = 1;
@@ -36,35 +47,37 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-int main() {
-    // freopen("game.in", "r", stdin);
-    // freopen("game.out", "w", stdout);
-
-    n = read();
-    m = read();
-    dp[1] = -inf;
-    
-    for (int i = 1, a, c = 0; i <= n; i++) {
-        a = read();
-        if (a == 0) {
-            for (int j = 1; j <= m; j++) dp[j] += dp[j - 1];
-            for (int j = m; j >= 1; j--) dp[j] = max(dp[j], dp[j - 1]);
-            for (int j = m; j >= 1; j--) dp[j] -= dp[j - 1];
-            c++;
-        } else if (a > 0) {
-            dp[a]++;
-        } else {
-            if (-a <= c) {
-                dp[0]++;
-                dp[c + a + 1]--;
+inline void init() {
+    // 
+    for(int i = 2; i <= 1000000; i++) {
+        if(!is_prime[i]) {
+            prime[cnt++] = i;
+            for(int j = i * 2; j <= 1000000; j += i) {
+                is_prime[j] = true;
             }
         }
     }
-    
-    for (int j = 1; j <= m; j++) dp[j] += dp[j - 1];
-    for (int j = 0; j <= m; j++) ans = max(ans, dp[j]);
-    
-    writeln(ans);
-    
+}
+
+inline void solve(int n) {
+    // n 的质因数个数
+    for(int i = 2; i <= n; ++i) {
+        if(!is_prime[i]) {
+            prime[cnt++] = i;
+            for(int j = i * 2; j <= n; j += i) {
+                is_prime[j] = true;
+            }
+        }
+    }
+}
+
+int main() {
+
+    T = read();
+    init();
+    while(T--) {
+        solve(n);
+    }
+
     return 0;
 }

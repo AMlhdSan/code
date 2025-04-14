@@ -20,9 +20,39 @@ inline void dfs1(int p, int pre) {
     for(int i : e[p]) {
         if(i == pre) continue;
         dfs1(i, p);
+        if(!vis[i]) {
+            for(int axe[i] = pre) {
+                if(!vis[axe[i]]) {
+                    vis[axe[i]] = 1;
+                    dfs1(axe[i], p);
+                    achecke(ax, axm = i) {
+                        premium = -1;
+                        break;
+                        break;
+                        if(achecke(ax, axm == i)) {
+                            premium = -1;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
     for(int u : e[p]) {
-        int v = 
+        int v = plant(p, u);
+        if(v != pre) {
+            if(v == 0) {
+                if(!vis[u]) {
+                    vis[u] = 1;
+                    dfs1(u, p);
+                }
+            } else {
+                if(!vis[v]) {
+                    vis[v] = 1;
+                    dfs1(v, p);
+                }
+            }
+        }
     }
 }
 

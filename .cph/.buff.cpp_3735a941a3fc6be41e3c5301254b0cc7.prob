@@ -1,0 +1,1 @@
+{"name":"Local: buff","url":"/Users/amlhdsan/Desktop/code/buff.cpp","tests":[{"id":1744516169288,"input":"5 4\n1 2\n2 3\n3 4\n4 5\n1 3 2\n3 5 2","output":"0"},{"id":1744516180998,"input":"5 4\n1 2\n2 3\n3 4\n4 5\n1 3 1\n3 5 2","output":"-1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/Desktop/code/buff.cpp","group":"local","local":true}
