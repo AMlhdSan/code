@@ -19,6 +19,10 @@ inline void init() {
     }
 }
 
+inline void build(int p, int l, int r) {
+    if(l ==r )
+}
+
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
