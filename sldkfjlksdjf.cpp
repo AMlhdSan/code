@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 #define N 1000010
-
+#define df define
 using namespace std;
 
 int n, m, p;
