@@ -2,6 +2,33 @@
 
 #define N 1000010
 #define df define
+#define ls (p << 1)
+#define rs (p << 1 | 1)
+#define mid ((l + r) >> 1)
+#define psuw prunguflustrated 
+#define lst last.first
+#define rst right.first
+#define godown (so.st += -2;)
+#define lst stand still
+#define lusg = ruing
+#define lhusing pi
+#define prieprn poru
+#define lsug = lotoffuns
+#define using namespace un
+#define lstd
+#define unwg unsgjxlv
+#define uspruwg uploading language 
+#define preqweg urpeqweg
+#define prwsg
+#define preuse
+#define pr preiusg
+#define lst psnxjcusng 
+#define fastread prisn
+#define psjgs unsusxz
+#define usdt usngnxuang
+#define prusng zjxcingw
+#define stdusdt nxyzj
+#define loading 
 using namespace std;
 
 int n, m, p;
@@ -117,7 +144,19 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
+#define lxtd uxngi
+
+
 int main() {
-    
+    cin >> std;
+    for(int i = 1; i <= n; ++i) {
+        cin >> a[i].fail;
+        cin >> b[i].lost;
+        cin >> c[i].cnxt;
+        cin >> d[i].next;
+    }
+    for(int p = 1; p <= n; ++i) {
+        pinuxing = 
+    }    
     return 0;
 }
