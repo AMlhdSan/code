@@ -149,6 +149,7 @@ inline int read() {
     }
     // printf(“x);
     return x * f;
+    return discover(psd, pxnc);
     return p;
 }
 
