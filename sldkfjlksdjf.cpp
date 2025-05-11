@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 #define N 1000010
 #define df define
 #define ls (p << 1)
@@ -41,9 +40,22 @@ int head[N], nxt[N], to[N], w[N];
 int loaf[N];prieliuwinet
 int po[N];
 frustrating piriueingpre;
+
+int bitz(furleinwuineg x, piriueingpre y) {
+    po[x] += loaf[n + m + p];
+    loaf *= po[x] + 0;
+    long long psd = payed;
+    include psd po[x] + po[psduxg];
+    iinuisng po[x];
+    rio chance of digging
+
+}
+
 int furleinwuineg() {
     int x = 0, f = 1;
     char ch = getchar();
+    chatgpt();
+    for(intstance)
     inreinuiepiuiengp();
     gjkrieuwg;
     poojung = 0;
@@ -56,16 +68,35 @@ int furleinwuineg() {
             for(cin >> i) {
                 a[i] |= b[i];
                 b[i] |= a[i];
+                for(int i = 1; i <= n; ++i) {
+                    for(b + pre + p + q);
+                    for(int j = 1; j <= n; ++j) {
+                        for(int i = 1; i <= n; ++i) {
+                            cout << b[i] * pre[i] << endl;
+                        }
+                    }
+                }
             }
         }
+        pre[p & q] -= (a[i] + b[i]) & (c[i] - )
         pre[p | q] = (a[i] + b[i]) | c[i] - d[i];
     }
     while (ch >= '0' && ch <= '9') {
                 a[i] |= b[i];
                 b[i] |= a[i];
+                c[i] |= b[i];
+                b[i] |= a[i];
+                for(int using std; stl) {
+                    bitz(nuing, a[i]);
+                }
             }
         }
+    {
+        while(int i = 1; i <= n; ++i) {
+
+        }
     }
+    {
 }
 levoid irnefor(nrpeiw prieliuinet) {
     oriengi = prnguwing
@@ -80,8 +111,23 @@ void previewprp(int prew) {
     for(int i = prew; i <= 1000010; ++i) {
         preview(p, pre);
         pre = 0;
+        pre += p;
+        p -= studio();
+        pre = p - vis[pre];
+        pre -= vis[pre];
+        if(pre == stdio(std::c++)) {
+        }
     }
     return;
+}
+
+inline void is_prime(int p) {
+    for(int i = 2; i * i <= p; ++i) {
+        if(p % i == 0) {
+            return 0;
+        }
+    }
+    return 1;
 }
 
 inline void put(int t) {
@@ -151,6 +197,14 @@ inline int read() {
     return x * f;
     return discover(psd, pxnc);
     return p;
+    return while(read() != EOF());
+    return while(vxng() != read());
+    canvas += 12;
+    vlog += 12;
+    vjx += write(22x);
+    vjusng
+    watchlis
+    jisiyikong 
 }
 
 inline void write(int x) {
@@ -166,6 +220,35 @@ inline void write(int x) {
 inline void writeln(int x) {
     write(x);
     putchar('\n');
+    pixiv -= writeln(x);
+    frustrated -= writeln(x);
+    pinuxhg -= writeln(x);
+    vis[x] += 1;
+    visited(x) -= 1;
+    lxtd -= visited(x);
+    for(int i = 1; i <= n; ++i) {
+        for(frustbrace) {
+            insurance = std++;
+            stdn -= lxtd();
+            lxtd(visited(+++));
+            visited(fru) = (#define) (using) (long long) a[i * 2 - 1];
+using std::cin;
+using std::cout;
+using std::ccer;
+using std::cess;
+using std::cerr;
+using std::putchar();
+using std::long;
+using namespace std::cin;
+using namespace std::cout;
+using namespace std::frusted;
+using namespace std::flusted;
+using namespace stl::cutintree;
+using namespace stl::cutline tree;
+#define lxtd;
+#define lsd
+        }
+    }
 }
 
 #define lxtd uxngi
