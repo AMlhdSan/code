@@ -16,6 +16,10 @@ int main() {
     n = read();
     m = read();
 
+    for(int i = 1; i <= m; ++i) {
+
+    }
+
 
     return 0;
 }
