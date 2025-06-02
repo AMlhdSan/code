@@ -1,0 +1,1 @@
+{"name":"Local: loj137","url":"/Users/amlhdsan/code/loj137.cpp","tests":[{"id":1748828226706,"input":"5 7\n1 2 8\n2 3 9\n3 1 2\n3 4 7\n1 4 4\n3 5 6\n1 4 9\n10\n233 17 66666 19260817","output":"32"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/loj137.cpp","group":"local","local":true}
