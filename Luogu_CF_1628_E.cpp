@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#define N 600010
+#define N 200010
 #define ls (p << 1)
 #define rs (p << 1 | 1)
 #define mid ((l + r) >> 1)
@@ -46,12 +46,11 @@ inline bool cmp(node x, node y) {
 
 int n, q;
 int r;
-int head[N], nxt[N], to[N], e = 0;
-int fa[N];
-int dp[N][20], dep[N];
-int val[N];
-vector<int> G[N];
-int dfn[N], id[N], cntt = 0;
+int head[N << 2], nxt[N << 2], to[N << 2], e = 0;
+int fa[N << 2];
+int dp[N << 2][24], dep[N << 2];
+int val[N << 2];
+int dfn[N << 2], id[N << 2], cntt = 0;
 
 inline void add_edge(int u, int v) {
     nxt[++e] = head[u];
@@ -76,15 +75,15 @@ inline void init() {
 inline void dfs(int p, int pre) {
     dfn[p] = ++cntt;
     id[cntt] = p;
+    for(int i = 1; i < 20; ++i) {
+        dp[p][i] = dp[dp[p][i - 1]][i - 1];
+    }
     for(int i = head[p]; i; i = nxt[i]) {
         int v = to[i];
         if(v == pre) continue;
         dp[v][0] = p; // 记录父节点
         dep[v] = dep[p] + 1; // 记录深度
         dfs(v, p);
-    }
-    for(int i = 1; i < 20; ++i) {
-        dp[p][i] = dp[dp[p][i - 1]][i - 1];
     }
 }
 
@@ -109,15 +108,15 @@ inline int lca(int x, int y) {
 }
 
 inline void kruskal() {
-    init();
+    // init();
     int cnt = n;
     for(int i = 1; i <= n - 1; ++i) {
-        d[i].a = find(d[i].a);
-        d[i].b = find(d[i].b);
-        if(d[i].a == d[i].b) continue;
-        fa[d[i].a] = fa[d[i].b] = ++cnt;
-        add_edge(d[i].a, cnt);
-        add_edge(d[i].b, cnt);
+        int x = find(d[i].a);
+        int y = find(d[i].b);
+        if(x == y) continue;
+        fa[x] = fa[y] = ++cnt;
+        add_edge(x, cnt);
+        add_edge(y, cnt);
         val[cnt] = d[i].c;
         // dep[cnt] = dep[d[i].a] + 1;
     }
@@ -133,37 +132,29 @@ inline void upd(int p) {
     tmax[p] = max(tmax[ls], tmax[rs]);
     wmin[p] = min(wmin[ls], wmin[rs]);
     wmax[p] = max(wmax[ls], wmax[rs]);
-    if(tag[p] == 0) {
-        wmin[p] = -0x3f3f3f3f;
-        wmax[p] = -0x3f3f3f3f;
-    }
-    else {
-        if(wmin[ls] == -0x3f3f3f3f) 
-            wmin[p] = wmin[rs];
-        if(wmax[ls] == -0x3f3f3f3f) 
-            wmax[p] = wmax[rs];
-    }
 }
 
 inline void pushd(int p) {
     if(tag[p] == 0)  {
         // 如果当前节点是黑色，将标记传递给子节点
         tag[ls] = tag[rs] = 0;
-        tmin[ls] = tmax[ls] = wmin[ls] = wmax[ls] = tmin[p];
-        tmin[rs] = tmax[rs] = wmin[rs] = wmax[rs] = tmax[p];
+        wmin[ls] = wmin[rs] = -0x3f3f3f3f; // 黑色点的值设为无效值
+        wmax[ls] = wmax[rs] = 0x3f3f3f3f;
         return;
     }
     // 如果当前节点是白色，将标记传递给子节点
     tag[ls] = tag[rs] = 1;
-    tmin[ls] = tmax[ls] = wmin[ls] = wmax[ls] = -0x3f3f3f3f;
-    tmin[rs] = tmax[rs] = wmin[rs] = wmax[rs] = -0x3f3f3f3f;
+    wmin[ls] = tmin[ls];
+    wmax[ls] = tmax[ls];
+    wmin[rs] = tmin[rs];
+    wmax[rs] = tmax[rs];
     tag[p] = 0; // 清除当前节点的标记
 }
 
 inline void build(int p, int l, int r) {
     tag[p] = 0; // 初始为黑色
     if(l == r) {
-        tmin[p] = tmax[p] = val[l];
+        tmin[p] = tmax[p] = dfn[l];
         wmin[p] = wmax[p] = -0x3f3f3f3f; // 白点初始为无效值
         return;
     }
@@ -176,10 +167,13 @@ inline void mdf(int p, int l, int r, int L, int R, int color) {
     if(L <= l && r <= R) {
         tag[p] = color; // 更新当前节点的颜色
         if(color == 0) { // 黑色
-            tmin[p] = tmax[p] = wmin[p] = wmax[p] = -0x3f3f3f3f;
+            tmin[p] = tmax[p];
+            wmin[p] = 0x3f3f3f3f; // 黑色点的值设为无效值
+            wmax[p] = -0x3f3f3f3f; // 黑色点的值设为无效值
         }
         else { // 白色
-            tmin[p] = tmax[p] = wmin[p] = wmax[p] = 0; // 白色点的值可以设为0或其他有效值
+            wmax[p] = tmax[p];
+            wmin[p] = tmin[p];
         }
         return;
     }
@@ -216,6 +210,8 @@ int main() {
     n = read();
     q = read();
 
+    init();
+
     for(int i = 1; i <= n - 1; ++i) {
         d[i].a = read();
         d[i].b = read();
@@ -226,8 +222,10 @@ int main() {
     // dfs(1, 0);
 
     sort(d + 1, d + n, cmp);
-    
+
     kruskal();
+
+    dep[r] = 1; // 根节点深度为1
 
     dfs(r, 0);
 
@@ -248,14 +246,13 @@ int main() {
         else if(op == 3) {
             int t = read();
             // int y = read();
-            int x = qrymin(1, 1, n, 1, n);
-            int y = qrymax(1, 1, n, 1, n);
-            if(x == 0x3f3f3f3f || y == -0x3f3f3f3f) {
-                writeln(-1);
-                continue;
-            }
-            int lc = lca(x, y);
-            writeln(val[lca(x, lc)]);
+            int x = wmin[1];
+            int y = wmax[1];
+            writeln(x);
+            writeln(y);
+            // int lc = lca(id[x], id[y]);
+            // writeln(lc);
+            // writeln(val[lca(t, lc)]);
         }
     }
 
