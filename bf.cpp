@@ -31,7 +31,5 @@ inline void writeln(int x) {
 
 int main() {
 
-    
-
     return 0;
 }
