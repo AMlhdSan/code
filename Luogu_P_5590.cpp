@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int n, m;
+vec
+
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
@@ -30,6 +33,8 @@ inline void writeln(int x) {
 }
 
 int main() {
+
+
 
     return 0;
 }
