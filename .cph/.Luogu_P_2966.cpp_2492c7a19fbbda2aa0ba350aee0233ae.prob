@@ -1,0 +1,1 @@
+{"name":"Luogu - P2966","url":"https://www.luogu.com.cn/problem/P2966","memoryLimit":128000,"timeLimit":1000,"tests":[{"id":1750429291763,"input":"5 7 2 \n2 \n5 \n3 \n3 \n4 \n1 2 3 \n1 3 2 \n2 5 3 \n5 3 1 \n5 4 1 \n2 4 3 \n3 4 4 \n1 4 \n2 3 \n","output":"8 \n9 \n"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_2966.cpp"}
