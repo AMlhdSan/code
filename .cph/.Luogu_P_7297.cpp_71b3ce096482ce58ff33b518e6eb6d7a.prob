@@ -1,0 +1,1 @@
+{"name":"Luogu - P7297","url":"https://www.luogu.com.cn/problem/P7297","memoryLimit":256000,"timeLimit":1000,"tests":[{"id":1750564401502,"input":"5 4\n1 4 2 3 4\n1010\n0001\n0110\n0100","output":"6"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_7297.cpp"}
