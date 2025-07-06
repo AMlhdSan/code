@@ -1,79 +1,135 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <queue>
+#include <vector>
 
-double solve(int N, int M, int K, int H, std::vector<int> x, std::vector<int> y, std::vector<int> c, std::vector<int> arr) {
-    const double INF = std::numeric_limits<double>::infinity();
-    std::vector<std::vector<std::pair<int, int>>> adj(N);
-    for (int i = 0; i < M; ++i) {
-        adj[x[i]].push_back({y[i], c[i]});
-        adj[y[i]].push_back({x[i], c[i]});
+const int NX = 100010;
+const double INF = 1e24;
+
+int n, m, k, h;
+int reachable[NX];
+
+struct E {
+    int to, nex, w, t;
+};
+
+E adj[300 * NX];
+int head[75 * NX];
+int ec;
+
+void add(int u, int v, int w, int t) {
+    adj[++ec] = E{v, head[u], w, t};
+    head[u] = ec;
+}
+
+struct Node {
+    int id;
+    double v;
+
+    bool operator<(const Node& x) const {
+        if (id / n != x.id / n) return id / n > x.id / n;
+        return v > x.v;
+    }
+};
+
+int get_id(int x, int lev) {
+    return x + lev * n;
+}
+
+void find_reachable(int p) {
+    reachable[p] = 1;
+    for (int i = head[p]; i; i = adj[i].nex) {
+        if (reachable[adj[i].to] == 0 && p != h) {
+            find_reachable(adj[i].to);
+        }
+    }
+}
+
+double dis[75 * NX];
+int vis[75 * NX];
+
+void clear_all() {
+    for (int i = 0; i < n; i++) reachable[i] = 0;
+    for (int i = 0; i <= (k + 1) * n + 1; i++) {
+        head[i] = 0;
+        dis[i] = 0;
+        vis[i] = 0;
+    }
+    ec = n = m = k = h = 0;
+}
+
+double solve(int N, int M, int K, int H,
+             std::vector<int> X, std::vector<int> Y,
+             std::vector<int> C, std::vector<int> arr) {
+    clear_all();
+
+    k = std::min(K, 72);
+    n = N;
+    m = M;
+    h = H;
+
+    for (int i = 0; i < n; i++) head[i] = 0;
+    ec = 0;
+    for (int i = 0; i < m; i++) {
+        add(X[i], Y[i], C[i], 1);
+        add(Y[i], X[i], C[i], 1);
     }
 
-    int k_cap = std::min(K, 70);
+    find_reachable(0);
 
-    std::vector<std::vector<double>> dist(N, std::vector<double>(k_cap + 1, INF));
+    if (reachable[H] == 0) return -1;
 
-    std::priority_queue<std::tuple<double, int, int>> pq;
+    for (int i = 0; i <= (k + 1) * n + 1; i++) head[i] = 0;
+    ec = 0;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j <= k; j++) {
+            if (X[i] != H) add(get_id(X[i], j), get_id(Y[i], j), C[i], 1);
+            if (Y[i] != H) add(get_id(Y[i], j), get_id(X[i], j), C[i], 1);
+            if (j != k && X[i] != H && arr[Y[i]] == 2) add(get_id(X[i], j), get_id(Y[i], j + 1), C[i], 2);
+            if (j != k && Y[i] != H && arr[X[i]] == 2) add(get_id(Y[i], j), get_id(X[i], j + 1), C[i], 2);
+        }
+    }
 
-    dist[0][0] = 0.0;
-    pq.push({-0.0, 0, 0});
+    for (int i = 0; i <= (k + 1) * n + 1; i++) {
+        dis[i] = INF;
+        vis[i] = 0;
+    }
 
-    while (!pq.empty()) {
-        auto [d_neg, u, k] = pq.top();
+    std::priority_queue<Node> pq;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == 0 && reachable[i] == 1) {
+            pq.push(Node{i, 0});
+            dis[i] = 0;
+        }
+    }
+    pq.push(Node{0, 0});
+    dis[0] = 0;
+
+    while (pq.size()) {
+        Node curr = pq.top();
         pq.pop();
+        int u_id = curr.id;
 
-        double d = -d_neg;
+        if (vis[u_id]) continue;
+        vis[u_id] = 1;
 
-        if (d > dist[u][k] + 1e-9) { 
-            continue;
-        }
-        
-        if (u == H) {
-            continue;
-        }
+        for (int i = head[u_id]; i; i = adj[i].nex) {
+            double new_cost = (dis[u_id] + adj[i].w);
+            if (adj[i].t == 2) new_cost /= 2.0;
 
-        for (auto& edge : adj[u]) {
-            int v = edge.first;
-            int w = edge.second;
-            
-            double t = d + w;
-
-            if (arr[v] == 0) {
-                if (0.0 < dist[v][k]) {
-                    dist[v][k] = 0.0;
-                    pq.push({-0.0, v, k});
-                }
-            } 
-            else if (arr[v] == 1) { 
-                if (t < dist[v][k]) {
-                    dist[v][k] = t;
-                    pq.push({-t, v, k});
-                }
-            } 
-            else { 
-                if (t < dist[v][k]) {
-                    dist[v][k] = t;
-                    pq.push({-t, v, k});
-                }
-                
-                if (k + 1 <= k_cap) {
-                    double t_div = t / 2.0;
-                    if (t_div < dist[v][k + 1]) {
-                        dist[v][k + 1] = t_div;
-                        pq.push({-t_div, v, k + 1});
-                    }
+            if (dis[adj[i].to] > new_cost) {
+                dis[adj[i].to] = new_cost;
+                if (!vis[adj[i].to]) {
+                    pq.push(Node{adj[i].to, dis[adj[i].to]});
                 }
             }
         }
     }
 
     double ans = INF;
-    for (int i = 0; i <= k_cap; ++i) {
-        ans = std::min(ans, dist[H][i]);
+    for (int i = 0; i <= k; i++) {
+        ans = std::min(ans, dis[get_id(h, i)]);
     }
 
-    if (std::isinf(ans)) {
-        return -1.0;
-    } else {
-        return ans;
-    }
+    return ans;
 }
