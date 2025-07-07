@@ -1,0 +1,1 @@
+{"name":"Luogu - P1108","url":"https://www.luogu.com.cn/problem/P1108","memoryLimit":128000,"timeLimit":1000,"tests":[{"id":1751814037884,"input":"12\n68 69 54 64 68 64 70 67 78 62 98 87\n","output":"4 2\n"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_1108.cpp"}
