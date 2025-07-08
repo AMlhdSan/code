@@ -1,27 +1,12 @@
-#include <bits/stdc++.h>
-
-#define N 500010
-#define int long long
-#define PII pair<int, int>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-int n, m, k;
-int a[N], b[N];
-int sum = 0;
-PII c[N], cntc = 0;
-PII d[N], cntd = 0;
+long long n, k, m, ans, minn = 0x7fffffff, t[500010];
+int a[500010];
 
-inline bool cmpc(PII x, PII y) {
-    return x.first < y.first;
-}
-
-inline bool cmpd(PII x, PII y) {
-    return x.first > y.first;
-}
-
-inline int read() {
-    int x = 0, f = 1;
+inline long long read() {
+    long long x = 0, f = 1;
     char ch = getchar();
     while (ch < '0' || ch > '9') {
         if (ch == '-') f = -1;
@@ -34,7 +19,7 @@ inline int read() {
     return x * f;
 }
 
-inline void write(int x) {
+inline void write(long long x) {
     if (x < 0) {
         putchar('-');
         x = -x;
@@ -43,24 +28,29 @@ inline void write(int x) {
     putchar(x % 10 + '0');
 }
 
-inline void writeln(int x) {
+inline void writeln(long long x) {
     write(x);
     putchar('\n');
 }
 
-signed main() {
-
+int main() {
     n = read();
-    k = read();
-    m = read();
+	k = read();
+	m = read();
 
-    for(int i = 1; i <= k; ++i) {
-        a[i] = read();
-        b[i] = read();
-        if(a[i] == 0) {
-            
-        }
-    }
-    
-    return 0;
+	for(int i = 1; i <= k; i++){
+		int b;
+		a[i] = read();
+		b = read();
+		if(b==1){
+			t[i] = a[i] - n;
+		}
+		else{
+			t[i] = n - a[i];
+		}
+	}
+	sort(t + 1, t + k + 1);
+	t[0] = t[k];
+	writeln(2 * (n - 1) * (m / k) + t[m % k]);
+	return 0;
 }

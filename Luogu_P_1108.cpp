@@ -1,86 +1,53 @@
 #include <bits/stdc++.h>
 
-#define N 100005
+#define ll long long
 
 using namespace std;
 
 int n;
-int a[N];
-int dp[N];
-int t[N];
-int maxx = 0;
-int cnt = 0;
+ll sum = 0;
 
-inline int read() {
-    int x = 0, f = 1;
-    char ch = getchar();
-    while (ch < '0' || ch > '9') {
-        if (ch == '-') f = -1;
-        ch = getchar();
+inline ll read() {
+    ll w = 0, f = 1;
+    char ch = getchar_unlocked();
+    while(ch < '0' || ch > '9') {
+        if(ch == '-') {
+            f = -1;
+        }
+        ch = getchar_unlocked();
     }
-    while (ch >= '0' && ch <= '9') {
-        x = (x << 3) + (x << 1) + (ch ^ 48);
-        ch = getchar();
+    while(ch >= '0' && ch <= '9') {
+        w = (w << 3) + (w << 1) + (ch - '0');
+        ch = getchar_unlocked();
     }
-    return x * f;
+    return w * f;
 }
 
-inline void write(int x) {
-    if (x < 0) {
-        putchar('-');
+inline void write(ll x) {
+    if(x < 0) {
+        putchar_unlocked('-');
         x = -x;
     }
-    if (x > 9) write(x / 10);
-    putchar(x % 10 + '0');
+    if(x > 9) {
+        write(x / 10);
+    }
+    putchar_unlocked(x % 10 + '0');
 }
 
-inline void writeln(int x) {
+inline void writeln(ll x) {
     write(x);
-    putchar('\n');
+    putchar_unlocked('\n');
 }
 
 int main() {
 
     n = read();
 
-    for (int i = 1; i <= n; i++) {
-        a[i] = read();
-    }
-
-    for(int i = 1; i <= n; i++) {
-        dp[i] = 1;
-        for (int j = 1; j < i; j++) {
-            if (a[i] < a[j]) {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
-        }
-        maxx = max(maxx, dp[i]);
-    }
-
-    write(maxx);
-    putchar(' ');
-
     for(int i = 1; i <= n; ++i) {
-        if(dp[i] == 1) {
-            t[i] = 1;
-        }
-        for(int j = 1; j < i; ++j) {
-            if(a[i] < a[j] && dp[j] + 1 == dp[i]) {
-                t[i] += t[j];
-            }
-            else if(dp[i] == dp[j] && a[j] == a[i]) {
-                t[i] = 0;
-            }
-        }
+        sum += read();
     }
 
-    for(int i = 1; i <= n; ++i) {
-        if(dp[i] == maxx) {
-            cnt += t[i];
-        }
-    }
-
-    writeln(cnt);
+    writeln(sum);
 
     return 0;
 }
