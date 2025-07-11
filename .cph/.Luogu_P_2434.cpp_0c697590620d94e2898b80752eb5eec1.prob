@@ -1,0 +1,1 @@
+{"name":"Luogu - P2434","url":"https://www.luogu.com.cn/problem/P2434","memoryLimit":128000,"timeLimit":1000,"tests":[{"id":1752243168968,"input":"5\r\n5 6\r\n1 4\r\n10 10\r\n6 9\r\n8 10\r\n","output":"1 4\r\n5 10\r\n"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_2434.cpp"}

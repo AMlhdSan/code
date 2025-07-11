@@ -1,0 +1,1 @@
+{"name":"Luogu - P3740","url":"https://www.luogu.com.cn/problem/P3740","memoryLimit":262144,"timeLimit":1000,"tests":[{"input":"100 5\n1 4\n2 6\n8 10\n3 4\n7 10\n","output":"4","id":1752244430586}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_3740.cpp"}
