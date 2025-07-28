@@ -1,0 +1,1 @@
+{"name":"Luogu - P3382","url":"https://www.luogu.com.cn/problem/P3382","memoryLimit":524288,"timeLimit":1000,"tests":[{"id":1753631150075,"input":"3 -0.9981 0.5\n1 -3 -3 1","output":"-0.41421"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_3382.cpp"}
