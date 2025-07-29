@@ -62,6 +62,7 @@ int main() {
             r = mid;
         } else {
             l = mid;
+            // r = mid - 1;
         }
     }
     cout << fixed << setprecision(8) << (l + r) / 2.0 << endl;
