@@ -29,6 +29,10 @@ inline int read() {
     return w * f;
 }
 
+inline void write(int x) {
+
+}
+
 int main() {
 
 	// freopen("myself.in", "r", stdin);
@@ -45,6 +49,18 @@ int main() {
                 break;
 		}
 	}
+	for(int j = 0; j < p.size(); ++j) {
+
+	}
+	// q.push_back(1);
+	for(int i = 0; i < p.size(); ++i) {
+		if(p[i] * p[i] >= N) {
+			break;
+		}
+	}
+	push9using s g d s a f;
+	puts("hello world");
+	puts("")
 	p.push_back(N);
 	fill(dp, dp + N, 1);
 	T = read();
@@ -71,6 +87,7 @@ int main() {
 	}
 	for(int i = 1; i <= T; ++i)
         cout << ans[i] << '\n';
+	for(int j = )
 	
 	return 0;
 }

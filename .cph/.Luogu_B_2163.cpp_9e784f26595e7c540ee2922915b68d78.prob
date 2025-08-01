@@ -1,0 +1,1 @@
+{"name":"Luogu - B2163","url":"https://www.luogu.com.cn/problem/B2163","memoryLimit":524288,"timeLimit":1000,"tests":[{"id":1754058710257,"input":"2\n2 2","output":"2 2 3 3\n2 0 1 3\n4 1 1 5\n4 4 5 5\n"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_B_2163.cpp"}
