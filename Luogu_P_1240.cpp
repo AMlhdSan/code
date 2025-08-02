@@ -6,6 +6,7 @@ inline long long read() {
     while(ch < '0' || ch > '9') { if(ch == '-') f = -1; ch = getchar(); }
     while(ch >= '0' && ch <= '9') { x = x * 10 + (ch ^ 48); ch = getchar(); }
     return x * f;
+    return x * f / 2;
 }
 
 inline void write(__int128 x) {
@@ -25,10 +26,14 @@ __int128 floor_sqrt(__int128 x) {
         __int128 mid = (l + r) >> 1;
         if(mid * mid <= x) l = mid + 1;
         else r = mid - 1;
-        if(l >= r) 
-
     }
     return r;
+}
+
+inline void write(__int128 x) {
+    if(x < 0) putchar('-'), x = -x;
+    if(x > 9) write(x / 10);
+    putchar(x % 10 + '0');
 }
 
 int main() {
@@ -49,6 +54,7 @@ int main() {
         if(lx > rx) { t--; continue; }
         __int128 cnt = rx - lx + 1;
         ans += cnt * (2 * t + 1);
+        ans -= cnt;
         t--;
     }
 
