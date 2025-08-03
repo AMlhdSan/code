@@ -2,7 +2,7 @@
 using namespace std;
 typedef long long ll;
 const ll NEG = -1000000000000000000LL;
- 
+
 struct Node {
     ll s, pre, suf, best, ans;
 };
