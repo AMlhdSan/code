@@ -76,8 +76,24 @@ int main(){
     int n; 
     cin >> n;
     vector<ll> a(n);
+    bool flag = 0;
     for (int i = 0; i < n; i++){
         cin >> a[i];
+        if(a[i] > 0) flag = 1;
+    }
+    if(flag == 0) {
+        int maxx, maxxx;
+        maxx = maxxx = a[0];// 最大值和次大值.
+        for(int i = 1; i < n; i++) {
+            if(a[i] > maxx) {
+                maxxx = maxx;
+                maxx = a[i];
+            } else if(a[i] > maxxx) {
+                maxxx = a[i];
+            }
+        }
+        cout << maxx + maxxx << "\n";
+        return 0;
     }
     vector<ll> B(2 * n);
     for (int i = 0; i < 2 * n; i++){
