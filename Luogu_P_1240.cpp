@@ -60,5 +60,6 @@ int main() {
 
     ans = ans * 4 - 3; // 4象限，对称，减去重复原点
     writeln(ans);
+    // return solve(n), 0;
     return 0;
 }

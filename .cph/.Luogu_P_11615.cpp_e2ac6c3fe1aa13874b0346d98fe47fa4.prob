@@ -1,0 +1,1 @@
+{"name":"Luogu - P11615","url":"https://www.luogu.com.cn/problem/P11615","memoryLimit":524288,"timeLimit":3000,"tests":[{"id":1754193099995,"input":"5\n0 4\n0 998244353\n1000000000000000000 20120712\n1000000000000000000 1000000000000000000\n1000000000000000000 998244353","output":"5000000000080482856"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_11615.cpp"}
