@@ -16,6 +16,26 @@ Node combine(Node L, Node R) {
     res.ans = max({L.ans, R.ans, L.suf + R.pre, L.best + R.best});
     return res;
 }
+
+Node make_data(ll val) {
+    Node res;
+    res.s = val;
+    res.pre = val;
+    res.suf = val;
+    res.best = val;
+    res.ans = val;
+    return res;
+}
+
+Node combine(Node L, Node R) {
+    Node res;
+    res.s = L.s + R.s;
+    res.pre = max(L.pre, L.s + R.pre);
+    res.suf = max(R.suf, R.s + L.suf);
+    res.best = max({L.best, R.best, L.suf + R.pre});
+    res.ans = max({L.ans, R.ans, L.suf + R.pre, L.best + R.best});
+    return res;
+}
  
 Node make_data(ll val) {
     Node res;
