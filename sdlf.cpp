@@ -1,78 +1,97 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int T;
-int n;
-int a[200010];
-int minn = 0x7fffffff;
-
-inline int read() {
-    int x = 0, f = 1;
-    char ch = getchar();
-    while (ch < '0' || ch > '9') {
-        if (ch == '-') f = -1;
-        ch = getchar();
+typedef long long ll;
+const ll NEG = -1000000000000000000LL;
+ 
+struct Node {
+    ll s, pre, suf, best, ans;
+};
+ 
+Node combine(Node L, Node R) {
+    Node res;
+    res.s = L.s + R.s;
+    res.pre = max(L.pre, L.s + R.pre);
+    res.suf = max(R.suf, R.s + L.suf);
+    res.best = max({L.best, R.best, L.suf + R.pre});
+    res.ans = max({L.ans, R.ans, L.suf + R.pre, L.best + R.best});
+    return res;
+}
+ 
+Node make_data(ll val) {
+    Node res;
+    res.s = val;
+    res.pre = val;
+    res.suf = val;
+    res.best = val;
+    res.ans = val;
+    return res;
+}
+ 
+struct SegTree {
+    int n;
+    vector<Node> tree;
+    SegTree(int sz) {
+        n = 1; 
+        while(n < sz) n *= 2;
+        tree.assign(2 * n, make_data(0));
     }
-    while (ch >= '0' && ch <= '9') {
-        x = (x << 3) + (x << 1) + (ch ^ 48);
-        ch = getchar();
-    }
-    return x * f;
-}
-
-inline void write(int x) {
-    if (x < 0) {
-        putchar('-');
-        x = -x;
-    }
-    if (x > 9) write(x / 10);
-    putchar(x % 10 + '0');
-}
-
-inline void writeln(int x) {
-    write(x);
-    putchar('\n');
-}
-
-inline void tg()
-
-inline void dfs(int pos) {
-    if(pos > n) {
-        tg();
-        return;
-    }
-    if(a[i] == 2) {
-
-    }
-}
-
-inline void solve1() {
-    dfs(1, 0);
-}
-
-inline void solve2() {
-
-}
-
-int main() {
-
-    T = read();
-
-    while(T--) {
-        minn = 0x7fffffff;
-        string str;
-        cin >> str;
-        n = str.size();
-        for (int i = 0; i < n; i++) {
-            a[i + 1] = str[i] - '0';
+    void build(const vector<ll>& arr) {
+        int sz = arr.size();
+        for (int i = 0; i < sz; i++) {
+            tree[n + i] = make_data(arr[i]);
         }
-        if(n <= 20) {
-            solve1(); // 暴力.
-        } 
-        else {
-            solve2(); // 当做没有 2 的情况进行处理.
+        for (int i = sz; i < n; i++) {
+            tree[n + i] = make_data(NEG);
+        }
+        for (int i = n - 1; i >= 1; i--) {
+            tree[i] = combine(tree[2 * i], tree[2 * i + 1]);
         }
     }
-    
+    Node query(int l, int r) {
+        Node leftRes = make_data(NEG), rightRes = make_data(NEG);
+        bool leftSet = false, rightSet = false;
+        l += n; r += n;
+        while(l <= r) {
+            if(l % 2 == 1) {
+                if(!leftSet) { leftRes = tree[l]; leftSet = true; }
+                else leftRes = combine(leftRes, tree[l]);
+                l++;
+            }
+            if(r % 2 == 0) {
+                if(!rightSet) { rightRes = tree[r]; rightSet = true; }
+                else rightRes = combine(tree[r], rightRes);
+                r--;
+            }
+            l /= 2; r /= 2;
+        }
+        if(!leftSet) return rightRes;
+        if(!rightSet) return leftRes;
+        return combine(leftRes, rightRes);
+    }
+};
+ 
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int n; 
+    cin >> n;
+    vector<ll> a(n);
+    for (int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    vector<ll> B(2 * n);
+    for (int i = 0; i < 2 * n; i++){
+        B[i] = a[i % n];
+    }
+    SegTree seg(2 * n);
+    seg.build(B);
+    ll ans = NEG;
+    for (int L = 0; L < n; L++){
+        int R = L + n - 1;
+        Node ret = seg.query(L, R);
+        ans = max(ans, ret.ans);
+    }
+    cout << ans << "\n";
     return 0;
 }
+// 建一个换装线段树，struct 封装。

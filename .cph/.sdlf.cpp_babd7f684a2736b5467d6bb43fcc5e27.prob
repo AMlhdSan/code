@@ -1,1 +1,1 @@
-{"name":"Local: sdlf","url":"/Users/amlhdsan/code/sdlf.cpp","tests":[],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/sdlf.cpp","group":"local","local":true}
+{"name":"Local: sdlf","url":"/Users/amlhdsan/code/sdlf.cpp","tests":[{"id":1754232561890,"input":"7\n2 -4 3 -1 2 -4 3\n","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/sdlf.cpp","group":"local","local":true}
