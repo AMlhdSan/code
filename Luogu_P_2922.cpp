@@ -54,7 +54,7 @@ inline void dfs2(int p, int pre) {
     // fa[p] = pre;
     ansdown[pre] += ansdown[p];
     for(int i = 0; i <= 1; ++i) {
-        if(exi[tnxt[p][i]]) {
+        if(tnxt[p][i]) {
             dfs2(tnxt[p][i], p);
         }
     }
