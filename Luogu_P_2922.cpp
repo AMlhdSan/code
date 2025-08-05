@@ -4,7 +4,9 @@ using namespace std;
 int m, n;
 int cnt1[50010];
 // int inf1[50010];
-
+int tnxt[50010][2];
+bool exi[500100];
+int tot = 1;
 
 inline int read() {
     int x = 0, f = 1;
@@ -35,6 +37,23 @@ inline void writeln(int x) {
 }
 
 int main() {
+
+    m = read();
+    n = read();
+
+    for(int i = 1; i <= m; ++i) {
+        int b, c;
+        b = read();
+        int u = 1;
+        for(int j = 1; j <= b; ++j) {
+            c = read();
+            if(!tnxt[u][c]) {
+                tnxt[u][c] = ++tot;
+            }
+            u = tnxt[u][c];
+        }
+        exi[u] = 1;
+    }
 
     return 0;
 }

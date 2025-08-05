@@ -76,6 +76,7 @@
         "codecvt": "cpp",
         "strstream": "cpp",
         "d-种树": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "trie": "cpp"
     }
 }
