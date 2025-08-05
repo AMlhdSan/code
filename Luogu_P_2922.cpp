@@ -52,10 +52,10 @@ inline void dfs1(int p, int pre) {
 
 inline void dfs2(int p, int pre) {
     // fa[p] = pre;
-    ansdown[pre] += ansdown[p];
     for(int i = 0; i <= 1; ++i) {
         if(tnxt[p][i]) {
             dfs2(tnxt[p][i], p);
+            ansdown[pre] += ansdown[p];
         }
     }
 }
