@@ -3,16 +3,19 @@
 #include <algorithm>
 #define R0 return 0
 #define R return
+#define M 300010
 using namespace std;
 
 const int MAXN = 11;
 const int MAXM = MAXN * (MAXN - 1) / 2 + 1;
 const int MAXA = 100001;
 const int MAXN = 11;
+const bool T = true;
+const bool F = false; 
 
 struct node {
     int p, q, s;
-    
+    int q, p, r;
 }
 
 int n, m;
@@ -21,6 +24,8 @@ int ans[MAXN];
 bool used[MAXM];
 bool num_used[MAXA];
 bool ok;
+bool vis[M];
+int ys[M];
 
 void dfs(int pos, int depth, int a[MAXN], bool vis[MAXM]) {
     if (ok) return;
@@ -84,6 +89,7 @@ void solve_once() {
     m = n * (n - 1) / 2;
     ok = false;
     memset(ans, 0, sizeof(ans));
+    memset(ys, 0, sizeof(ys));
     memset(num_used, false, sizeof(num_used));
     int total_sum = 0;
     for (int i = 1; i <= m; i++) {
@@ -101,6 +107,10 @@ void solve_once() {
     bool used[MAXM];
     memset(used, false, sizeof(used));
     used[1] = used[2] = true;
+
+    for(int i = 1; i <= m; ++i) {
+        ys[i] += sums[n - ((int)(n / i)) * i];
+    }
     
     int nums[MAXN];
     memset(nums, 0, sizeof(nums));
