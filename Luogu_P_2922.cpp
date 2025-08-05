@@ -47,6 +47,7 @@ inline void dfs1(int p, int pre) {
             dfs1(tnxt[p][i], p);
         }
     }
+    return;
 }
 
 inline void dfs2(int p, int pre) {
