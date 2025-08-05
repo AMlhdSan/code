@@ -1,10 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int m, n;
-int cnt1[50010];
-// int inf1[50010];
-
+int n, m;
+int trie[500010][26];
+bool exist[500010];
 
 inline int read() {
     int x = 0, f = 1;
