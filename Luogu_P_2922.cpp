@@ -55,7 +55,7 @@ inline void dfs2(int p, int pre) {
     for(int i = 0; i <= 1; ++i) {
         if(tnxt[p][i]) {
             dfs2(tnxt[p][i], p);
-            ansdown[pre] += ansdown[p];
+            ansdown[p] += ansdown[tnxt[p][i]];
         }
     }
 }
@@ -79,28 +79,37 @@ int main() {
         ++exi[u];
     }
     for(int i = 1; i <= tot; ++i) {
-        ansup[i] = exi[i];
-        write(ansup[i]);
-        putchar(' ');
+        ansup[i] = ansdown[i] = exi[i];
+        // write(ansup[i]);
+        // putchar(' ');
     }
 
     dfs1(1, 0);
     dfs2(1, 0);
 
+    for(int i = 1; i <= tot; ++i) {
+        // ansup[i] = ansdown[i] = exi[i];
+        write(ansup[i]);
+        putchar(' ');
+        write(ansdown[i]);
+        putchar(' ');
+        puts("");
+    }
+
     while(n--) {
-        int uu = 1;
-        int b, c, u;
+        int b, c, u = 1, t;
+        bool flag = false;
         b = read();
         for(int i = 1; i <= b; ++i) {
             c = read();
-            uu = tnxt[uu][c];
-            if(!uu) {
-                u = uu;
+            if(!flag) t = u;
+            if(!flag) u = tnxt[u][c];
+            if(!u) {
+                flag = 1;
             }
         }
-        if(uu)
-            u = uu;
-        writeln(ansup[u] + ansdown[u] - exi[u]);
+        
+        writeln(ansup[t] + ansdown[t] - exi[t]);
     }
 
     return 0;
