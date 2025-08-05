@@ -42,6 +42,13 @@ void initTrie(){
     trie[0].subtree = 0;
     trie[0].end = 0;
     trie[0].child[0] = trie[0].child[1] = -1;
+    trie[0].subtree = 0;
+    for(int i = 1; i < MAX_NODES; i++){
+        trie[i].child[0] = trie[i].child[1] = -1;
+        trie[i].subtree = 0;
+        trie[i].end = 0;
+        trie[i].subtree = 0;
+    }
 }
 void insertMessage(int len){
     int cur = 0;
