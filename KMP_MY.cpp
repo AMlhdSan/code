@@ -43,6 +43,7 @@ int main() {
 
     for(int i = 1; i <= lb; ++i) {
         cout << kmp[i] << ' ';
+        kmp[lb]
     }
     return 0;
 }
