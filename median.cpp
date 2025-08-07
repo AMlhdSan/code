@@ -1,35 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-inline int read() {
-    int x = 0, f = 1;
-    char ch = getchar();
-    while (ch < '0' || ch > '9') {
-        if (ch == '-') f = -1;
-        ch = getchar();
-    }
-    while (ch >= '0' && ch <= '9') {
-        x = (x << 3) + (x << 1) + (ch ^ 48);
-        ch = getchar();
-    }
-    return x * f;
-}
-
-inline void write(int x) {
-    if (x < 0) {
-        putchar('-');
-        x = -x;
-    }
-    if (x > 9) write(x / 10);
-    putchar(x % 10 + '0');
-}
-
-inline void writeln(int x) {
-    write(x);
-    putchar('\n');
-}
+using ll = long long;
 
 int main() {
 
+    freopen("median.in", "r", stdin);
+    // freopen(""
+    freopen("median.out", "w", stdout);
+
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    if (!(cin >> n)) return 0;
+    vector<ll> a(n), b(n);
+    ll mx = 0;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i] >> b[i];
+        mx = max(mx, max(a[i], b[i]));
+    }
+    const int pos = (n + 1) / 2; 
+
+    auto ok = [&](ll T) -> bool {
+        ll base = 0, cur = 0, mxSum = LLONG_MIN;
+        for (int i = 0; i < n; ++i) {
+            int ca = (a[i] >= T);
+            int cb = (b[i] >= T);
+            base += ca;
+            int d = cb - ca;                  // -1,0,1
+            cur = (i == 0) ? d : max<long long>(d, cur + d);
+            mxSum = max(mxSum, cur);
+        }
+        if (base >= pos) return true;
+        ll need = pos - base;                 // 需要的额外+计数
+        return mxSum >= need;
+    };
+
+    ll lo = 0, hi = mx;
+    while (lo < hi) {
+        ll mid = lo + (hi - lo + 1) / 2;
+        if (ok(mid)) lo = mid;
+        else          hi = mid - 1;
+    }
+    cout << lo << '\n';
     return 0;
 }
+
+
