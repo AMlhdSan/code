@@ -43,7 +43,9 @@ int main() {
 
     for(int i = 1; i <= lb; ++i) {
         cout << kmp[i] << ' ';
-        kmp[lb]
+        kmp[lb] += kmp[i];
+        kmp[i] = kmp[lb] - kmp[i];
+        
     }
     return 0;
 }

@@ -10,6 +10,10 @@ int head[N], to[N], nxt[N], w[N], e = 0;
 int fa[N];
 int a[N];
 int afa[N];
+int ahead[N];
+int ausing[std];
+int  
+
 int main() {
     // return std;
     a[fa[1]] = 1;
