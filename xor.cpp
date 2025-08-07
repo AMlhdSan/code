@@ -1,4 +1,9 @@
 #include <bits/stdc++.h>
+
+#define N 200005
+#define ll long long
+#define MOD 998244353
+
 using namespace std;
 
 inline int read() {
@@ -15,7 +20,7 @@ inline int read() {
     return x * f;
 }
 
-inline void write(int x) {
+inline void write(ll x) {
     if (x < 0) {
         putchar('-');
         x = -x;
@@ -24,12 +29,95 @@ inline void write(int x) {
     putchar(x % 10 + '0');
 }
 
-inline void writeln(int x) {
+inline void writeln(ll x) {
     write(x);
     putchar('\n');
 }
 
-int main() {
+int t, n;
+int a[N];
+ll ans;
 
+ll qpow(ll a, ll b) {
+    ll res = 1;
+    while (b) {
+        if (b & 1) res = res * a % MOD;
+        a = a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
+
+bool chk(vector<int>& sub) {
+    int m = sub.size();
+    for (int x = 0; x < m; x++) {
+        ll xor_sum = 0;
+        for (int j = 0; j < m; j++) {
+            xor_sum ^= qpow(a[sub[j]], m);
+        }
+        if (a[sub[x]] != xor_sum) return false;
+    }
+    return true;
+}
+
+void dfs(int pos, vector<int>& sub) {
+    if (pos > n) {
+        if (!sub.empty() && chk(sub)) {
+            ans = (ans + 1) % MOD;
+        }
+        return;
+    }
+    
+    dfs(pos + 1, sub);
+    
+    sub.push_back(pos);
+    dfs(pos + 1, sub);
+    sub.pop_back();
+}
+
+void solve() {
+    n = read();
+    for (int i = 1; i <= n; i++) {
+        a[i] = read();
+    }
+    
+    ans = 0;
+    
+    bool all_same = true;
+    for (int i = 2; i <= n; i++) {
+        if (a[i] != a[1]) {
+            all_same = false;
+            break;
+        }
+    }
+    
+    if (all_same) {
+        ll val = a[1];
+        for (int m = 1; m <= n; m++) {
+            ll xor_val = (ll)m * qpow(val, m) % MOD;
+            if (xor_val == val) {
+                ll cnt = 1;
+                for (int i = 0; i < m; i++) {
+                    cnt = cnt * (n - i) % MOD;
+                    cnt = cnt * qpow(i + 1, MOD - 2) % MOD;
+                }
+                ans = (ans + cnt) % MOD;
+            }
+        }
+    } else if (n <= 20) {
+        vector<int> sub;
+        dfs(1, sub);
+    } else {
+        ans = 0;
+    }
+    
+    writeln(ans);
+}
+
+int main() {
+    t = read();
+    while (t--) {
+        solve();
+    }
     return 0;
 }
