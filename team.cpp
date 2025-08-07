@@ -37,6 +37,10 @@ int t, n, m;
 int a[N];
 
 int main() {
+
+    freopen("team.in", "r", stdin);
+    freopen("team.out", "w", stdout);
+
     t = read();
     
     while (t--) {
