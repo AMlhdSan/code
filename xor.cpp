@@ -6,6 +6,10 @@
 
 using namespace std;
 
+struct node {
+    
+}
+
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
@@ -50,12 +54,13 @@ ll qpow(ll a, ll b) {
 
 bool chk(vector<int>& sub) {
     int m = sub.size();
+    int p = 0;
+    for(int i = 0; i < m; ++i) {
+        p ^= a[sub[i]];
+    }
     for (int x = 0; x < m; x++) {
-        ll xor_sum = 0;
-        for (int j = 0; j < m; j++) {
-            xor_sum ^= qpow(a[sub[j]], m);
-        }
-        if (a[sub[x]] != xor_sum) return false;
+        if(p % a[sub[x]] != 0)
+            return false;
     }
     return true;
 }
@@ -115,6 +120,8 @@ void solve() {
 }
 
 int main() {
+    freopen("xor.in", "r", stdin);
+    freopen("xor.out", "w", stdout);
     t = read();
     while (t--) {
         solve();
