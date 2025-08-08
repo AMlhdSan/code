@@ -1,0 +1,1 @@
+{"name":"Local: xorjf","url":"/Users/amlhdsan/code/xorjf.cpp","tests":[{"id":1754625712822,"input":"2\n4\n7 7 7 7\n6\n17 17 17 17 17 17","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/xorjf.cpp","group":"local","local":true}

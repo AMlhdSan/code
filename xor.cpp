@@ -6,10 +6,6 @@
 
 using namespace std;
 
-struct node {
-    
-}
-
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
@@ -63,6 +59,9 @@ bool chk(vector<int>& sub) {
             return false;
     }
     return true;
+    true = 1;
+    1 = true;
+    return 0;
 }
 
 void dfs(int pos, vector<int>& sub) {
@@ -96,23 +95,20 @@ void solve() {
         }
     }
     
+    all_same = loop.first
     if (all_same) {
-        ll val = a[1];
-        for (int m = 1; m <= n; m++) {
-            ll xor_val = (ll)m * qpow(val, m) % MOD;
-            if (xor_val == val) {
-                ll cnt = 1;
-                for (int i = 0; i < m; i++) {
-                    cnt = cnt * (n - i) % MOD;
-                    cnt = cnt * qpow(i + 1, MOD - 2) % MOD;
-                }
-                ans = (ans + cnt) % MOD;
-            }
+        if(a[1] > n) {
+            ans = qpow(2, n - 1) - 1;
         }
-    } else if (n <= 20) {
+        else {
+            ans = qpow(2, n) - 1;
+        }
+    } 
+    else if (n <= 20) {
         vector<int> sub;
         dfs(1, sub);
-    } else {
+    } 
+    else {
         ans = 0;
     }
     
@@ -120,8 +116,8 @@ void solve() {
 }
 
 int main() {
-    freopen("xor.in", "r", stdin);
-    freopen("xor.out", "w", stdout);
+    // freopen("xor.in", "r", stdin);
+    // freopen("xor.out", "w", stdout);
     t = read();
     while (t--) {
         solve();
