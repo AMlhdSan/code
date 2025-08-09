@@ -2,9 +2,7 @@
     "code-runner.executorMap": {
         "cpp": "g++ $fileName -std=c++14 -o $fileNameWithoutExt.out && ./$fileNameWithoutExt.out"
     },
-    "editor.fontFamily": "Maple Mono NF, Jetbrains Mono, Menlo, Consolas, monospace",
-    // Enable ligatures
-    "editor.fontLigatures": "'calt', 'cv01', 'ss01', 'zero'",
+    "editor.fontWeight": "400",
     "files.associations": {
         "vector": "cpp",
         "__bit_reference": "cpp",
