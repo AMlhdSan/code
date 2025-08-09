@@ -1,56 +1,101 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <iomanip>
+#include <bits/stdc++.h>
 
-struct Predator {
-    long long a;
-    int r;
-};
+#define N 100005
+#define eps 1e-9
+
+using namespace std;
+
+inline int read() {
+    int x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+        if (ch == '-') f = -1;
+        ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9') {
+        x = (x << 3) + (x << 1) + (ch ^ 48);
+        ch = getchar();
+    }
+    return x * f;
+}
+
+inline void write(int x) {
+    if (x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    if (x > 9) write(x / 10);
+    putchar(x % 10 + '0');
+}
+
+inline void writeln(int x) {
+    write(x);
+    putchar('\n');
+}
+
+int n;
+double a[N];
+int r[N];
+double f[N];
 
 int main() {
-    std::ios_base::sync_with_stdio(false);
-    std::cin.tie(NULL);
-
-    int n;
-    long long a0;
-    std::cin >> n >> a0;
-
-    std::vector<Predator> predators(n);
-    for (int i = 0; i < n; ++i) {
-        std::cin >> predators[i].a >> predators[i].r;
+    n = read();
+    a[0] = read();
+    
+    for (int i = 1; i <= n; i++) {
+        a[i] = read();
+        r[i] = read();
     }
-
-    std::vector<long double> demanded_biomass(n + 1, 0.0);
-
-    for (int i = n - 1; i >= 0; --i) {
-        int organism_idx = i + 1;
+    
+    f[0] = a[0];
+    
+    for (int i = 1; i <= n; i++) {
+        f[i] = a[i];
         
-        long double survival_biomass_need = 5.0 * predators[i].a;
-        long double predation_biomass_need = demanded_biomass[organism_idx];
+        double sum = 0;
+        for (int j = 0; j <= r[i]; j++) {
+            sum += f[j];
+        }
         
-        long double total_biomass_ingested = std::max(survival_biomass_need, predation_biomass_need);
+        if (sum * 0.2 < a[i] - eps) {
+            printf("-1\n");
+            return 0;
+        }
         
-        int prey_idx = predators[i].r;
-        demanded_biomass[prey_idx] += total_biomass_ingested;
+        if (sum * 0.2 > a[i] + eps) {
+            double ratio = a[i] / (sum * 0.2);
+            for (int j = 0; j <= r[i]; j++) {
+                f[j] *= ratio;
+            }
+            f[i] = a[i];
+            
+            for (int j = i + 1; j <= n; j++) {
+                double new_sum = 0;
+                for (int k = 0; k <= r[j]; k++) {
+                    new_sum += f[k];
+                }
+                if (new_sum * 0.2 < a[j] - eps) {
+                    double need_ratio = a[j] / (new_sum * 0.2);
+                    for (int k = 0; k <= r[j]; k++) {
+                        f[k] *= need_ratio;
+                    }
+                }
+            }
+        }
+    }
+    
+    double ans = 0;
+    for (int i = 0; i <= n; i++) {
+        ans += f[i];
     }
 
-    if (demanded_biomass[0] > a0) {
-        std::cout << -1 << std::endl;
-        return 0;
+    ans *= 0.2;
+    ans -= 1;
+    if(ans <= 0) {
+        printf("-1");
     }
-
-    long double remaining_biomass = (long double)a0 - demanded_biomass[0];
-
-    for (int i = 0; i < n; ++i) {
-        int organism_idx = i + 1;
-        long double total_biomass_ingested = std::max(5.0L * predators[i].a, demanded_biomass[organism_idx]);
-        remaining_biomass += total_biomass_ingested - demanded_biomass[organism_idx];
-    }
-
-    long double max_energy = remaining_biomass / 5.0;
-
-    std::cout << std::fixed << std::setprecision(7) << max_energy << std::endl;
-
+    
+    else printf("%.10f\n", ans * 0.2);
+    
     return 0;
 }
