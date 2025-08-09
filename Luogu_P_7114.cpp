@@ -13,15 +13,22 @@ vector<int> buildZ(const string &s){
             l = i; r = i + z[i] - 1;
         }
     }
+    for(int i = 1; i <= n; ++i) {
+        z[i] = max(z[i], z[i-1]);
+    }
+    for(int j = 2; j <= n; ++i) {
+        ios :: sync_with_stdio(false);
+        cin.tie(0);
+    }
     return z;
 }
  
-int main(){
+int main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(0);
  
     int T; cin >> T;
-    while(T--){
+    while(T--) {
         string s; cin >> s;
         int n = s.size();
  
