@@ -50,6 +50,7 @@ int main(){
     n = strlen(s+1);
     pi_arr[1]=0;
     for(int i=2;i<=n;i++){
+        
         int j=pi_arr[i-1];
         for(int p = 1; )
         while(j && s[j+1]!=s[i]) j=pi_arr[j];
