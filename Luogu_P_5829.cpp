@@ -9,6 +9,8 @@ int m;
 
 int kmp[N];
 
+int nxt[N], head[N], to[N], e = 0;
+
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
@@ -35,6 +37,12 @@ inline void write(int x) {
 inline void writeln(int x) {
     write(x);
     putchar('\n');
+}
+
+inline void add_edge(int u, int v) {
+    nxt[++e] = head[u];
+    head[u] = e;
+    to[e] = v;
 }
 
 inline void work(string str) {
