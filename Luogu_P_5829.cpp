@@ -43,6 +43,8 @@ inline void work(string str) {
 
     // 求出 kmp
 
+    kmp[0] = 0;
+
     for(int i = 1; i < n; ++i) {
         int j = kmp[i - 1];
         while(j > 0 && str[i] != str[j])
@@ -52,7 +54,9 @@ inline void work(string str) {
         kmp[i] = j;
     }
 
-    
+    // 建树
+
+
 }
 
 inline int solve(int u, int v) { // 求 u, v 两点的最近公共祖先
