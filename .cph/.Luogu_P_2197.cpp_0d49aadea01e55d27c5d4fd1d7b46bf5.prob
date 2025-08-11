@@ -1,0 +1,1 @@
+{"name":"Luogu - P2197","url":"https://www.luogu.com.cn/problem/P2197","memoryLimit":128000,"timeLimit":1000,"tests":[{"id":1754836398839,"input":"2\n2\n1 1\n2\n1 0","output":"No\nYes"}],"group":"luogu","srcPath":"/Users/amlhdsan/code/Luogu_P_2197.cpp"}
