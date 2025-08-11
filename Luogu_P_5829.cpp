@@ -11,6 +11,8 @@ int kmp[N];
 
 int nxt[N], head[N], to[N], e = 0;
 
+int dep[N], fa[N][30];
+
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
@@ -62,13 +64,26 @@ inline void work(string str) {
         kmp[i] = j;
     }
 
-    // 建树
+    // 建 fail 树
 
+    for(int i = 1; i <= n; ++i) {
+        add_edge(i, kmp[i]);
+        add_edge(kmp[i], i);
+    }
+}
+
+inline void dfs(int p, int pre) {
+    dep[p] = dep[pre] + 1;
+}
+
+inline int lca(int u, int v) {
 
 }
 
-inline int solve(int u, int v) { // 求 u, v 两点的最近公共祖先
+inline int solve(int u, int v) {
+    // 求 u, v 两点的最近公共祖先
 
+    return lca(u, v);
 }
 
 int main() {
