@@ -1,8 +1,13 @@
 #include <bits/stdc++.h>
+
+#define N 1000010
+
 using namespace std;
 
 string s;
 int m;
+
+int kmp[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -32,7 +37,42 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
+inline void work(string str) {
+
+    int n = str.size();
+
+    // 求出 kmp
+
+    for(int i = 1; i < n; ++i) {
+        int j = kmp[i - 1];
+        while(j > 0 && str[i] != str[j])
+            j = kmp[j - 1];
+        if(str[i] == str[j])
+            ++j;
+        kmp[i] = j;
+    }
+
+    
+}
+
+inline int solve(int u, int v) { // 求 u, v 两点的最近公共祖先
+
+}
+
 int main() {
+
+    cin >> s;
+
+    work(s);
+
+    m = read();
+
+    while(m--) {
+        int p, q;
+        p = read();
+        q = read();
+        writeln(solve(p, q));
+    }
 
     return 0;
 }
