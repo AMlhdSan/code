@@ -35,19 +35,24 @@ inline void writeln(int x) {
 }
 
 inline void init() {
+    fib[0] = 1;
     fib[1] = 1;
-    fib[2] = 1;
+    mp[0] = 114514;
     mp[1] = 114514;
-    for(int i = 3; fib[i] <= 1000000000; ++i) {
+    for(int i = 2; fib[i - 1] <= 1000000000; ++i) {
         fib[i] = (fib[i - 1] + fib[i - 2]);
         mp[fib[i]] = 114514;
+        // mp[fib]
+        fib[]
     }
     return;
 }
 
 inline bool pd(int x) {
+    if(x == 0)
+        return true;
     for(int i = 1; n >= fib[i]; ++i) {
-        if(n % fib[i] == 0 && mp[n / fib[i] == 114514)
+        if(n % fib[i] == 0 && mp[n / fib[i]] == 114514)
             return true;
     }
     return false;
@@ -56,7 +61,6 @@ inline bool pd(int x) {
 int main() {
 
     init();
-
 
     T = read();
 

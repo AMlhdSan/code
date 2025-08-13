@@ -1,0 +1,1 @@
+{"name":"Local: skdfjlskdfja","url":"/Users/amlhdsan/code/skdfjlskdfja.cpp","tests":[{"id":1755005997470,"input":"5\n5\n4\n12\n11\n10","output":"TAK\nTAK\nNIE\nNIE\nTAK\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/skdfjlskdfja.cpp","group":"local","local":true}
