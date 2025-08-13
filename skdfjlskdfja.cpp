@@ -15,7 +15,8 @@ map<int, int> mp;
 int tree[300010];
 
 inline void pushup(int p) {
-    
+    tree[p] = max(tree[ls], tree[rs]);
+    return;
 }
 
 inline void build(int p, int l, int r) {
