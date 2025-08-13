@@ -13,7 +13,9 @@ map<int, int> mp;
 #define mid ((l + r) >> 1)
 
 inline void build(int p, int l, int r) {
-    if(l == r)
+    if(l == r) {
+        
+    }
 }
 
 inline int read() {
