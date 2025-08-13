@@ -21,7 +21,10 @@ inline void upd(int p) {
 }
 
 inline void pushup(int p) {
-
+    lazy[ls] += lazy[p];
+    lazy[rs] += lazy[p];
+    tree[p] += lazy[p];
+    lazy[p] = 0;
 }
 
 inline void build(int p, int l, int r) {
