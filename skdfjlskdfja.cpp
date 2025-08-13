@@ -12,7 +12,7 @@ map<int, int> mp;
 #define rs (p << 1 | 1)
 #define mid ((l + r) >> 1)
 
-inline void build(int p) {
+inline void build(int p, int l, int r) {
     
 }
 
