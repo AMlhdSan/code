@@ -9,7 +9,7 @@ map<int, int> mp;
 // map<int, bool> 
 
 #define ls (p << 1)
-
+#define rs (p << 1 | 1)
 
 inline int read() {
     int x = 0, f = 1;
