@@ -5,6 +5,11 @@ int T;
 int n;
 int fib[300010];
 map<int, int> mp;
+// map<string, bool> 
+// map<int, bool> 
+
+#define ls (p << 1)
+
 
 inline int read() {
     int x = 0, f = 1;
@@ -43,7 +48,7 @@ inline void init() {
         fib[i] = (fib[i - 1] + fib[i - 2]);
         mp[fib[i]] = 114514;
         // mp[fib]
-        fib[]
+        fib[mp[114514]] ++;
     }
     return;
 }
