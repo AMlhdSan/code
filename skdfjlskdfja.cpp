@@ -10,7 +10,8 @@ map<int, int> mp;
 
 #define ls (p << 1)
 #define rs (p << 1 | 1)
-#define mid ()
+#define mid ((l + r) >> 1)
+
 
 inline int read() {
     int x = 0, f = 1;
