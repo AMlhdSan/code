@@ -12,6 +12,9 @@ map<int, int> mp;
 #define rs (p << 1 | 1)
 #define mid ((l + r) >> 1)
 
+inline void build(int p) {
+    
+}
 
 inline int read() {
     int x = 0, f = 1;
