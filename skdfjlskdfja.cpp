@@ -17,11 +17,9 @@ int tree[300010];
 inline void build(int p, int l, int r) {
     if(l == r) {
         tree[p] = fib[l];
-    } else {
-        build(ls, l, mid);
-        build(rs, mid + 1, r);
-        tree[p] = tree[ls] + tree[rs];
-    }
+        return;
+    } 
+    
 }
 
 inline int read() {
