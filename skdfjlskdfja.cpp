@@ -14,12 +14,16 @@ map<int, int> mp;
 
 int tree[300010];
 
+inline void pushup(int p) {
+    
+}
+
 inline void build(int p, int l, int r) {
     if(l == r) {
         tree[p] = fib[l];
         return;
     } 
-    
+
 }
 
 inline int read() {
