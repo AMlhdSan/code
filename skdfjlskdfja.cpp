@@ -13,10 +13,15 @@ map<int, int> mp;
 #define mid ((l + r) >> 1)
 
 int tree[300010];
+int lazy[300010], siz[300010];
 
 inline void upd(int p) {
     tree[p] = max(tree[ls], tree[rs]);
     return;
+}
+
+inline void pushup(int p) {
+
 }
 
 inline void build(int p, int l, int r) {
@@ -27,6 +32,9 @@ inline void build(int p, int l, int r) {
     build(ls, l, mid);
     build(rs, mid + 1, r);
     upd(p);
+}
+
+inline void mdf(int p, int l, int r, int ql, int qr, int x) {
 }
 
 inline int read() {
