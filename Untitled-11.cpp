@@ -129,7 +129,11 @@ int main() {
     build(1, 1, n);
 
     while(m--) {
-        
+        int t = read();
+
+        if(t == 1) {
+            
+        }
     }
 
     return 0;
