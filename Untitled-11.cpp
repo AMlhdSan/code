@@ -56,6 +56,10 @@ inline void ar(int p, double ang) {
     lazyA[p] = norm(lazyA[p] + ang);
 }
 
+inline void upd(int p) {
+    
+}
+
 inline void build(int p, int l, int r) {
     lazyA[p] = 0;
 
@@ -67,6 +71,8 @@ inline void build(int p, int l, int r) {
 
     build(ls, l, mid);
     build(rs, mid + 1, r);
+
+    upd(p);
 }
 
 int main() {
