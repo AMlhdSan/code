@@ -44,7 +44,8 @@ inline double norm(double x) {
 }
 
 inline void ar(int p, double ang) {
-    double cv = cos(ang), sv = sin(ang);
+    double cv = cos(ang);
+    double sv = sin(ang);
     double ns = sgt[p] * cv + cgt[p] * sv;
     double nc = cgt[p] * cv - sgt[p] * sv;
     sgt[p] = ns;
