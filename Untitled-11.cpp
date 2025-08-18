@@ -62,6 +62,7 @@ inline void upd(int p) {
     cgt[p] = cgt[ls] + cgt[rs];
 }
 
+
 inline void pushup(int p) {
     if(lazyA[p] != 0) {
         ar(ls, lazyA[p]);
