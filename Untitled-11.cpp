@@ -4,6 +4,7 @@
 #define PI acos(-1.0)
 #define ls (p << 1)
 #define rs (p << 1 | 1)
+#define mid ((l + r) >> 1)
 
 using namespace std;
 
@@ -63,6 +64,8 @@ inline void build(int p, int l, int r) {
         cgt[p] = cos(a[l]);
         return;
     }
+
+    build()
 }
 
 int main() {
