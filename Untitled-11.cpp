@@ -124,5 +124,7 @@ int main() {
         a[i] = read();
     }
 
+    build(1, 1, n);
+
     return 0;
 }
