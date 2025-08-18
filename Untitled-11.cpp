@@ -54,7 +54,13 @@ inline void ar(int p, double ang) {
 }
 
 inline void build(int p, int l, int r) {
-    
+    lazyA[p] = 0;
+
+    if(l == r) {
+        sgt[p] = sin(a[l]);
+        cgt[p] = cos(a[l]);
+        return;
+    }
 }
 
 int main() {
