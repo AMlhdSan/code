@@ -57,7 +57,17 @@ inline void ar(int p, double ang) {
 }
 
 inline void upd(int p) {
-    
+    sgt[p] = sgt[ls] + sgt[rs];
+    cgt[p] = cgt[ls] + cgt[rs];
+}
+
+inline void pushup(int p) {
+    if(lazyA[p] != 0) {
+        ar(ls, lazyA[p]);
+        ar(rs, lazyA[p]);
+        lazyA[p] = 0;
+    }
+    return;
 }
 
 inline void build(int p, int l, int r) {
