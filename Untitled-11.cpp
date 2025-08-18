@@ -43,7 +43,14 @@ inline double norm(double x) {
     return x;
 }
 
-
+inline void ar(int p, double ang) {
+    double cv = cos(ang), sv = sin(ang);
+    double ns = sgt[p] * cv + cgt[p] * sv;
+    double nc = cgt[p] * cv - sgt[p] * sv;
+    sgt[p] = ns;
+    cgt[p] = nc;
+    lazyA[p] = norm(lazyA[p] + ang);
+}
 
 int main() {
 
