@@ -37,11 +37,13 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-double norm(double x) {
+inline double norm(double x) {
     x = fmod(x, 2 * PI);
     if (x < 0) x += 2 * PI;
     return x;
 }
+
+
 
 int main() {
 
