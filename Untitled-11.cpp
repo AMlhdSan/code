@@ -5,7 +5,7 @@
 using namespace std;
 
 int m, n;
-
+double sgt[N << 2], cgt[N << 2], lazyA[N << 2];
 int a[N];
 
 inline int read() {
