@@ -138,7 +138,7 @@ int main() {
             v = read();
             double ang = (double)v;
             ang = norm(ang);
-            
+            upd(1, 1, n, l, r, ang);
         }
     }
 
