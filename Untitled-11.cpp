@@ -107,7 +107,7 @@ inline double qry(int p, int l, int r, int ql, int qr) {
     pushup(p);
 
     double res = 0;
-    
+
     if(ql <= mid) 
         res += qry(ls, l, mid, ql, qr);
     if(qr > mid) 
@@ -118,7 +118,11 @@ inline double qry(int p, int l, int r, int ql, int qr) {
 
 int main() {
 
+    n = read();
 
+    for(int i = 1; i <= n; ++i) {
+        a[i] = read();
+    }
 
     return 0;
 }
