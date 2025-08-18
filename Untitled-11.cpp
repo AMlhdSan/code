@@ -2,6 +2,8 @@
 
 #define N 200010
 #define PI acos(-1.0)
+#define ls (p << 1)
+#define rs (p << 1 | 1)
 
 using namespace std;
 
