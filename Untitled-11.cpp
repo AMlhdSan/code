@@ -132,9 +132,13 @@ int main() {
         int t = read();
 
         if(t == 1) {
-            int l, r;
+            int l, r, v;
             l = read();
             r = read();
+            v = read();
+            double ang = (double)v;
+            ang = norm(ang);
+            
         }
     }
 
