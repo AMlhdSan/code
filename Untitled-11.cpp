@@ -132,7 +132,9 @@ int main() {
         int t = read();
 
         if(t == 1) {
-            
+            int l, r;
+            l = read();
+            r = read();
         }
     }
 
