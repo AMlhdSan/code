@@ -145,7 +145,11 @@ int main() {
             l = read();
             r = read();
             double res = qry(1, 1, n, l, r);
-            printf("%.10f\n", res);
+
+            if(fabs(res) < 0.0000002)
+                res = 0;
+
+            printf("%.1f\n", res);
         }
     }
 
