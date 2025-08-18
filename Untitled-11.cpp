@@ -53,6 +53,10 @@ inline void ar(int p, double ang) {
     lazyA[p] = norm(lazyA[p] + ang);
 }
 
+inline void build(int p, int l, int r) {
+    
+}
+
 int main() {
 
 
