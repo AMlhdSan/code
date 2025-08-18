@@ -85,6 +85,21 @@ inline void build(int p, int l, int r) {
     upd(p);
 }
 
+inline void upd(int p, int l, int r, int ql, int qr, double ang) {
+    if(ql <= l && r <= qr) {
+        ar(p, ang);
+        return;
+    }
+
+    pushup(p);
+
+    if(ql <= mid) 
+    upd(ls, l, mid, ql, qr, ang);
+    if(qr > mid) upd(rs, mid + 1, r, ql, qr, ang);
+
+    upd(p);
+}
+
 int main() {
 
 
