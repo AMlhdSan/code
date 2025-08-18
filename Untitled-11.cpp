@@ -128,5 +128,9 @@ int main() {
 
     build(1, 1, n);
 
+    while(m--) {
+        
+    }
+
     return 0;
 }
