@@ -25,6 +25,8 @@ inline void pushup(int p) {
     lazy[rs] += lazy[p];
     tree[p] += lazy[p];
     lazy[p] = 0;
+    lazy[p] = tree[p] - (lazy[ls] + lazy[rs]);
+    lazy[p] = 0;
 }
 
 inline void build(int p, int l, int r) {
