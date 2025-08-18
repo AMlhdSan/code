@@ -65,7 +65,8 @@ inline void build(int p, int l, int r) {
         return;
     }
 
-    build()
+    build(ls, l, mid);
+    build(rs, mid + 1, r);
 }
 
 int main() {
