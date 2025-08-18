@@ -140,6 +140,13 @@ int main() {
             ang = norm(ang);
             upd(1, 1, n, l, r, ang);
         }
+        else {
+            int l, r;
+            l = read();
+            r = read();
+            double res = qry(1, 1, n, l, r);
+            printf("%.10f\n", res);
+        }
     }
 
     return 0;
