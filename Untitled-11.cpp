@@ -94,8 +94,9 @@ inline void mdf(int p, int l, int r, int ql, int qr, double ang) {
     pushup(p);
 
     if(ql <= mid) 
-    upd(ls, l, mid, ql, qr, ang);
-    if(qr > mid) upd(rs, mid + 1, r, ql, qr, ang);
+        mdf(ls, l, mid, ql, qr, ang);
+    if(qr > mid) 
+        mdf(rs, mid + 1, r, ql, qr, ang);
 
     upd(p);
 }
@@ -138,7 +139,7 @@ int main() {
             v = read();
             double ang = (double)v;
             ang = norm(ang);
-            upd(1, 1, n, l, r, ang);
+            mdf(1, 1, n, l, r, ang);
         }
         else {
             int l, r;
