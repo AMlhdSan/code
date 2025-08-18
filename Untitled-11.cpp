@@ -85,7 +85,7 @@ inline void build(int p, int l, int r) {
     upd(p);
 }
 
-inline void upd(int p, int l, int r, int ql, int qr, double ang) {
+inline void mdf(int p, int l, int r, int ql, int qr, double ang) {
     if(ql <= l && r <= qr) {
         ar(p, ang);
         return;
@@ -98,6 +98,10 @@ inline void upd(int p, int l, int r, int ql, int qr, double ang) {
     if(qr > mid) upd(rs, mid + 1, r, ql, qr, ang);
 
     upd(p);
+}
+
+inline double qry(int p, int l, int r, int ql, int qr) {
+    
 }
 
 int main() {
