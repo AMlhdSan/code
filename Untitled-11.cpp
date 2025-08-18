@@ -57,7 +57,6 @@ inline void ar(int p, double ang) {
     lazyA[p] = norm(lazyA[p] + ang);
 }
 
-
 inline void upd(int p) {
     sgt[p] = sgt[ls] + sgt[rs];
     cgt[p] = cgt[ls] + cgt[rs];
