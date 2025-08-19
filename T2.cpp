@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+
+#define N 100001
+
 using namespace std;
 
 inline int read() {
@@ -29,7 +32,36 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-int main() {
+vector<int> g[N];
+bool vis[N];
 
+void dfs(int u, int v) {
+    if (vis[u]) return;
+    vis[u] = true;
+    if (g[u][v] == v) {
+        writeln(v);
+        return;
+    }
+    for (int i = 0; i < g[u].size(); i++) {
+        dfs(g[u][i], v);
+    }
+}
+
+int main() {
+    int n = read();
+    
+    for (int i = 0; i < n - 1; i++) {
+        int u = read(), v = read();
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    
+    for (int i = 1; i <= n; i++) {
+        sort(g[i].begin(), g[i].end());
+    }
+    
+    memset(vis, false, sizeof(vis));
+    dfs(1, 1);
+    
     return 0;
 }

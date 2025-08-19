@@ -31,13 +31,16 @@ inline void writeln(int x) {
 }
 
 int main() {
-    int n = read();
+    // int n = read();
     string s;
     cin >> s;
+    int n = s.size();
     
     vector<int> a(n);
     for (int i = 0; i < n; i++) {
-        a[i] = read();
+        char ch;
+        cin >> ch;
+        a[i] = ch - '0';
     }
     
     unordered_map<int, int> bal;
