@@ -12,6 +12,7 @@ int m, n;
 double sgt[N << 2], cgt[N << 2], lazyA[N << 2];
 int a[N];
 
+
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
@@ -117,6 +118,7 @@ inline double qry(int p, int l, int r, int ql, int qr) {
 
     return res;
 }
+
 
 int main() {
 
