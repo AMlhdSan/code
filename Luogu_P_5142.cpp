@@ -60,15 +60,42 @@ inline int sum(int* t, int i) {
     return r;
 }
 
+inline int qpow(int a, int b) {
+    int res = 1;
+    while(b) {
+        if(b & 1) res = res * a % MOD;
+        a = a * a % MOD;
+        b >>= 1;
+    }
+    return res;
+}
+
 signed main() {
     n = read();
     m = read();
     for(int i = 1; i <= n; i++) {
-        b[i] = read();
+        b[i] = read() % MOD;
+        add(t1, i, b[i]);
+        add(t2, i, (b[i] * b[i]) % MOD);
     }
-    for(int i = 1; i <= m; i++) {
-        t1[i] = read();
-        t2[i] = read();
+
+    while(m--) {
+        int op = read();
+        if(op == 1) {
+            int x = read(), y = read();
+            add(t1, x, y);
+            add(t2, x, (y * y) % MOD);
+            b[x] += y;
+            if(b[x] >= MOD) 
+                b[x] -= MOD;
+        } else if(op == 2) {
+
+            int x = read(), y = read();
+            writeln((sum(t1, y) - sum(t1, x - 1) + MOD) % MOD);
+        } else if(op == 3) {
+            int x = read(), y = read();
+            writeln((sum(t2, y) - sum(t2, x - 1) + MOD) % MOD);
+        }
     }
     return 0;
 }
