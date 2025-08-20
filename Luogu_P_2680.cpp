@@ -42,11 +42,14 @@ inline void writeln(int x) {
 }
 
 void build() {
-    vector<int> st; st.reserve(n);
+    vector<int> st; 
+    st.reserve(n);
     st.push_back(1); 
     par[1]=0; 
     dep[1]=0; 
-    up[0][1]=0; wp[1]=0; dis[1]=0;
+    up[0][1]=0; 
+    wp[1]=0; 
+    dis[1]=0;
     while(!st.empty()){
         int u=st.back(); st.pop_back();
         ord[dfn++]=u;
