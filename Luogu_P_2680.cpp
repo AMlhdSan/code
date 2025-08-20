@@ -61,7 +61,9 @@ void build() {
                 continue;
             par[v] = u; 
             up[0][v] = u; 
-            dep[v] = dep[u] + 1; wp[v]=w; dis[v]=dis[u]+w;
+            dep[v] = dep[u] + 1; 
+            wp[v] = w; 
+            dis[v] = dis[u] + w;
             st.push_back(v);
         }
     }
