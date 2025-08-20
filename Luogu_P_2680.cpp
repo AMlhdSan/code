@@ -1,8 +1,11 @@
 #include <bits/stdc++.h>
+
+#define N 
+
 using namespace std;
 
 int n, m;
-int 
+int nxt[N], head[N], to[N], e = 0, w[N];
 
 inline int read() {
     int x = 0, f = 1;
