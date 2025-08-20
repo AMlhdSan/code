@@ -79,7 +79,9 @@ int lca(int a, int b) {
     if(dep[a] < dep[b]) 
         swap(a, b);
     int d = dep[a] - dep[b];
-    for(int k = 0; k < LOG;k++) if(d>>k&1) a=up[k][a];
+    for(int k = 0; k < LOG; ++k) 
+        if(d >> k & 1) 
+            a = up[k][a];
     if(a==b) return a;
     for(int k=LOG-1;k>=0;k--){
         if(up[k][a]!=up[k][b]){
