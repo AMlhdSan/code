@@ -101,11 +101,14 @@ bool chk(int mid){
             k++;
             int w = dd[i] - mid;
             if(w > need) need = w;
-            sumv[uu[i]]++; sumv[vv[i]]++; sumv[lc[i]] -= 2;
+            sumv[uu[i]]++; 
+            sumv[vv[i]]++; 
+            sumv[lc[i]] -= 2;
         }
     }
-    if(k == 0) return 1;
-    for(int i=dfn-1;i>0;i--){
+    if(k == 0) 
+        return 1;
+    for(int i = dfn-1;i>0;i--){
         int x=ord[i],p=par[x];
         sumv[p]+=sumv[x];
         if(sumv[x]==k && wp[x]>=need) return 1;
