@@ -102,8 +102,8 @@ bool chk(int mid){
             int w = dd[i] - mid;
             if(w > need) 
                 need = w;
-            sumv[uu[i]]++; 
-            sumv[vv[i]]++; 
+            ++sumv[uu[i]]; 
+            ++sumv[vv[i]]; 
             sumv[lc[i]] -= 2;
         }
     }
