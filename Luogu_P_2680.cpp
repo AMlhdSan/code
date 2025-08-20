@@ -2,6 +2,7 @@
 using namespace std;
 
 int n, m;
+int 
 
 inline int read() {
     int x = 0, f = 1;
