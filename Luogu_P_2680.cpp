@@ -84,7 +84,7 @@ int lca(int a, int b) {
             a = up[k][a];
     if(a == b) 
         return a;
-    for(int k=LOG-1;k>=0;k--){
+    for(int k = LOG-1; k >= 0; --k) {
         if(up[k][a]!=up[k][b]){
             a=up[k][a]; b=up[k][b];
         }
