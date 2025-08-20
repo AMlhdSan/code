@@ -34,7 +34,7 @@ inline void writeln(int x) {
 int main() {
 
     n = read();
-    
+    m = read();
 
     return 0;
 }
