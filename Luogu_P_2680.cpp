@@ -8,7 +8,7 @@ using namespace std;
 int n, m;
 vector<pair<int,int> > g[N];
 int up[LOG][N], dep[N], wp[N], ord[N], par[N];
-int dfn;
+int dfn = 1;
 int sumv[N];
 int uu[N], vv[N], lc[N], dd[N];
 int dis[N];
@@ -54,7 +54,7 @@ void build() {
     while(!st.empty()) {
         int u = st.back(); 
         st.pop_back();
-        ord[dfn++] = u;
+        ord[++dfn] = u;
         for(auto &e : g[u]){
             int v = e.first, w = e.second;
             if(v == par[u]) 
@@ -68,15 +68,16 @@ void build() {
         }
     }
 
-    for(int k=1;k<LOG;k++){
-        for(int i=1;i<=n;i++){
-            up[k][i]=up[k-1][ up[k-1][i] ];
+    for(int k = 1; k < LOG; ++k) {
+        for(int i = 1; i <= n; ++i) {
+            up[k][i] = up[k - 1][up[k - 1][i]];
         }
     }
 }
 
-int lca(int a,int b){
-    if(dep[a]<dep[b]) swap(a,b);
+int lca(int a, int b) {
+    if(dep[a] < dep[b]) 
+        swap(a, b);
     int d=dep[a]-dep[b];
     for(int k=0;k<LOG;k++) if(d>>k&1) a=up[k][a];
     if(a==b) return a;
