@@ -109,10 +109,12 @@ bool chk(int mid){
     }
     if(k == 0) 
         return 1;
-    for(int i = dfn-1;i>0;i--){
-        int x=ord[i],p=par[x];
-        sumv[p]+=sumv[x];
-        if(sumv[x]==k && wp[x]>=need) return 1;
+    for(int i = dfn-1; i > 0; --i){
+        int x = ord[i];
+        int p = par[x];
+        sumv[p] += sumv[x];
+        if(sumv[x] == k && wp[x] >= need) 
+            return 1;
     }
     return 0;
 }
