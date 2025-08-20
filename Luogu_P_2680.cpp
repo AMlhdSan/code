@@ -41,7 +41,7 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-void build() {
+inline void build() {
     vector<int> st; 
     st.reserve(n);
     st.push_back(1); 
@@ -75,7 +75,7 @@ void build() {
     }
 }
 
-int lca(int a, int b) {
+inline int lca(int a, int b) {
     if(dep[a] < dep[b]) 
         swap(a, b);
     int d = dep[a] - dep[b];
