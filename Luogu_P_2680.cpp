@@ -45,21 +45,27 @@ void build() {
     vector<int> st; 
     st.reserve(n);
     st.push_back(1); 
-    par[1]=0; 
-    dep[1]=0; 
-    up[0][1]=0; 
-    wp[1]=0; 
-    dis[1]=0;
-    while(!st.empty()){
-        int u=st.back(); st.pop_back();
-        ord[dfn++]=u;
-        for(auto &e:g[u]){
-            int v=e.first,w=e.second;
-            if(v==par[u]) continue;
-            par[v]=u; up[0][v]=u; dep[v]=dep[u]+1; wp[v]=w; dis[v]=dis[u]+w;
+    par[1] = 0; 
+    dep[1] = 0; 
+    up[0][1] = 0; 
+    wp[1] = 0; 
+    dis[1] = 0;
+
+    while(!st.empty()) {
+        int u = st.back(); 
+        st.pop_back();
+        ord[dfn++] = u;
+        for(auto &e : g[u]){
+            int v = e.first, w = e.second;
+            if(v == par[u]) 
+                continue;
+            par[v] = u; 
+            up[0][v] = u; 
+            dep[v] = dep[u] + 1; wp[v]=w; dis[v]=dis[u]+w;
             st.push_back(v);
         }
     }
+
     for(int k=1;k<LOG;k++){
         for(int i=1;i<=n;i++){
             up[k][i]=up[k-1][ up[k-1][i] ];
