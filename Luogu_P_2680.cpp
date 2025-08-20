@@ -6,11 +6,13 @@
 using namespace std;
 
 int n, m;
+
 vector<pair<int,int> > g[N];
 int up[LOG][N], dep[N], wp[N], ord[N], par[N];
 int dfn = 1;
 int sumv[N];
 int uu[N], vv[N], lc[N], dd[N];
+
 int dis[N];
 
 inline int read() {
