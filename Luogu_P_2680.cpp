@@ -85,25 +85,26 @@ int lca(int a, int b) {
     if(a == b) 
         return a;
     for(int k = LOG-1; k >= 0; --k) {
-        if(up[k][a]!=up[k][b]){
-            a=up[k][a]; b=up[k][b];
+        if(up[k][a] != up[k][b]) {
+            a = up[k][a]; 
+            b = up[k][b];
         }
     }
     return up[0][a];
 }
 
 bool chk(int mid){
-    int k=0,need=0;
-    for(int i=1;i<=n;i++) sumv[i]=0;
-    for(int i=0;i<m;i++){
-        if(dd[i]>mid){
+    int k = 0, need = 0;
+    for(int i = 1; i <= n; ++i) sumv[i] = 0;
+    for(int i = 0; i < m; ++i){
+        if(dd[i] > mid){
             k++;
-            int w=dd[i]-mid;
-            if(w>need) need=w;
-            sumv[uu[i]]++; sumv[vv[i]]++; sumv[lc[i]]-=2;
+            int w = dd[i] - mid;
+            if(w > need) need = w;
+            sumv[uu[i]]++; sumv[vv[i]]++; sumv[lc[i]] -= 2;
         }
     }
-    if(k==0) return 1;
+    if(k == 0) return 1;
     for(int i=dfn-1;i>0;i--){
         int x=ord[i],p=par[x];
         sumv[p]+=sumv[x];
