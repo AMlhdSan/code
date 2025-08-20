@@ -93,7 +93,7 @@ int lca(int a, int b) {
     return up[0][a];
 }
 
-bool chk(int mid){
+inline bool chk(int mid) {
     int k = 0, need = 0;
     for(int i = 1; i <= n; ++i) sumv[i] = 0;
     for(int i = 0; i < m; ++i){
