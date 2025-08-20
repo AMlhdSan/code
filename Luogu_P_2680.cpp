@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+// #pragma GCC optimize(2)
 
 #define N 300010
 #define LOG 22
@@ -16,16 +17,19 @@ int uu[N], vv[N], lc[N], dd[N];
 
 int dis[N];
 
+char *p1, *p2, buf[100000];
+#define gc() (p1 == p2 && (p2 = (p1 = buf) + fread(buf, 1, 100000, stdin), p1 == p2) ? EOF : *p1++)
+
 inline int read() {
     int x = 0, f = 1;
-    char ch = getchar();
+    char ch = gc();
     while (ch < '0' || ch > '9') {
         if (ch == '-') f = -1;
-        ch = getchar();
+        ch = gc();
     }
     while (ch >= '0' && ch <= '9') {
         x = (x << 3) + (x << 1) + (ch ^ 48);
-        ch = getchar();
+        ch = gc();
     }
     return x * f;
 }
