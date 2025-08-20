@@ -1,5 +1,17 @@
 #include <bits/stdc++.h>
+
+#define N 300010
+#define LOG 22
+
 using namespace std;
+
+int n, m;
+vector<pair<int,int> > g[N];
+int up[LOG][N], dep[N], wp[N], ord[N], par[N];
+int dfn;
+int sumv[N];
+int uu[N], vv[N], lc[N], dd[N];
+int dis[N];
 
 inline int read() {
     int x = 0, f = 1;
@@ -29,18 +41,12 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-const int N=300000+5,LOG=20;
-int n,m;
-vector<pair<int,int>> g[N];
-int up[LOG][N],dep[N],wp[N],ord[N],par[N];
-int dfn;
-int sumv[N];
-int uu[N],vv[N],lc[N],dd[N];
-int dis[N];
-
 void build() {
     vector<int> st; st.reserve(n);
-    st.push_back(1); par[1]=0; dep[1]=0; up[0][1]=0; wp[1]=0; dis[1]=0;
+    st.push_back(1); 
+    par[1]=0; 
+    dep[1]=0; 
+    up[0][1]=0; wp[1]=0; dis[1]=0;
     while(!st.empty()){
         int u=st.back(); st.pop_back();
         ord[dfn++]=u;
