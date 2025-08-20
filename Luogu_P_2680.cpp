@@ -9,6 +9,7 @@ int n, m;
 
 vector<pair<int,int> > g[N];
 int up[LOG][N], dep[N], wp[N], ord[N], par[N];
+
 int dfn = 1;
 int sumv[N];
 int uu[N], vv[N], lc[N], dd[N];
@@ -121,29 +122,43 @@ inline bool chk(int mid) {
     return 0;
 }
 
-int main(){
-    n=read(); m=read();
-    for(int i=1;i<=n;i++) g[i].clear();
-    for(int i=1;i<=n-1;i++){
-        int a=read(),b=read(),t=read();
-        g[a].push_back({b,t});
-        g[b].push_back({a,t});
+int main() {
+    n = read(); 
+    m = read();
+
+    // for(int i = 1; i <= n; ++i) 
+        // g[i].clear();
+
+    for(int i = 1; i <= n - 1; ++i) {
+        int a = read(), b = read(), t = read();
+        g[a].push_back({b, t});
+        g[b].push_back({a, t});
     }
-    for(int i=0;i<m;i++){
-        uu[i]=read(); vv[i]=read();
+
+    for(int i = 0; i < m; ++i) {
+        uu[i] = read(); 
+        vv[i] = read();
     }
-    dfn=0; build();
-    int mx=0;
-    for(int i=0;i<m;i++){
-        lc[i]=lca(uu[i],vv[i]);
-        dd[i]=dis[uu[i]]+dis[vv[i]]-2*dis[lc[i]];
-        if(dd[i]>mx) mx=dd[i];
+
+    build();
+
+    int mx = 0;
+    for(int i = 0; i < m; ++i) {
+        lc[i] = lca(uu[i], vv[i]);
+        dd[i] = dis[uu[i]] + dis[vv[i]] - 2 * dis[lc[i]];
+        if(dd[i] > mx) mx = dd[i];
     }
-    int l=0,r=mx;
-    while(l<r){
-        int mid=(l+r)>>1;
-        if(chk(mid)) r=mid; else l=mid+1;
+
+    int l = 0, r = mx;
+    while(l < r) {
+        int mid = (l + r) >> 1;
+        if(chk(mid)) 
+            r = mid; 
+        else 
+            l = mid + 1;
     }
+
     writeln(l);
+
     return 0;
 }
