@@ -98,9 +98,10 @@ bool chk(int mid){
     for(int i = 1; i <= n; ++i) sumv[i] = 0;
     for(int i = 0; i < m; ++i){
         if(dd[i] > mid){
-            k++;
+            ++k;
             int w = dd[i] - mid;
-            if(w > need) need = w;
+            if(w > need) 
+                need = w;
             sumv[uu[i]]++; 
             sumv[vv[i]]++; 
             sumv[lc[i]] -= 2;
