@@ -78,7 +78,11 @@ int main() {
                 int needed = (-non_blue + 1) / 2;
                 max_l_needed = max(max_l_needed, needed);
             }
-            
+            if(non_red < 0) {
+                for(int i = 1; i <= b; ++i) {
+                    
+                }
+            }
             if (non_red < 0) {
                 int needed = (-non_red + 1) / 2;  
                 max_r_needed = max(max_r_needed, needed);

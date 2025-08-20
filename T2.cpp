@@ -1,13 +1,12 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <tuple>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 // 对于 60% 的数据, n <= 1000, w <= 100
 const int N_MAX = 1005;
 const int W_MAX = 105;
+const int M_MAX = 4500;
+for(int i)
 const long long INF = 1e18; // 使用 long long 存储代价，防止溢出
 
 int n, m, s, t;
@@ -25,6 +24,10 @@ int main() {
 
 
     cin >> n >> m;
+
+    for(int i = 1; i <= n; ++i) {
+        for(int j= 1; j <= )
+    }
 
     for (int i = 0; i < m; ++i) {
         int u, v, w;
