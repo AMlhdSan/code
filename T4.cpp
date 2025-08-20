@@ -7,8 +7,11 @@
 using namespace std;
 
 int main() {
+    freopen("T4.in", "r", stdin);
+    freopen("T4.out", "w", stdout);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cout.tie(NULL);
     
     string s;
     string colors;
@@ -40,6 +43,8 @@ int main() {
             prefix_L[i + 1] = prefix_L[i];
             prefix_M[i + 1] = prefix_M[i];
             prefix_R[i + 1] = prefix_R[i] + brackets[i];
+        } else {
+            for(int i = 1;)
         }
     }
     
