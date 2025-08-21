@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-// #pragma GCC optimize(2)
+
+
 
 #define N 300010
 #define LOG 22
@@ -7,6 +8,7 @@
 using namespace std;
 
 int n, m;
+int mx = 0;
 
 vector<pair<int,int> > g[N];
 int up[LOG][N], dep[N], wp[N], ord[N], par[N];
@@ -143,7 +145,6 @@ int main() {
 
     build();
 
-    int mx = 0;
     for(int i = 0; i < m; ++i) {
         lc[i] = lca(uu[i], vv[i]);
         dd[i] = dis[uu[i]] + dis[vv[i]] - 2 * dis[lc[i]];
