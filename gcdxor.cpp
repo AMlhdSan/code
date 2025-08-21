@@ -31,7 +31,10 @@ inline void write(int x) {
     return;
 }
 
-inline void writeln()
+inline void writeln(int x) {
+    write(x);
+    putchar('\n');
+}
 
 int main() {
 
@@ -42,7 +45,7 @@ int main() {
             if(((i * j) ^ (i * (j - 1))) == i) 
                 ++ans;
 
-    printf("%d\n", ans);
+    writeln(ans);
 
     return 0;
 }
