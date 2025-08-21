@@ -1,0 +1,1 @@
+{"name":"Local: xortree_chatgpt","url":"/Users/amlhdsan/code/xortree_chatgpt.cpp","tests":[{"id":1755774910753,"input":"5 3\n1 1\n1 4\n2 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/xortree_chatgpt.cpp","group":"local","local":true}
