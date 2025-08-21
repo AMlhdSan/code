@@ -130,9 +130,6 @@ int main() {
     n = read(); 
     m = read();
 
-    // for(int i = 1; i <= n; ++i) 
-        // g[i].clear();
-
     for(int i = 1; i <= n - 1; ++i) {
         int a = read(), b = read(), t = read();
         g[a].push_back({b, t});
