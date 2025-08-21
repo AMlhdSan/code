@@ -65,6 +65,8 @@ struct Seg{
 };
 
 int main(){
+    freopen("xortree.in","r",stdin);
+    freopen("xortree.out", "w", stdout);
     int k0i = read();
     int q = read();
     ull k0 = (ull)k0i;
