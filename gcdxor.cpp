@@ -1,21 +1,48 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int i,j,k,l,t,n,m,ans;
+int n;
+int ans = 0;
 
 inline int read() {
     int x = 0, f = 1;
     char ch = getchar();
-
+    while(ch < '0' || ch > '9') {
+        if(ch == '-') 
+        f = -1;
+        ch = getchar();
+    }
+    while(ch >= '0' && ch <= '9') {
+        x = (x << 3) + (x << 1) + (ch ^ 48);
+        ch = getchar();
+    }
+    return x * f;
 }
+
+inline void write(int x) {
+    if(x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    while(x >= 10)
+        write(x / 10);
+
+    putchar(x % 10 + '0');
+    return;
+}
+
+inline void writeln()
 
 int main() {
 
     n = read();
-    for(int i = 1; i <= )
-        fo(j,2,n/i)
-            if(((i*j)^(i*(j-1)))==i)ans++;
-    printf("%d\n",ans);
+
+    for(int i = 1; i <= n / 2; ++i)
+        for(int j = 2; j <= n / i; ++j)
+            if(((i * j) ^ (i * (j - 1))) == i) 
+                ++ans;
+
+    printf("%d\n", ans);
 
     return 0;
 }
