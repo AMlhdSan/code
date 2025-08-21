@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define int long long
 
 using namespace std;
 int n;
@@ -24,7 +25,7 @@ inline void write(int x) {
         putchar('-');
         x = -x;
     }
-    while(x >= 10)
+    if(x >= 10)
         write(x / 10);
 
     putchar(x % 10 + '0');
@@ -36,7 +37,10 @@ inline void writeln(int x) {
     putchar('\n');
 }
 
-int main() {
+signed main() {
+
+    freopen("gcdxor.in", "r", stdin);
+    freopen("gcdxor.out", "w", stdout);
 
     n = read();
 

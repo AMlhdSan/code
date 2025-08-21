@@ -1,0 +1,1 @@
+{"name":"Local: gcdxor","url":"/Users/amlhdsan/code/gcdxor.cpp","tests":[{"id":1755770770327,"input":"114514\n","output":"198982\n"},{"id":1755770829219,"input":"1919810\n","output":"3349879"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/gcdxor.cpp","group":"local","local":true}
