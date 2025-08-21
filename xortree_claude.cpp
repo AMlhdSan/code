@@ -36,6 +36,8 @@ inline void writeln(int x) {
 map<int, ll> cnt;
 
 int main() {
+    freopen("xortree.in","r",stdin);
+    freopen("xortree.out", "w", stdout);
     int k = read(), q = read();
     
     cnt[k] = 1;

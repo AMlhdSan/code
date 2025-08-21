@@ -54,6 +54,8 @@ long long power(long long base, long long exp) {
 }
 
 int main() {
+    freopen("xortree.in","r",stdin);
+    freopen("xortree.out", "w", stdout);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
