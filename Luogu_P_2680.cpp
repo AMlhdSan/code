@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 
-#define mid ((l + r) >> 1)
 
 #define N 300010
 #define LOG 22
@@ -153,7 +152,7 @@ int main() {
 
     int l = 0, r = mx;
     while(l < r) {
-        if(chk(mid)) 
+        if(chk(mid))
             r = mid; 
         else 
             l = mid + 1;
