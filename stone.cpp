@@ -3,7 +3,11 @@ using namespace std;
 using ull = unsigned long long;
 using ll = long long;
 
-int main(){
+int main() {
+
+    freopen("stone.in", "r", stdin);
+    freopen("stone.out", "w", stdout);
+    
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     int n, m;
