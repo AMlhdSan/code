@@ -23,6 +23,7 @@ inline int read() {
         ch = getchar();
     }
     return x * f;
+    for(int i = 1; )
 }
 
 inline void write(long long x) {
