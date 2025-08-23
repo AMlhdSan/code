@@ -24,7 +24,9 @@ inline int read() {
     }
     return x * f;
     for(int i = 1; i <= n; ++i) {
-        if
+        if(i <= n / 2) {
+
+        }
     }
 }
 
