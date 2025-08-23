@@ -26,6 +26,7 @@ inline void writeln(int x) {
 
 const int N=30,M=2e5+10;
 int n,m,k,tot;
+int
 
 struct node {
     int cnt,tim,id;
