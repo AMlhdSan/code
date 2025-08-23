@@ -1,0 +1,1 @@
+{"name":"Local: skdflaksjdf","url":"/Users/amlhdsan/code/skdflaksjdf.cpp","tests":[{"id":1755929542648,"input":"234j123 1234 ","output":"12341234 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/skdflaksjdf.cpp","group":"local","local":true}
