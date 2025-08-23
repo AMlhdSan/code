@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int 
+int a = 1;
 
 inline int read() {
     int x = 0, f = 1;
