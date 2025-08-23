@@ -53,12 +53,12 @@ int main() {
             mp[w] = lang;
         }
     }
+
     getline(cin, ln);
     // getline(cin, ln);
     while (getline(cin, ln)) {
         string cur;
         string ans;
-        string 
         for (char c : ln) {
             if (isalpha((unsigned char)c) || c == '-' || c == '\'' || c == '\\') {
                 cur.push_back(c);
