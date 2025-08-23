@@ -24,6 +24,10 @@ inline void write(int x) {
     putchar(x%10+'0');
 }
 
+inline void dps(int p) {
+    
+}
+
 inline void writeln(int x) {
     write(x);putchar('\n');
 }
