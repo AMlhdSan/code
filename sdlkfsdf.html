@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>macOS软件一文通</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f6f8fa;
+      color: #24292f;
+      padding: 20px;
+      line-height: 1.6;
+      background-image: url('https://images.unsplash.com/photo-1506755595060-73154be246f8'); /* Background image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+    }
+    h1 {
+      color: #0366d6;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    h1:hover {
+      color: #0056b3;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    }
+    h2, h3 {
+      color: #0366d6;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.2s;
+      margin: 20px 0;
+    }
+    h2:hover, h3:hover {
+      color: #0056b3;
+      transform: translateX(5px);
+    }
+    pre {
+      background-color: rgba(240, 248, 255, 0.8);
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    pre:hover {
+      background-color: rgba(240, 248, 255, 1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    a {
+      color: #0366d6;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+    .section-content {
+      padding-left: 20px;
+      margin-bottom: 20px;
+      display: none;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 8px;
+      padding: 15px;
+    }
+    .collapsible {
+      font-weight: bold;
+    }
+    .collapsible::before {
+      content: "▶ ";
+      margin-right: 5px;
+    }
+    .active::before {
+      content: "▼ ";
+    }
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      width: 150px;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%; 
+      left: 50%;
+      margin-left: -75px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+    .circle-effect {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #0366d6;
+      position: absolute;
+      pointer-events: none;
+      transform: scale(0);
+      transition: all 0.2s ease-in-out;
+    }
+    .circle-effect.active {
+      transform: scale(5);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="markdown-body">
+  <h1>macOS软件一文通</h1>
+  <p>必装只装。</p>
+  <p>网上看了很多推荐macOS的软件的文章，感觉内容都不咋的，几款非常好用的都没有推荐。现在就把我的传家宝给大家吧。</p>
+  <p>本文和其他文章不同，不推荐大众化的东西，且内容多不为国产。</p>
+
+  <h2 class="collapsible">1. 必装篇</h2>
+  <div class="section-content">
+    <p>这个真的是必装的。</p>
+
+    <h3>(1) Homebrew</h3>
+    <p>非开发人员勿入。</p>
+    <p>官网：<a href="https://brew.sh" target="_blank">brew</a></p>
+    <p>下载（终端命令）：<code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></p>
+    <p>brew可以下载你任何想要的东西：</p>
+    <pre><code>brew search &lt;软件名&gt;</code></pre>
+    <p>搜索（只有部分开源的在）</p>
+    <pre><code>brew install &lt;软件名&gt;</code></pre>
+    <p>下载（建议搜索出正确的名字再下载）</p>
+    <pre><code>brew update</code></pre>
+    <p>更新brew（其实在下软件之前都会进行的）</p>
+  </div>
+
+  <h2 class="collapsible">2. 程序员必备</h2>
+  <div class="section-content">
+    <h3>(1) VS Code</h3>
+    <p>不用介绍，直接官网：</p>
+    <p><a href="https://visualstudio.microsoft.com/zh-hans/#vscode-section" target="_blank">VS Code</a></p>
+
+    <h3>(2) Xcode</h3>
+    <p>Apple原生的，适合macOS的软件开发（反正我不用）</p>
+    <p>App Store自己下，免费的。</p>
+
+    <h3>(3) Marktext</h3>
+    <p>Markdown全能工具，UI巨好看。</p>
+    <p>可以用Homebrew部署：</p>
+    <pre><code>brew install mark-text --cask</code></pre>
+    <p>它会自动移到applications文件夹。</p>
+  </div>
+
+  <h2 class="collapsible">3. 富哥必备</h2>
+  <div class="section-content">
+    <h3>(1) Parallels Desktop</h3>
+    <p>虚拟机，渣机很卡。</p>
+
+    <h3>(2) Surge</h3>
+    <p>代理工具，超级超级超级超级贵，35美元第一年，第二年续费12美元。</p>
+
+    <h3>(3) Final Cut Pro和Logic Pro</h3>
+    <p>很贵，建议换区买，不然得倾家荡产。</p>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $(".collapsible").click(function() {
+        $(this).toggleClass("active");
+        $(this).next(".section-content").slideToggle();
+      });
+
+      // Mouse hover effect
+      $("a").hover(function(e) {
+        let circle = $('<div class="circle-effect"></div>');
+        $("body").append(circle);
+        circle.css({
+          top: e.pageY - 15 + 'px',
+          left: e.pageX - 15 + 'px'
+        });
+        setTimeout(function() {
+          circle.addClass('active');
+        }, 0);
+        setTimeout(function() {
+          circle.remove();
+        }, 500);
+      });
+    });
+  </script>
+</body>
+</html>

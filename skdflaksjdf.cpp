@@ -7,6 +7,10 @@ using namespace std;
 #define pqu priority_queue
 #define umap unordered_map
 
+#define N 1010
+
+int dp[N][N];
+
 inline int read() {
     int x=0,f=1;char ch=getchar();
     while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}
@@ -29,6 +33,7 @@ int n,m,k,tot;
 
 struct node {
     int cnt,tim,id;
+    // int a[N];
     string nam;
     int res[N];
 } T[M];
@@ -42,14 +47,19 @@ bool operator<(const node &x,const node &y){
 pqu<node> pq;
 umap<string,int> idmap;
 int sub[M][N];
+int substring;
 
 int getid(string nam) {
-    if(!idmap.count(nam)){
+    if(!idmap.count(nam)) {
         idmap[nam]=++tot;
         T[tot].cnt=0;T[tot].tim=0;T[tot].id=tot;T[tot].nam=nam;
         return tot;
     }
     return idmap[nam];
+}
+
+int vivid(int p) {
+
 }
 
 int main() {
