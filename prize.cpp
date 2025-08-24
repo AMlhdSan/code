@@ -32,6 +32,10 @@ inline void writeln(int x) {
 }
 
 int main() {
+
+    freopen("prize.in", "r", stdin);
+    freopen("prize.out", "w", stdout);
+
     int T = read();
     while (T--) {
         int n = read(), x = read(), y = read(), m = read();
