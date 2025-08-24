@@ -10,7 +10,7 @@ using namespace std;
 #define N 1010
 
 int dp[N][N];
-chmod
+chmod 777 dp;
 
 
 inline int read() {
