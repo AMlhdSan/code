@@ -2,9 +2,11 @@
 // amlhdsan
 #include <bits/stdc++.h>
 using namespace std;
+using i64 = long long;
+using i128 = __int128_t;
 
-inline int read() {
-    int x = 0, f = 1;
+inline i64 read() {
+    i64 x = 0, f = 1;
     char ch = getchar();
     while (ch < '0' || ch > '9') {
         if (ch == '-') f = -1;
@@ -17,7 +19,7 @@ inline int read() {
     return x * f;
 }
 
-inline void write(int x) {
+inline void write(i64 x) {
     if (x < 0) {
         putchar('-');
         x = -x;
@@ -26,35 +28,40 @@ inline void write(int x) {
     putchar(x % 10 + '0');
 }
 
-inline void writeln(int x) {
+inline void writeln(i64 x) {
     write(x);
     putchar('\n');
 }
 
+bool check(i64 n,i64 x,i64 y,i64 m,i64 a) {
+    if (a < 0 || a > n) return false;
+    i64 h = y / 2;
+    i128 m2 = (i128)m - (i128)a * y;
+    if (m2 < 0) return false;
+    i64 maxb = n - a;
+    i128 L = m2 - (i128)maxb * h;
+    i128 R = m2;
+    if (R < 0) return false;
+    i64 bl = 0, br = maxb;
+    if (L > 0) {
+        bl = (L + x - 1) / x;
+    }
+    br = min((i64)(R / x), maxb);
+    return bl <= br;
+}
+
 int main() {
-
-    freopen("prize.in", "r", stdin);
-    freopen("prize.out", "w", stdout);
-
     int T = read();
     while (T--) {
-        int n = read(), x = read(), y = read(), m = read();
-        int half = y / 2;
-        bool ok = false;
-        for (int a = 0; a <= n && !ok; a++) {
-            int left1 = n - a;
-            int sum1 = a * y;
-            if (sum1 > m) break;
-            for (int b = 0; b <= left1 && !ok; b++) {
-                int left2 = left1 - b;
-                long long cur = 1ll * a * y + 1ll * b * x;
-                if (cur > m) continue;
-                long long need = m - cur;
-                if (0 <= need && need <= 1ll * left2 * half) {
-                    ok = true;
-                }
-            }
+        i64 n = read(), x = read(), y = read(), m = read();
+        if (m > (i128)n * y) {
+            puts("No");
+            continue;
         }
+        i64 a = m / y;
+        bool ok = false;
+        if (check(n,x,y,m,a)) ok = true;
+        if (check(n,x,y,m,a+1)) ok = true;
         if (ok) puts("Yes");
         else puts("No");
     }
