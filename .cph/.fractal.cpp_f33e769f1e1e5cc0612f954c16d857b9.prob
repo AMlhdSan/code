@@ -1,0 +1,1 @@
+{"name":"Local: fractal","url":"/Users/amlhdsan/code/fractal.cpp","tests":[{"id":1756049205556,"input":"2 2 2","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/fractal.cpp","group":"local","local":true}
