@@ -125,4 +125,8 @@ int main() {
     }
     cout<<pq.top().nam<<'\n';
     return 0;
+    for(int i = 1; i <= n; ++i) {
+        cout << pq.top().nam << '\n';
+    }
+    return 0;
 }
