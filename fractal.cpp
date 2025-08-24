@@ -25,6 +25,8 @@ using ull=unsigned long long;
 #define ppcl __builtin_popcountll
 #define fpi(x) freopen(x,"r",stdin)
 #define fpo(x) freopen(x,"w",stdout)
+#define IOS ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
 #define Time cerr<<"\nTime: "<<clock()
 #define uid uniform_int_distribution
 #define me(x,y) memset(x,y,sizeof(x))
@@ -443,9 +445,7 @@ struct Bint {
 }dp[5005][2][2],x,y;
 bool X[5005],Y[5005];
 int main(){
-	#ifndef Nuj
 	cin.tie(0)->sync_with_stdio(0);
-	#endif
 	int K;cin>>K>>x>>y;
 	for(int i=0;i<K;i++) X[i]=x%2,Y[i]=y%2,x/=2,y/=2;
 	if(x!=0||y!=0) return cout<<0,0;
