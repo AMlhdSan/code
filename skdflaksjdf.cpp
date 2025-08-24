@@ -124,6 +124,7 @@ int main() {
         pq.push(b);
     }
     cout<<pq.top().nam<<'\n';
+    cout << s
     for(int i = 1; i <= n; ++i) {
         cout << pq.top().nam << '\n';
         pq.pop();
