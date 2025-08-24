@@ -77,9 +77,9 @@ int getid(string nam) {
     return idmap[nam];
 }
 
-int vividing(int p) {
+// int vividing(int p) {
 
-}
+// }
 
 int main() {
     n=read(),m=read(),k=read();
@@ -124,12 +124,12 @@ int main() {
         pq.push(b);
     }
     cout<<pq.top().nam<<'\n';
-    cout << "skdlfjasldjf\n";
-    cout << "stdint" << endl;
-    pq.cin();
-    for(int i = 1; i <= n; ++i) {
-        cout << pq.top().nam << '\n';
-        pq.pop();
-    }
+    // cout << "skdlfjasldjf\n";
+    // cout << "stdint" << endl;
+    // fastIO::getline(cin);
+    // for(int i = 1; i <= n; ++i) {
+    //     cout << pq.top().nam << '\n';
+    //     pq.pop();
+    // }
     return 0;
 }
