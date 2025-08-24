@@ -39,9 +39,9 @@ inline void write(int x) {
     putchar(x%10+'0');
 }
 
-inline void dps(int p) {
+// inline void dps(int p) {
 
-}
+// }
 
 inline void writeln(int x) {
     write(x);putchar('\n');
@@ -66,7 +66,7 @@ bool operator<(const node &x,const node &y){
 pqu<node> pq;
 umap<string,int> idmap;
 int sub[M][N];
-int substring;
+// int substring;
 
 int getid(string nam) {
     if(!idmap.count(nam)) {
