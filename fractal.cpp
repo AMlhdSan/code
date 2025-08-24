@@ -77,7 +77,7 @@ inline int read() {
     return x * f;
 }
 
-inline void 
+// inline void 
 
 inline void write(int x) {
     if (x < 0) {
