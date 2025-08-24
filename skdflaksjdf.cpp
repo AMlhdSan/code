@@ -10,8 +10,8 @@ using namespace std;
 #define N 1010
 
 int dp[N][N];
-chmod 777 dp;
 
+inline void 
 
 inline int read() {
     int x=0,f=1;char ch=getchar();
