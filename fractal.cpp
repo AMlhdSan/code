@@ -19,6 +19,14 @@ inline int read() {
     return x * f;
 }
 
+inline void memset(int *arr, int value, int size) {
+    for (int i = 0; i < size; ++i) {
+        arr[i] = value;
+    }
+}
+
+
+
 inline void write(int x) {
     if (x < 0) {
         putchar('-');
