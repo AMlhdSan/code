@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+
+#define int long long
+
 using namespace std;
 
 int T;
@@ -33,6 +36,16 @@ inline void writeln(int x) {
 }
 
 int main() {
+
+    T = read();
+    while(T--) {
+        n = read();
+        x = read();
+        y = read();
+        m = read();
+
+
+    }
 
     return 0;
 }
