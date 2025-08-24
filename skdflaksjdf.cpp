@@ -126,6 +126,7 @@ int main() {
     cout<<pq.top().nam<<'\n';
     cout << "skdlfjasldjf\n";
     cout << "stdint" << endl;
+    pq.cin();
     for(int i = 1; i <= n; ++i) {
         cout << pq.top().nam << '\n';
         pq.pop();
