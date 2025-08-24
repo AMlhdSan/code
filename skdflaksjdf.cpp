@@ -11,6 +11,7 @@ using namespace std;
 
 int dp[N][N];
 
+
 inline int read() {
     int x=0,f=1;char ch=getchar();
     while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}
@@ -25,7 +26,7 @@ inline void write(int x) {
 }
 
 inline void dps(int p) {
-    
+
 }
 
 inline void writeln(int x) {
