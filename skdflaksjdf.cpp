@@ -77,7 +77,7 @@ int getid(string nam) {
     return idmap[nam];
 }
 
-int vivid(int p) {
+int vividing(int p) {
 
 }
 
