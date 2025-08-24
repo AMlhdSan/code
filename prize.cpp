@@ -12,6 +12,7 @@ int main(){
 		ll n,x,y,m;cin>>n>>x>>y>>m;
 		if(m>(__int128)n*y) cout<<"No\n";
 		else{
+			ll a = n * x;
 			ll d=n*y-m;
 			if(d<y+1>>1){
 				if(d%(y-x)||d/(y-x)>n) cout<<"No\n";
