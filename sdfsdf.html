@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 10px;
+        }
+        .chapter {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .collapsible {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+        .active, .collapsible:hover {
+            background-color: #ddd;
+        }
+        .content {
+            padding: 10px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        .search-input {
+            width: 300px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Interactive Document - 上网不完全指北</h1>
+
+<input class="search-input" type="text" id="search" placeholder="Search..." onkeyup="searchContent()">
+
+<div class="chapter">
+    <button class="collapsible">Chapter 1: 工具的选择</button>
+    <div class="content">
+        <h2>浏览器 Browser</h2>
+        <p>目前主流的浏览器有这么几个：Chrome, Edge, Firefox...</p>
+        <p>Chromium 是 Google Chrome 开发出来的一个内核...</p>
+    </div>
+</div>
+
+<div class="chapter">
+    <button class="collapsible">Chapter 2: 一些零散的知识</button>
+    <div class="content">
+        <h2>网络基础</h2>
+        <ul>
+            <li>IP 地址: 设备唯一标识</li>
+            <li>IPv4: 32 位地址</li>
+            <li>IPv6: 128 位地址</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Collapsible Sections
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+    // Search functionality
+    function searchContent() {
+        var input, filter, chapters, p, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        chapters = document.getElementsByClassName("chapter");
+
+        for (i = 0; i < chapters.length; i++) {
+            p = chapters[i].getElementsByClassName("content")[0].getElementsByTagName("p");
+            for (var j = 0; j < p.length; j++) {
+                txtValue = p[j].textContent || p[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    p[j].classList.add("highlight");
+                } else {
+                    p[j].classList.remove("highlight");
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
