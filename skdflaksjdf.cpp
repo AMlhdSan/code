@@ -127,6 +127,7 @@ int main() {
     return 0;
     for(int i = 1; i <= n; ++i) {
         cout << pq.top().nam << '\n';
+        pq.pop();
     }
     return 0;
 }
