@@ -1,7 +1,13 @@
-
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
 
 int main(){
-	int t;cin>>t;
+	freopen("prize.in","r",stdin);
+	freopen("prize.out","w",stdout);
+	int t;
+	ios::sync_with_stdio(false);
+	cin>>t;
 	while(t--){
 		ll n,x,y,m;cin>>n>>x>>y>>m;
 		if(m>(__int128)n*y) cout<<"No\n";
