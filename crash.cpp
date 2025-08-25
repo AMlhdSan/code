@@ -39,6 +39,14 @@ inline void write(int x) {
     putchar(x % 10 + '0');
 }
 
+inline void fastIO() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+}
+
+inline void 
+
 inline void writeln(int x) {
     write(x);
     putchar('\n');
