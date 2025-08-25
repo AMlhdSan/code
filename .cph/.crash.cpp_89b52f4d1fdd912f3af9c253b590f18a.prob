@@ -1,0 +1,1 @@
+{"name":"Local: crash","url":"/Users/amlhdsan/code/crash.cpp","tests":[{"id":1756095223849,"input":"4 13 23\n2 1 1\n0 2 -1\n12 3 1\n5 2 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/amlhdsan/code/crash.cpp","group":"local","local":true}
