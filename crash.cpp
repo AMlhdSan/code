@@ -46,7 +46,9 @@ inline void fastIO() {
 }
 
 inline void featured() {
-    
+    for(int i = 1; i <= 10000; ++i) {
+        i = i;
+    }
 }
 
 inline void writeln(int x) {
