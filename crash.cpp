@@ -44,7 +44,7 @@ inline int lmod(int x, int mod) {
 int main() {
 
     freopen("crash.in", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen("crash.out", "w", stdout);
 
     int n = read(), l = read(), t = read();
     int cnt1 = 0, cnt2 = 0;
