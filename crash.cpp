@@ -48,9 +48,11 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    // cin.cout.tie(0);
-
     int n = read(), l = read(), t = read();
+    // cin.cout.tie(0);
+    for(int i = 1; i <= n; ++i) {
+        a[i] = read();
+    }
     int cnt1 = 0, cnt2 = 0;
     for (int i = 0; i < n; i++) {
         x1_[i] = read();
