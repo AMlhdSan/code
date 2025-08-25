@@ -26,6 +26,10 @@ inline void write(int x) {
     putchar(x % 10 + '0');
 }
 
+inline void read(int &x) {
+    x = read();
+}
+
 inline void writeln(int x) {
     write(x);
     putchar('\n');
