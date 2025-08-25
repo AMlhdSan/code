@@ -42,6 +42,10 @@ inline int lmod(int x, int mod) {
 }
 
 int main() {
+
+    freopen("crash.in", "r", stdin);
+    freopen("output.txt", "w", stdout);
+
     int n = read(), l = read(), t = read();
     int cnt1 = 0, cnt2 = 0;
     for (int i = 0; i < n; i++) {
