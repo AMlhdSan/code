@@ -53,12 +53,18 @@ int main() {
     for(int i = 1; i <= n; ++i) {
         a[i] = read();
     }
+    for(int i = 2; i <= n; ++i) {
+        x2[i] = read();
+        c2[i] = read();
+        d2[i] = read();
+    }
     int cnt1 = 0, cnt2 = 0;
     for (int i = 0; i < n; i++) {
         x1_[i] = read();
         c1[i] = read();
         d1[i] = read();
         a[i] = x1_[i];
+        // x2_[i] = 
         if (d1[i] >= 0) b[cnt1++] = x1_[i];
         else c[cnt2++] = x1_[i];
     }
