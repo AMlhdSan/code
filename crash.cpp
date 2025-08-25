@@ -45,6 +45,10 @@ inline void fastIO() {
     cout.tie(0);
 }
 
+inline void featured() {
+    
+}
+
 inline void writeln(int x) {
     write(x);
     putchar('\n');
