@@ -46,6 +46,9 @@ int main() {
     freopen("crash.in", "r", stdin);
     freopen("crash.out", "w", stdout);
     ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    // cin.cout.tie(0);
 
     int n = read(), l = read(), t = read();
     int cnt1 = 0, cnt2 = 0;
