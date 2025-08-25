@@ -64,6 +64,12 @@ template<class T,class...H> void _dbg(int l,const char *c,T h,H... a){
 #define fr(i,l,r) for(int i = (l);i <= (r);++i)
 #define rf(i,l,r) for(int i = (l);i >= (r);--i)
 #define fo(i,l,r) for(int i = (l);i < (r);++i)
+#define ls (p << 1)
+#define rs (p << 1 | 1)
+#define mid ((l + r) >> 1)
+
+
+inline void 
 
 inline int read() {
     int x = 0, f = 1;
